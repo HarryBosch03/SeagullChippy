@@ -7,7 +7,6 @@
     "com.unity.textmeshpro": "3.0.6",
     "com.unity.xr.oculus": "3.2.3",
     "com.unity.xr.openxr": "1.5.3",
-    "net.harrybosch.handyvr": "https://github.com/HarryBosch03/HandyVR.git#unstable",
     "com.unity.modules.ai": "1.0.0",
     "com.unity.modules.androidjni": "1.0.0",
     "com.unity.modules.animation": "1.0.0",
