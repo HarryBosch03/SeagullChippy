@@ -35,7 +35,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.inputsystem": {
-      "version": "1.4.3",
+      "version": "1.4.4",
       "depth": 1,
       "source": "registry",
       "dependencies": {
@@ -48,6 +48,17 @@
       "depth": 1,
       "source": "registry",
       "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.probuilder": {
+      "version": "5.0.7",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.settings-manager": "1.0.3",
+        "com.unity.modules.physics": "1.0.0",
+        "com.unity.modules.imgui": "1.0.0"
+      },
       "url": "https://packages.unity.com"
     },
     "com.unity.render-pipelines.core": {
@@ -74,6 +85,13 @@
     "com.unity.searcher": {
       "version": "4.9.1",
       "depth": 2,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.settings-manager": {
+      "version": "1.0.3",
+      "depth": 1,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
@@ -167,6 +185,17 @@
         "com.unity.inputsystem": "1.4.2"
       },
       "url": "https://packages.unity.com"
+    },
+    "net.harrybosch.handyvr": {
+      "version": "https://github.com/HarryBosch03/HandyVR.git#unstable",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.inputsystem": "1.4.4",
+        "com.unity.xr.oculus": "3.2.3",
+        "com.unity.xr.openxr": "1.5.3"
+      },
+      "hash": "919ff505b05d3e1dcb8ba920c2e9a2d6901479ff"
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",
