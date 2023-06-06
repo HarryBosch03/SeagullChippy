@@ -36,5 +36,16 @@ namespace ShootingRangeGame
                 lines.SetPosition(i, start + difference * percent);
             }
         }
+
+        public static Vector2 Rotate(this Vector2 vector, float angleRadians)
+        {
+            var sin = Mathf.Sin(angleRadians);
+            var cos = Mathf.Cos(angleRadians);
+            return new Vector2
+            {
+                x = vector.x * cos + vector.y * sin,
+                y = vector.y * cos - vector.x * sin,
+            };
+        }
     }
 }

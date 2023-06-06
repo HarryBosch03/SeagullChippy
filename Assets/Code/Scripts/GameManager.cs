@@ -1,118 +1,121 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using ShootingRangeGame.Seagulls;
 using TMPro;
+using UnityEngine;
 
-public class GameManager : MonoBehaviour
+namespace ShootingRangeGame
 {
-    [Header("Round Settings")]
-    public float roundLength;
-    float roundTimer = 0;
-    int score = 0;
-    int highScore;
-    bool roundActive = false;
-
-    [Header("Components")]
-    public TextMeshProUGUI timerReadout;
-    public TextMeshProUGUI scoreReadout;
-    public TextMeshProUGUI highScoreReadout;
-
-    public static GameManager instance;
-
-    private void Awake()
+    public class GameManager : MonoBehaviour
     {
-        if (instance != null && instance != this)
-        {
-            Destroy(instance);
-        }
-        else
-        {
-            instance = this;
-        }
-    }
+        [Header("Round Settings")]
+        public float roundLength;
+        float roundTimer = 0;
+        int score = 0;
+        int highScore;
+        bool roundActive = false;
 
-    private void Start()
-    {
-        RefreshUI();
-        highScore = GetHighScore();
-    }
+        [Header("Components")]
+        public TextMeshProUGUI timerReadout;
+        public TextMeshProUGUI scoreReadout;
+        public TextMeshProUGUI highScoreReadout;
 
-    void Update()
-    {
-        if (roundActive)
+        private void OnEnable()
         {
-            roundTimer -= Time.deltaTime;
+            Seagull.OnSeagullHit += SeagullHitEvent;
         }
 
-        if (Input.GetKeyDown(KeyCode.Return))
+        private void OnDisable()
         {
-            StartRound();
+            Seagull.OnSeagullHit -= SeagullHitEvent;
+        }
+        
+        private void SeagullHitEvent()
+        {
+            AddScore(1);   
         }
 
-        if (Input.GetKeyDown(KeyCode.O))
+        private void Start()
         {
-            AddScore(1);
+            RefreshUI();
+            highScore = GetHighScore();
         }
 
-        if (Input.GetKeyDown(KeyCode.P))
+        void Update()
         {
-            EndRound();
+            if (roundActive)
+            {
+                roundTimer -= Time.deltaTime;
+            }
+
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                StartRound();
+            }
+
+            if (Input.GetKeyDown(KeyCode.O))
+            {
+                AddScore(1);
+            }
+
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                EndRound();
+            }
+
+            if (Input.GetKeyDown(KeyCode.Backspace))
+            {
+                EndRound();
+            }
+
+            RefreshUI();
+
         }
 
-        if (Input.GetKeyDown(KeyCode.Backspace))
+        public void StartRound()
         {
-            EndRound();
+            roundTimer = roundLength;
+            roundActive = true;
+            score = 0;
         }
 
-        RefreshUI();
-
-    }
-
-    public void StartRound()
-    {
-        roundTimer = roundLength;
-        roundActive = true;
-        score = 0;
-    }
-
-    public void EndRound()
-    {
-        roundActive = false;
-        roundTimer = 0;
-
-        SetHighScore(score);
-    }
-
-    public void RefreshUI()
-    {
-        if (roundActive)
+        public void EndRound()
         {
-            timerReadout.text = (int)(roundTimer / 60) + ":" + (int)(roundTimer % 60);
+            roundActive = false;
+            roundTimer = 0;
+
+            SetHighScore(score);
         }
 
-        scoreReadout.text = score.ToString();
-        highScoreReadout.text = highScore.ToString();
-    }
-
-    public void AddScore(int addedScore)
-    {
-        score += addedScore;
-    }
-
-    public int GetHighScore()
-    {
-        return PlayerPrefs.GetInt("HighScore", 0);
-    }
-
-    public void SetHighScore(int score)
-    {
-        if (score > GetHighScore())
+        public void RefreshUI()
         {
-            PlayerPrefs.SetInt("HighScore", score);
-            highScore = score;
+            if (roundActive)
+            {
+                timerReadout.text = (int)(roundTimer / 60) + ":" + (int)(roundTimer % 60);
+            }
+
+            scoreReadout.text = score.ToString();
+            highScoreReadout.text = highScore.ToString();
         }
 
+        public void AddScore(int addedScore)
+        {
+            score += addedScore;
+        }
+
+        public int GetHighScore()
+        {
+            return PlayerPrefs.GetInt("HighScore", 0);
+        }
+
+        public void SetHighScore(int score)
+        {
+            if (score > GetHighScore())
+            {
+                PlayerPrefs.SetInt("HighScore", score);
+                highScore = score;
+            }
+
+        }
+
+
     }
-
-
 }
