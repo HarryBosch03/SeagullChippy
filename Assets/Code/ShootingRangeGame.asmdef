@@ -1,0 +1,16 @@
+{
+    "name": "ShootingRangeGame",
+    "rootNamespace": "ShootingRangeGame",
+    "references": [
+        "GUID:f5994f738c881fe479e6d7d2dcb9f019"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

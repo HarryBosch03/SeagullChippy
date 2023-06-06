@@ -187,15 +187,14 @@
       "url": "https://packages.unity.com"
     },
     "net.harrybosch.handyvr": {
-      "version": "https://github.com/HarryBosch03/HandyVR.git#unstable",
+      "version": "file:net.harrybosch.handyvr",
       "depth": 0,
-      "source": "git",
+      "source": "embedded",
       "dependencies": {
         "com.unity.inputsystem": "1.4.4",
         "com.unity.xr.oculus": "3.2.3",
         "com.unity.xr.openxr": "1.5.3"
-      },
-      "hash": "6d2194a2a9560f23855c5958bb878cacf6c22997"
+      }
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",
