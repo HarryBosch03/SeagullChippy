@@ -529,7 +529,6 @@ MonoBehaviour:
   flipAxis: {x: 1, y: 0, z: 0}
   pointTransform: {fileID: 2201110860129996487}
   handModel: {fileID: 5970585730781575279}
-  resetTransform: {fileID: 7566534203618563469}
   resetDistanceThreshold: 2
 --- !u!114 &4243138517736255649
 MonoBehaviour:
@@ -564,8 +563,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59a269e3117a1a6408d5754e72a16451, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickupRange: 0.2
-  pointingAtAngle: 15
+  directPickupRange: 0.2
+  pointingAtAngle: 10
   bindingOffsetTranslation: {x: 0, y: 0, z: 0}
   bindingOffsetRotation: {x: 90, y: 0, z: 0}
   lines: {fileID: 7804514540502443839}

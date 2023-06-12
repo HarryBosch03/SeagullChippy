@@ -1,23 +1,22 @@
 using System;
-using UnityEditor;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace ShootingRangeGame.Seagulls
+namespace ShootingRangeGame.Scripts.Seagulls
 {
     public class Seagull : MonoBehaviour
     {
-        [Header("AI")] [SerializeField] private SeagullBrain brain;
+        [Header("AI")] 
+        [SerializeField] private SeagullBrain brain;
 
-        [Header("MOVEMENT")] [Space] [SerializeField]
-        private float moveSpeed;
+        [Header("MOVEMENT")] [Space] 
+        [SerializeField] private float moveSpeed;
 
         [SerializeField] private float accelerationTime;
         [SerializeField] private float rotationSmoothing;
 
-        [Space] [Header("DEATH")] [SerializeField]
-        private float minDamageForce = 15.0f;
-
+        [Header("DEATH")] [Space]
+        [SerializeField] private float minDamageForce = 15.0f;
         [SerializeField] private float seagullExplosionForce = 20.0f;
         [SerializeField] [Range(0.0f, 1.0f)] private float seagullExplosionRandomness = 0.5f;
         [SerializeField] private bool invulnerable;

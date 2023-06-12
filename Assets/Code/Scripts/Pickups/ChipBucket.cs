@@ -5,7 +5,7 @@ using HandyVR.Player;
 using HandyVR.Player.Input;
 using UnityEngine;
 
-namespace ShootingRangeGame.Pickups
+namespace ShootingRangeGame.Scripts.Pickups
 {
     public class ChipBucket : MonoBehaviour, IVRHandle
     {

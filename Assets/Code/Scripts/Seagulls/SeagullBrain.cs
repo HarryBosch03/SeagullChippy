@@ -1,17 +1,9 @@
-﻿using System;
-using System.Collections;
-using System.IO;
-using System.Numerics;
-using UnityEditor;
-using UnityEngine;
-using UnityEngine.AI;
-using UnityEngine.EventSystems;
+﻿using UnityEngine;
 using Quaternion = UnityEngine.Quaternion;
 using Random = UnityEngine.Random;
-using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
 
-namespace ShootingRangeGame.Seagulls
+namespace ShootingRangeGame.Scripts.Seagulls
 {
     [System.Serializable]
     public class SeagullBrain

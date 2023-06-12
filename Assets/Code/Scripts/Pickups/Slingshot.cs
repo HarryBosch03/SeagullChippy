@@ -6,7 +6,7 @@ using HandyVR.Player;
 using HandyVR.Player.Hands;
 using UnityEngine;
 
-namespace ShootingRangeGame.Pickups
+namespace ShootingRangeGame.Scripts.Pickups
 {
     [SelectionBase]
     [DisallowMultipleComponent]

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ShootingRangeGame.Pickups
+namespace ShootingRangeGame.Scripts.Pickups
 {
     [DisallowMultipleComponent]
     public sealed class SlingshotDrawLine : MonoBehaviour

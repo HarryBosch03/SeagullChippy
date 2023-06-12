@@ -1,8 +1,8 @@
-using ShootingRangeGame.Seagulls;
+using ShootingRangeGame.Scripts.Seagulls;
 using TMPro;
 using UnityEngine;
 
-namespace ShootingRangeGame
+namespace ShootingRangeGame.Scripts
 {
     public class GameManager : MonoBehaviour
     {
