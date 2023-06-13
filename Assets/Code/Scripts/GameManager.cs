@@ -9,7 +9,6 @@ namespace ShootingRangeGame
         [Header("Round Settings")]
         public float roundLength;
         float roundTimer = 0;
-        int score = 0;
         int highScore;
         bool roundActive = false;
 
@@ -17,6 +16,8 @@ namespace ShootingRangeGame
         public TextMeshProUGUI timerReadout;
         public TextMeshProUGUI scoreReadout;
         public TextMeshProUGUI highScoreReadout;
+
+        public int Score { get; private set; }
 
         private void OnEnable()
         {
@@ -74,7 +75,7 @@ namespace ShootingRangeGame
         {
             roundTimer = roundLength;
             roundActive = true;
-            score = 0;
+            Score = 0;
         }
 
         public void EndRound()
@@ -82,23 +83,23 @@ namespace ShootingRangeGame
             roundActive = false;
             roundTimer = 0;
 
-            SetHighScore(score);
+            SetHighScore(Score);
         }
 
         public void RefreshUI()
         {
             if (roundActive)
             {
-                timerReadout.text = (int)(roundTimer / 60) + ":" + (int)(roundTimer % 60);
+                if (timerReadout) timerReadout.text = (int)(roundTimer / 60) + ":" + (int)(roundTimer % 60);
             }
 
-            scoreReadout.text = score.ToString();
-            highScoreReadout.text = highScore.ToString();
+            if (scoreReadout) scoreReadout.text = Score.ToString();
+            if (highScoreReadout) highScoreReadout.text = highScore.ToString();
         }
 
         public void AddScore(int addedScore)
         {
-            score += addedScore;
+            Score += addedScore;
         }
 
         public int GetHighScore()

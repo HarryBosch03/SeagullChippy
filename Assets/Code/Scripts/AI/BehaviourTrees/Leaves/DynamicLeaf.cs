@@ -1,4 +1,6 @@
-﻿namespace ShootingRangeGame.AI.BehaviourTrees.Core
+﻿using ShootingRangeGame.AI.BehaviourTrees.Core;
+
+namespace ShootingRangeGame.AI.BehaviourTrees.Leaves
 {
     public class DynamicLeaf : Leaf
     {
