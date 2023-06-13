@@ -1,16 +1,19 @@
 using System;
+using ShootingRangeGame.AI.BehaviourTrees.Core;
 using UnityEngine;
+using UnityEngine.Rendering;
 using Random = UnityEngine.Random;
 
-namespace ShootingRangeGame.Scripts.Seagulls
+namespace ShootingRangeGame.Seagulls
 {
-    public class Seagull : MonoBehaviour
+    public class Seagull : MonoBehaviour, IHasBehaviourTree
     {
         [Header("AI")] 
         [SerializeField] private SeagullBrain brain;
 
         [Header("MOVEMENT")] [Space] 
         [SerializeField] private float moveSpeed;
+        [SerializeField] private float floatiness = 4.0f;
 
         [SerializeField] private float accelerationTime;
         [SerializeField] private float rotationSmoothing;
@@ -29,8 +32,11 @@ namespace ShootingRangeGame.Scripts.Seagulls
 
         public new Rigidbody rigidbody;
 
-        public Vector3 MoveDirection { get; set; }
+        public Vector3 MoveVector { get; set; }
         public Vector3 LookDirection { get; set; }
+        public MonoBehaviour Behaviour => this;
+        public BehaviourTree Tree => brain.Tree;
+        public bool Grounded { get; private set; }
 
         public static event Action OnSeagullHit;
 
@@ -39,6 +45,7 @@ namespace ShootingRangeGame.Scripts.Seagulls
             rigidbody = GetComponent<Rigidbody>();
 
             brain.Init(this);
+            LookDirection = Quaternion.Euler(0.0f, Random.value * 360.0f, 0.0f) * Vector3.forward;
         }
 
         private void Update()
@@ -48,7 +55,13 @@ namespace ShootingRangeGame.Scripts.Seagulls
 
         private void FixedUpdate()
         {
-            var target = MoveDirection * moveSpeed;
+            Move();
+            SetGroundedState();
+        }
+
+        private void Move()
+        {
+            var target = MoveVector * moveSpeed;
             var difference = (target - rigidbody.velocity);
             difference.y = 0.0f;
             var force = Vector3.ClampMagnitude(difference, moveSpeed) / accelerationTime;
@@ -65,6 +78,20 @@ namespace ShootingRangeGame.Scripts.Seagulls
             }
 
             rigidbody.angularVelocity = Vector3.zero;
+            
+            rigidbody.AddForce(Vector3.up * -rigidbody.velocity.y * floatiness, ForceMode.Acceleration);
+        }
+
+        private void SetGroundedState()
+        {
+            Grounded = false;
+            var queries = Physics.OverlapSphere(transform.position, 0.1f);
+            foreach (var query in queries)
+            {
+                if (query.transform.IsChildOf(transform)) continue;
+                Grounded = true;
+                break;
+            }
         }
 
         private void OnCollisionEnter(Collision collision)

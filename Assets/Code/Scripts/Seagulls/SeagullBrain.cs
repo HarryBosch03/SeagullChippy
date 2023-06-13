@@ -1,95 +1,60 @@
-﻿using UnityEngine;
-using Quaternion = UnityEngine.Quaternion;
-using Random = UnityEngine.Random;
-using Vector3 = UnityEngine.Vector3;
+﻿using ShootingRangeGame.AI.BehaviourTrees.Core;
+using ShootingRangeGame.AI.BehaviourTrees.Leaves;
+using UnityEngine;
 
-namespace ShootingRangeGame.Scripts.Seagulls
+namespace ShootingRangeGame.Seagulls
 {
     [System.Serializable]
-    public class SeagullBrain
+    public partial class SeagullBrain : IHasBehaviourTree
     {
-        [SerializeReference] private float minWanderTime;
-        [SerializeReference] private float maxWanderTime;
-        [SerializeReference] private float wanderDistance;
+        [SerializeField] private string defaultAnimation;
+        [SerializeField] private float maxWanderDistance;
 
-        private Seagull seagull;
+        public Seagull Seagull { get; private set; }
 
-        private Vector3 wanderDirection;
-        private float speed;
+        public BehaviourTree Tree { get; private set; } = new(
+            new SequenceLeaf()
+                .AddChild(new DirectionPreprocess())
+                .AddChild(
+                    new RandomLeaf()
+                        .AddChild(new Wait(), 1.5f)
+                        .AddChild(new Wander(), 1.0f)
+                        .AddChild(new Fly(), 0.15f)
+                )
+        );
 
-        private State state;
-        private float changeStateTime;
-        private float stateTimer;
+        private Animator animator;
+
+        public string Animation { get; set; }
 
         public void Init(Seagull seagull)
         {
-            this.seagull = seagull;
+            this.Seagull = seagull;
 
-            TransitionToRandomState();
-            wanderDirection = Random.insideUnitSphere;
-            wanderDirection.y = 0.0f;
-            wanderDirection.Normalize();
+            animator = seagull.GetComponent<Animator>();
+            Animation = defaultAnimation;
+
+            Tree.Init(this);
         }
 
         public void Update()
         {
-            seagull.MoveDirection = Vector3.zero;
+            Seagull.MoveVector = Vector3.zero;
+            Tree.Execute(this);
 
-            stateTimer += Time.deltaTime;
-            if (stateTimer > changeStateTime)
-            {
-                TransitionToRandomState();
-            }
-
-            switch (state)
-            {
-                case State.Wander:
-                    seagull.MoveDirection = wanderDirection.normalized * speed;
-                    seagull.LookDirection = seagull.MoveDirection;
-                    break;
-                case State.Wait:
-                    seagull.LookDirection = wanderDirection.normalized;
-                    break;
-                case State.Count:
-                default:
-                    TransitionToRandomState();
-                    break;
-            }
+            animator.Play(Animation);
+            Animation = defaultAnimation;
         }
 
-        public void TransitionToRandomState()
+        public void ShiftLookDirection(float variance)
         {
-            var newState = (State)Random.Range(0, (int)State.Count);
-            ChangeState(newState);
+            var transform = Seagull.transform;
+
+            var distance = Mathf.Sqrt(transform.position.x * transform.position.x + transform.position.z * transform.position.z);
+            if (distance > maxWanderDistance) Seagull.LookDirection = -new Vector3(transform.position.x, 0.0f, transform.position.z).normalized;
+            Seagull.LookDirection = Quaternion.Euler(0.0f, Random.value * 2.0f * variance - variance, 0.0f) * Seagull.LookDirection;
         }
 
-        public void ChangeState(State state)
-        {
-            this.state = state;
-            changeStateTime = Random.Range(minWanderTime, maxWanderTime);
-            speed = Mathf.Lerp(0.5f, 1.0f, Random.value);
-            stateTimer = 0.0f;
-
-            GetNewDirection();
-        }
-
-        private void GetNewDirection(int i = 0)
-        {
-            if (i > 50) return;
-
-            var angle = (10.0f + Random.value * 20.0f) * (Random.value > 0.5f ? 1.0f : -1.0f);
-            
-            wanderDirection = (Quaternion.Euler(0.0f, angle, 0.0f) * wanderDirection).normalized;
-            var ray = new Ray(seagull.transform.position, wanderDirection);
-            if (!Physics.Raycast(ray)) return;
-            GetNewDirection(i + 1);
-        }
-
-        public enum State
-        {
-            Wander,
-            Wait,
-            Count,
-        }
+        public MonoBehaviour Behaviour => Seagull;
     }
 }

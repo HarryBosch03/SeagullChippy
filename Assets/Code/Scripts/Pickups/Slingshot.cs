@@ -6,7 +6,7 @@ using HandyVR.Player;
 using HandyVR.Player.Hands;
 using UnityEngine;
 
-namespace ShootingRangeGame.Scripts.Pickups
+namespace ShootingRangeGame.Pickups
 {
     [SelectionBase]
     [DisallowMultipleComponent]
@@ -30,6 +30,8 @@ namespace ShootingRangeGame.Scripts.Pickups
         public Vector3 Current => slingyThing.position;
         public VRHand DrawingHand { get; private set; }
         public Vector3 Tension { get; private set; }
+
+        public event Action<IVRBindable> FireEvent;
 
         public float TensionMagnitude
         {
@@ -86,6 +88,7 @@ namespace ShootingRangeGame.Scripts.Pickups
             if (DrawingHand.ActiveBinding)
             {
                 var ammo = DrawingHand.ActiveBinding.bindable;
+                FireEvent?.Invoke(DrawingHand.ActiveBinding.bindable);
                 if (ammo.Rigidbody)
                 {
                     ammo.ActiveBinding.Deactivate();
@@ -93,6 +96,7 @@ namespace ShootingRangeGame.Scripts.Pickups
                     StartCoroutine(IgnoreCollisionWith(ammo));
                 }
             }
+            FireEvent?.Invoke(null);
 
             DrawingHand = null;
         }

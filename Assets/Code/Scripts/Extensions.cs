@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace ShootingRangeGame.Scripts
+namespace ShootingRangeGame
 {
     public static class Extensions
     {
