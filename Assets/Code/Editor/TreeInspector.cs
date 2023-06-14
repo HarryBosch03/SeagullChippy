@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace ShootingRangeGame.AI.BehaviourTrees.Editor
+namespace Code.Editor
 {
     public class TreeInspector : EditorWindow
     {

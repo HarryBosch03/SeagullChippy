@@ -1,16 +1,17 @@
+using ShootingRangeGame.Saves;
 using ShootingRangeGame.Seagulls;
 using TMPro;
 using UnityEngine;
 
 namespace ShootingRangeGame
 {
-    public class GameManager : MonoBehaviour
+    public class GameSession : MonoBehaviour
     {
         [Header("Round Settings")]
         public float roundLength;
-        float roundTimer = 0;
-        int highScore;
-        bool roundActive = false;
+
+        private int highScore;
+        private bool roundActive = false;
 
         [Header("Components")]
         public TextMeshProUGUI timerReadout;
@@ -18,6 +19,14 @@ namespace ShootingRangeGame
         public TextMeshProUGUI highScoreReadout;
 
         public int Score { get; private set; }
+        public int HighScore
+        {
+            get => SaveManager.GetOrLoad().highScore;
+            set => SaveManager.GetOrLoad().highScore = value;
+        }
+        
+        public float RoundTimer { get; private set; }
+        public static GameSession Active { get; private set; }
 
         private void OnEnable()
         {
@@ -28,23 +37,23 @@ namespace ShootingRangeGame
         {
             Seagull.OnSeagullHit -= SeagullHitEvent;
         }
-        
+
         private void SeagullHitEvent()
         {
-            AddScore(1);   
+            AddScore(1);
         }
 
         private void Start()
         {
             RefreshUI();
-            highScore = GetHighScore();
+            highScore = HighScore;
         }
 
-        void Update()
+        private void Update()
         {
             if (roundActive)
             {
-                roundTimer -= Time.deltaTime;
+                RoundTimer -= Time.deltaTime;
             }
 
             if (Input.GetKeyDown(KeyCode.Return))
@@ -71,26 +80,34 @@ namespace ShootingRangeGame
 
         }
 
+        [ContextMenu("Start Round")]
         public void StartRound()
         {
-            roundTimer = roundLength;
+            if (Active) Active.EndRound();
+            
+            Active = this;
+            RoundTimer = roundLength;
             roundActive = true;
             Score = 0;
         }
 
+        [ContextMenu("End Round")]
         public void EndRound()
         {
+            Active = null;
+            
             roundActive = false;
-            roundTimer = 0;
+            RoundTimer = 0;
 
-            SetHighScore(Score);
+            if (Score > HighScore) HighScore = Score;
+            SaveManager.Save();
         }
 
         public void RefreshUI()
         {
             if (roundActive)
             {
-                if (timerReadout) timerReadout.text = (int)(roundTimer / 60) + ":" + (int)(roundTimer % 60);
+                if (timerReadout) timerReadout.text = (int)(RoundTimer / 60) + ":" + (int)(RoundTimer % 60);
             }
 
             if (scoreReadout) scoreReadout.text = Score.ToString();
@@ -101,22 +118,5 @@ namespace ShootingRangeGame
         {
             Score += addedScore;
         }
-
-        public int GetHighScore()
-        {
-            return PlayerPrefs.GetInt("HighScore", 0);
-        }
-
-        public void SetHighScore(int score)
-        {
-            if (score > GetHighScore())
-            {
-                PlayerPrefs.SetInt("HighScore", score);
-                highScore = score;
-            }
-
-        }
-
-
     }
 }

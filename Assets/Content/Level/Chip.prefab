@@ -45,10 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb5bec17caa6eb0479e16e78b83f66a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bindingType: {fileID: 0}
-  detachedBindingSpeed: 400
-  detachedBindingInvalidationTime: 1
-  detachedBindingInvalidationThreshold: 0.5
+  bindingType: {fileID: 11400000, guid: 249b4d4cfb7958b409e558b108ff08d8, type: 2}
+  detachedBindingAcceleration: 400
+  pickupRange: 0.1
   boundPoses: []
   defaultPose: 0
   socketPose: 0

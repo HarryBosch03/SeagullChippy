@@ -56,6 +56,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _PaintTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -87,6 +91,7 @@ Material:
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
+    - _Color_Depth: 256
     - _Create_UVs: 1
     - _Cull: 2
     - _Cutoff: 0.5
@@ -99,7 +104,8 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Metallic: 0
-    - _Noise: 0.3
+    - _Noise: 0.2
+    - _Noise_Levels: 4
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueControl: 0

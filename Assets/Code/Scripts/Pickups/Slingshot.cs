@@ -113,7 +113,7 @@ namespace ShootingRangeGame.Pickups
             if (!DrawingHand) return;
             if (!pickup.ActiveBinding) return;
             if (pickup.ActiveBinding.target is not VRHandBinding hand) return;
-            hand.Hand.Input.Rumble(TensionMagnitude * rumbleStrength, Time.deltaTime);
+            hand.Hand.Input.Rumble(TensionMagnitude * rumbleStrength, 0.2f);
         }
 
         private void FixedUpdate()

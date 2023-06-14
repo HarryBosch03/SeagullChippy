@@ -1,25 +1,28 @@
 using System;
 using ShootingRangeGame.AI.BehaviourTrees.Core;
 using UnityEngine;
-using UnityEngine.Rendering;
 using Random = UnityEngine.Random;
 
 namespace ShootingRangeGame.Seagulls
 {
+    [SelectionBase]
+    [DisallowMultipleComponent]
     public class Seagull : MonoBehaviour, IHasBehaviourTree
     {
         [Header("AI")] 
         [SerializeField] private SeagullBrain brain;
 
-        [Header("MOVEMENT")] [Space] 
-        [SerializeField] private float moveSpeed;
+        [Header("MOVEMENT")] 
+        [Space] [SerializeField] private float moveSpeed;
+
         [SerializeField] private float floatiness = 4.0f;
 
         [SerializeField] private float accelerationTime;
         [SerializeField] private float rotationSmoothing;
 
-        [Header("DEATH")] [Space]
+        [Header("DEATH")] [Space] 
         [SerializeField] private float minDamageForce = 15.0f;
+
         [SerializeField] private float seagullExplosionForce = 20.0f;
         [SerializeField] [Range(0.0f, 1.0f)] private float seagullExplosionRandomness = 0.5f;
         [SerializeField] private bool invulnerable;
@@ -29,8 +32,9 @@ namespace ShootingRangeGame.Seagulls
         [SerializeField] private GameObject bloodTrail;
 
         public ParticleSystem particles;
-
         public new Rigidbody rigidbody;
+
+        private static Transform container;
 
         public Vector3 MoveVector { get; set; }
         public Vector3 LookDirection { get; set; }
@@ -40,12 +44,29 @@ namespace ShootingRangeGame.Seagulls
 
         public static event Action OnSeagullHit;
 
+        private static readonly string[] Names = 
+        {
+            "Goose", "Duck", "Swan", "Pigeon", "Chicken", "Frog", "Rat", "Horse"
+        };
+
         private void Start()
         {
             rigidbody = GetComponent<Rigidbody>();
 
             brain.Init(this);
             LookDirection = Quaternion.Euler(0.0f, Random.value * 360.0f, 0.0f) * Vector3.forward;
+
+            gameObject.name = Names[Random.Range(0, Names.Length)];
+
+            if (!container)
+            {
+                container = new GameObject("--- Seagulls ---").transform;
+                container.transform.position = Vector3.zero;
+                container.transform.rotation = Quaternion.identity;
+                container.transform.localScale = Vector3.one;
+            }
+            transform.SetParent(container);
+            transform.localScale = Vector3.one * Random.Range(0.8f, 1.2f);
         }
 
         private void Update()
@@ -102,23 +123,31 @@ namespace ShootingRangeGame.Seagulls
             if (collisionForce > minDamageForce)
             {
                 lastValidCollisionForce = collisionForce;
-                Hit(collision.relativeVelocity);
+                Die(collision.relativeVelocity);
             }
         }
 
-        public void Hit(Vector3 force)
+        [ContextMenu("Kill")]
+        public void Die() => Die(Vector3.zero);
+
+        [ContextMenu("Kill All")]
+        public void KillAll()
         {
-            OnSeagullHit?.Invoke();
-            particles.Play();
-
-            Die(force);
+            var seagulls = FindObjectsOfType<Seagull>();
+            foreach (var seagull in seagulls)
+            {
+                seagull.Die();
+            }
         }
-
-        private void Die(Vector3 force)
+        
+        public void Die(Vector3 force)
         {
             if (invulnerable) return;
 
             if (detachOnDeath) detachOnDeath.SetParent(null);
+            
+            OnSeagullHit?.Invoke();
+            particles.Play();
 
             var children = GetComponentsInChildren<MeshRenderer>();
             foreach (var child in children)
@@ -127,7 +156,9 @@ namespace ShootingRangeGame.Seagulls
                 rb.velocity = Vector3.Lerp(force, Random.insideUnitSphere.normalized, seagullExplosionRandomness) * seagullExplosionForce;
                 rb.transform.SetParent(null);
 
-                child.gameObject.AddComponent<BoxCollider>();
+                var collider = child.gameObject.AddComponent<BoxCollider>();
+                Destroy(collider, 5.0f + Random.value);
+                Destroy(child.gameObject, 10.0f);
 
                 if (bloodTrail)
                 {

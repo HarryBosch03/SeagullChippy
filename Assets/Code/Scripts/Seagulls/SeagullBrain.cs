@@ -10,17 +10,15 @@ namespace ShootingRangeGame.Seagulls
         [SerializeField] private string defaultAnimation;
         [SerializeField] private float maxWanderDistance;
 
+        private DirectionPreprocess directionPreprocess = new();
+        
         public Seagull Seagull { get; private set; }
 
         public BehaviourTree Tree { get; private set; } = new(
-            new SequenceLeaf()
-                .AddChild(new DirectionPreprocess())
-                .AddChild(
-                    new RandomLeaf()
-                        .AddChild(new Wait(), 1.5f)
-                        .AddChild(new Wander(), 1.0f)
-                        .AddChild(new Fly(), 0.15f)
-                )
+            new RandomLeaf()
+                .AddChild(new Wait(), 1.5f)
+                .AddChild(new Wander(), 1.0f)
+                .AddChild(new Fly(), 0.15f)
         );
 
         private Animator animator;
@@ -40,6 +38,7 @@ namespace ShootingRangeGame.Seagulls
         public void Update()
         {
             Seagull.MoveVector = Vector3.zero;
+            Seagull.LookDirection = directionPreprocess.Apply(Seagull.transform, Seagull.LookDirection);
             Tree.Execute(this);
 
             animator.Play(Animation);
