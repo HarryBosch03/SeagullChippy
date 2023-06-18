@@ -48,9 +48,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bindingType: {fileID: 0}
-  detachedBindingSpeed: 400
-  detachedBindingInvalidationTime: 1
-  detachedBindingInvalidationThreshold: 0.5
+  detachedBindingAcceleration: 400
+  pickupRange: 0.1
   boundPoses: []
   defaultPose: 0
   socketPose: 0
