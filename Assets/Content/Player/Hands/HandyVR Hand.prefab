@@ -682,7 +682,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chirality: 0
-  defaultHandModelChirality: 0
+  defaultHandModelChirality: 1
   flipAxis: {x: 1, y: 0, z: 0}
   pointTransform: {fileID: 2201110860129996487}
   handModel: {fileID: 6659446272631695401}
