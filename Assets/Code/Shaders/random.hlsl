@@ -32,6 +32,12 @@ float interpolate(float a, float b, float t)
     return (b - a) * ((t * (t * 6.0 - 15.0) + 10.0) * t * t * t) + a;
 }
 
+float Noise(float uv)
+{
+    int uv0 = floor(uv);
+    return lerp(Rand(uv0), Rand(uv0 + 1), uv - uv0) / (float)~0u;
+}
+
 float Noise(float2 uv)
 {
     int2 corners[4] =

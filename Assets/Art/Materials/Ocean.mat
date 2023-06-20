@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Water
+  m_Name: Ocean
   m_Shader: {fileID: 4800000, guid: 148985624a69c6d4389d2f6b84ef7ef6, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -38,7 +38,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 0fb51090cd5de8940b260ea5446b5737, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -81,6 +81,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _WaveTexture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -105,7 +109,8 @@ Material:
     - _BandOffset: 0.1
     - _BandSize: 0.01
     - _Blend: 0
-    - _BumpScale: 1
+    - _BumpScale: 0.6
+    - _BumpScrolling: 0.1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _Cull: 2
@@ -114,12 +119,19 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EnvironmentReflections: 1
+    - _FoamDistance: 0.614
+    - _FoamExponent: 1
+    - _FoamFrequency: 3.9
+    - _FoamNoiseInfluence: 1
+    - _FoamNoiseScale: 1
+    - _FoamSize: 0.102
+    - _FoamSpeed: 0.1
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Metallic: 0
-    - _NoiseIntensity: 3
-    - _NoiseSize: 1
+    - _NoiseIntensity: 10
+    - _NoiseSize: 10
     - _OcclusionStrength: 1
     - _OffsetCycle: 5
     - _OffsetMagnitude: 0.02
@@ -127,20 +139,27 @@ Material:
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _ShoreOffset: 0.05
-    - _Smoothness: 0.5
+    - _Smoothness: 0.748
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 0
-    - _WaterBlending: 5
+    - _UVNoiseInfluence: 0.3
+    - _UVNoiseScale: 1
+    - _UVNoiseSpeed: 1
+    - _UVScrollPeriod: 0
+    - _UVSize: 20
+    - _WaterBlending: 2
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _BumpScrolling: {r: 0, g: 1, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _ColorA: {r: 1, g: 1, b: 1, a: 1}
     - _ColorB: {r: 0, g: 0.7, b: 1, a: 1}
     - _ColorC: {r: 0, g: 0.19999996, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+    - _UVScrolling: {r: 0, g: 0.5, b: 0, a: 0}
   m_BuildTextureStacks: []
