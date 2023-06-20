@@ -20,11 +20,13 @@ namespace ShootingRangeGame
         public TextMeshProUGUI highScoreReadout;
 
         [SerializeField] private AudioSource roundStart;
+        [SerializeField] private AudioSource roundEnd;
         
 
         public void OnAwake()
         {
             roundStart = GetComponent<AudioSource>();
+            roundEnd = GetComponent<AudioSource>();
         }
 
         public int Score { get; private set; }
@@ -111,6 +113,7 @@ namespace ShootingRangeGame
             
             roundActive = false;
             RoundTimer = 0;
+            roundEnd.Play();
 
             if (Score > HighScore) HighScore = Score;
             SaveManager.Save();
