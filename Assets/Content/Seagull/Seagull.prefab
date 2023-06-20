@@ -725,14 +725,9 @@ MonoBehaviour:
   accelerationTime: 0.1
   rotationSmoothing: 0.2
   minDamageForce: 15
-  seagullExplosionForce: 5
-  seagullExplosionRandomness: 1
   invulnerable: 0
-  lastCollisionForce: 0
-  lastValidCollisionForce: 0
-  detachOnDeath: {fileID: 8960117187197810848}
-  bloodTrail: {fileID: 4245838602819243258, guid: c29f7116508d41e47b23528d4c57e3ec, type: 3}
-  particles: {fileID: 8960117187197810855}
+  hitFX: {fileID: 0}
+  particles: {fileID: 0}
   rigidbody: {fileID: 0}
 --- !u!95 &5302272788397686604
 Animator:
@@ -1311,10 +1306,5 @@ PrefabInstance:
 --- !u!4 &8960117187197810848 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4232186604031694344, guid: 72cc48a897877a44497d94eacf9d05f1, type: 3}
-  m_PrefabInstance: {fileID: 5107931148251950760}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &8960117187197810855 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 4232186604031694351, guid: 72cc48a897877a44497d94eacf9d05f1, type: 3}
   m_PrefabInstance: {fileID: 5107931148251950760}
   m_PrefabAsset: {fileID: 0}

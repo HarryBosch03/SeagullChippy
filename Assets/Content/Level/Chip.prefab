@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4185890188704525552}
   - component: {fileID: 6475393406939090078}
+  - component: {fileID: 2297681339243929544}
   m_Layer: 0
   m_Name: Chip
   m_TagString: Untagged
@@ -52,6 +53,20 @@ MonoBehaviour:
   defaultPose: 0
   socketPose: 0
   handCanUseSocketPose: 0
+--- !u!114 &2297681339243929544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4185890188704525553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4995c9c67a148048b85859268302f2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tags:
+  - {fileID: 11400000, guid: f4013a46818a03d4eb84904d3c12b180, type: 2}
 --- !u!1 &4408738753116151655
 GameObject:
   m_ObjectHideFlags: 0
@@ -143,7 +158,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4408738753116151655}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 80ea5a52f8d8142469b87e2d89f50e17, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
