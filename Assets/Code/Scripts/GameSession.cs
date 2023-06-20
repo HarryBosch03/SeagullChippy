@@ -1,5 +1,6 @@
 using ShootingRangeGame.Saves;
 using ShootingRangeGame.Seagulls;
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -17,6 +18,14 @@ namespace ShootingRangeGame
         public TextMeshProUGUI timerReadout;
         public TextMeshProUGUI scoreReadout;
         public TextMeshProUGUI highScoreReadout;
+
+        [SerializeField] private AudioSource roundStart;
+        
+
+        public void OnAwake()
+        {
+            roundStart = GetComponent<AudioSource>();
+        }
 
         public int Score { get; private set; }
         public int HighScore
@@ -47,6 +56,8 @@ namespace ShootingRangeGame
         {
             RefreshUI();
             highScore = HighScore;
+           
+            
         }
 
         private void Update()
@@ -89,6 +100,8 @@ namespace ShootingRangeGame
             RoundTimer = roundLength;
             roundActive = true;
             Score = 0;
+            roundStart.Play();
+            
         }
 
         [ContextMenu("End Round")]
@@ -118,5 +131,9 @@ namespace ShootingRangeGame
         {
             Score += addedScore;
         }
+    }
+
+    internal class seralisefieldAttribute : Attribute
+    {
     }
 }
