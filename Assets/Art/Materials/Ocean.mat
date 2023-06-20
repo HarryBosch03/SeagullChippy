@@ -157,8 +157,8 @@ Material:
     - _BumpScrolling: {r: 0, g: 1, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _ColorA: {r: 1, g: 1, b: 1, a: 1}
-    - _ColorB: {r: 0, g: 0.7, b: 1, a: 1}
-    - _ColorC: {r: 0, g: 0.42956018, b: 1, a: 1}
+    - _ColorB: {r: 0, g: 0.89049053, b: 1, a: 1}
+    - _ColorC: {r: 0.1802243, g: 0.5815236, b: 0.8490566, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _UVScrolling: {r: 0, g: 2, b: 0, a: 0}

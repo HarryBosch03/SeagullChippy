@@ -174,6 +174,7 @@ Shader "Unlit/Water"
                 };
 
                 surfaceData.albedo = lerp(_ColorA.rgb, lerp(_ColorB.rgb, _ColorC.rgb, bands[1]), bands[0]);
+                surfaceData.normalTS = lerp(float3(0.0, 0.0, 1.0), surfaceData.normalTS, bands[0]);
 
                 // --- [END WATER EFFECT] ---
 
