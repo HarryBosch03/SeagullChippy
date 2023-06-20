@@ -1,5 +1,6 @@
 using System;
 using ShootingRangeGame.AI.BehaviourTrees.Core;
+using ShootingRangeGame.VFX;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -23,15 +24,9 @@ namespace ShootingRangeGame.Seagulls
         [Header("DEATH")] [Space] 
         [SerializeField] private float minDamageForce = 15.0f;
 
-        [SerializeField] private float seagullExplosionForce = 20.0f;
-        [SerializeField] [Range(0.0f, 1.0f)] private float seagullExplosionRandomness = 0.5f;
         [SerializeField] private bool invulnerable;
-        [SerializeField] private float lastCollisionForce;
-        [SerializeField] private float lastValidCollisionForce;
-        [SerializeField] private Transform detachOnDeath;
-        [SerializeField] private GameObject bloodTrail;
+        [SerializeField] private FXGroup hitFX;
 
-        public ParticleSystem particles;
         public new Rigidbody rigidbody;
 
         private static Transform container;
@@ -118,17 +113,12 @@ namespace ShootingRangeGame.Seagulls
         private void OnCollisionEnter(Collision collision)
         {
             var collisionForce = collision.relativeVelocity.magnitude;
-            lastCollisionForce = collisionForce;
-
             if (collisionForce > minDamageForce)
             {
-                lastValidCollisionForce = collisionForce;
-                Die(collision.relativeVelocity);
+                Die();
             }
         }
 
-        [ContextMenu("Kill")]
-        public void Die() => Die(Vector3.zero);
 
         [ContextMenu("Kill All")]
         public void KillAll()
@@ -140,33 +130,14 @@ namespace ShootingRangeGame.Seagulls
             }
         }
         
-        public void Die(Vector3 force)
+        [ContextMenu("Kill")]
+        public void Die()
         {
             if (invulnerable) return;
 
-            if (detachOnDeath) detachOnDeath.SetParent(null);
+            FXGroup.Try(hitFX, fx => fx.Instance().At(this).Play().AndDestroy());
             
             OnSeagullHit?.Invoke();
-            particles.Play();
-
-            var children = GetComponentsInChildren<MeshRenderer>();
-            foreach (var child in children)
-            {
-                var rb = child.gameObject.AddComponent<Rigidbody>();
-                rb.velocity = Vector3.Lerp(force, Random.insideUnitSphere.normalized, seagullExplosionRandomness) * seagullExplosionForce;
-                rb.transform.SetParent(null);
-
-                var collider = child.gameObject.AddComponent<BoxCollider>();
-                Destroy(collider, 5.0f + Random.value);
-                Destroy(child.gameObject, 10.0f);
-
-                if (bloodTrail)
-                {
-                    var btInstance = Instantiate(bloodTrail, child.transform);
-                    btInstance.transform.localPosition = Vector3.zero;
-                    btInstance.transform.localRotation = Quaternion.identity;
-                }
-            }
 
             Destroy(gameObject);
         }

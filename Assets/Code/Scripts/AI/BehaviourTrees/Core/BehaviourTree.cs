@@ -6,6 +6,8 @@
         
         public object Target { get; private set; }
         public BehaviourTree() { }
+
+        public Blackboard Blackboard { get; } = new();
         
         public BehaviourTree(Leaf root)
         {
