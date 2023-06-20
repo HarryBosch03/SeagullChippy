@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace ShootingRangeGame.AI.BehaviourTrees.Core
+﻿namespace ShootingRangeGame.AI.BehaviourTrees.Core
 {
     public sealed class BehaviourTree
     {

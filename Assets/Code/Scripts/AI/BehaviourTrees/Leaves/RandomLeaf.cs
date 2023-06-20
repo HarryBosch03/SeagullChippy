@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using ShootingRangeGame.AI.BehaviourTrees.Core;
 using Random = UnityEngine.Random;
 

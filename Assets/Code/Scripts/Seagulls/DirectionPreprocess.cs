@@ -1,41 +1,64 @@
-﻿using System;
-using ShootingRangeGame.AI.BehaviourTrees.Core;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace ShootingRangeGame.Seagulls
 {
-    public class DirectionPreprocess : Leaf<SeagullBrain>
+    public class DirectionPreprocess
     {
         public float correctionScale = 0.1f;
-        public float correctionDeadzone = 0.1f;
+        public float correctionDeadzone = 12.0f;
         private float lookaheadDistance = 5.0f;
-        
-        protected override BehaviourTree.Result OnExecute(BehaviourTree tree)
+        private float minDistance = 4.0f;
+
+        public Vector3 Apply(Transform transform, Vector3 lookDirection)
         {
-            var transform = Target.Seagull.transform;
             var vector = -transform.position;
             vector.y = 0.0f;
 
             var distance = vector.magnitude;
             var direction = vector / distance;
+            if (distance >= correctionDeadzone)
+            {
+                var angle = -Vector3.SignedAngle(direction, lookDirection, Vector3.up);
+                var delta = angle * Mathf.Max(distance - correctionDeadzone, 0.0f) * correctionScale * Time.deltaTime;
 
-            var angle = Vector3.SignedAngle(direction, Target.Seagull.LookDirection, Vector3.up);
-            var delta = angle * Mathf.Max(distance - correctionDeadzone, 0.0f) * correctionScale * Time.deltaTime;
+                lookDirection = Quaternion.Euler(Vector3.up * delta) * lookDirection;
+            }
+
+            if (distance < minDistance)
+            {
+                lookDirection = transform.position;
+                lookDirection.y = 0.0f;
+                lookDirection.Normalize();
+            }
             
-            Target.Seagull.LookDirection = Quaternion.Euler(Vector3.up * delta) * Target.Seagull.LookDirection;
-
-            Target.Seagull.LookDirection = Lookahead();
-
-            return BehaviourTree.Result.Success;
+            lookDirection = Lookahead(transform, lookDirection);
+            return lookDirection;
         }
 
-        public Vector3 Lookahead()
+        public Vector3 Lookahead(Transform transform, Vector3 direction)
         {
-            var transform = Target.Seagull.transform;
-            var direction = Target.Seagull.LookDirection;
+            bool raycast(Ray ray, out RaycastHit hit)
+            {
+                var queries = Physics.RaycastAll(ray, lookaheadDistance);
+                hit = default;
+                var found = false;
+                foreach (var query in queries)
+                {
+                    if (query.collider.transform.IsChildOf(transform)) continue;
+                    if (!found)
+                    {
+                        found = true;
+                        hit = query;
+                        continue;
+                    }
+
+                    if (query.distance < hit.distance) hit = query;
+                }
+                return found;
+            }
             
             var ray = new Ray(transform.position, direction);
-            if (Physics.Raycast(ray, out var hit, lookaheadDistance))
+            if (raycast(ray, out var hit))
             {
                 var rays = new[]
                 {
@@ -47,7 +70,7 @@ namespace ShootingRangeGame.Seagulls
                 for (var i = 0; i < rays.Length; i++)
                 {
                     ray = rays[i];
-                    if (!Physics.Raycast(ray, out hit, lookaheadDistance)) return ray.direction;
+                    if (!raycast(ray, out hit)) return ray.direction;
                     hits[i] = hit;
                 }
 
@@ -59,10 +82,11 @@ namespace ShootingRangeGame.Seagulls
 
                     if (scoreCurrent > scoreBest) best = i;
                 }
+
                 return rays[best].direction;
             }
-            
-            return direction; 
+
+            return direction;
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using ShootingRangeGame.AI.BehaviourTrees.Core;
-using UnityEngine;
 
 namespace ShootingRangeGame.AI.BehaviourTrees.Leaves
 {

@@ -1,8 +1,5 @@
-﻿using System;
-using Mono.Cecil;
-using ShootingRangeGame.AI.BehaviourTrees.Core;
+﻿using ShootingRangeGame.AI.BehaviourTrees.Core;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using Random = UnityEngine.Random;
 
 namespace ShootingRangeGame.Seagulls

@@ -1,7 +1,7 @@
 {
     "name": "ShootingRangeGame.Editor",
-    "rootNamespace": "",
-    "references": [],
+    "rootNamespace": "ShootingRangeGame",
+    "references": ["GUID:5c67e48833557904b9e8f9338c9a842e"],
     "includePlatforms": [
         "Editor"
     ],
