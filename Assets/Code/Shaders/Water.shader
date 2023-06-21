@@ -5,27 +5,15 @@ Shader "Unlit/Water"
         _ColorA("Shore Color", Color) = (1.0, 1.0, 1.0, 1.0)
         _ColorB("Shallow Water Color", Color) = (0.0, 0.7, 1.0, 1.0)
         _ColorC("Deep Water Color", Color) = (0.0, 0.2, 1.0, 1.0)
-
-        _FoamSize("Foam Size", Range(0.0, 1.0)) = 0.05
-        _FoamFrequency("Foam Frequency", float) = 0.0
-        _FoamDistance("Foam Distance", Range(0.0, 1.0)) = 0.0
-        _FoamExponent("Foam Exponent", float) = 1.0
-        _FoamSpeed("Foam Speed", float) = 0.1
-        _FoamNoiseScale("Foam Noise Scale", float) = 1.0
-        _FoamNoiseInfluence("Foam Noise Influence", float) = 1.0
-
-        _WaterBlending("Water Blending", float) = 5.0
-
-        _OffsetMagnitude("Offset Magnitude", float) = 0.02
-        _OffsetCycle("Offset Cycle Duration", float) = 5.0
-        _NoiseSize("Noise Size", float) = 0.0
-        _NoiseIntensity("Noise Intensity", float) = 0.0
-        _NoisePeriod("Noise Period", Vector) = (0.0, 0.0, 0.0, 0.0)
+        _WaterBlending("Water Blending", Vector) = (0.0, 0.0, 0.0, 0.0)
 
         _Smoothness("Smoothness", Range(0.0, 1.0)) = 0.8
 
-        _BumpScale("Normal Scale", float) = 1.0
-        _BumpMap("Normal Map", 2D) = "bump" {}
+        _Heightmap("Ocean Heightmap (BW)", 2D) = "gray" {}
+        _NormalScale("Normal Intensity", float) = 0.6
+        _NormalRelief("Normal Relief", float) = 8.0
+
+        _Speed("UV Scroll Speed", Vector) = (0.0, 0.0, 0.0, 0.0)
 
         _UVSize("UV Size", float) = 10.0
     }
@@ -114,17 +102,40 @@ Shader "Unlit/Water"
             }
 
             float4 _ColorA, _ColorB, _ColorC;
-            float _WaterBlending;
-            float _OffsetMagnitude, _OffsetCycle;
-            float _NoiseSize, _NoiseIntensity;
-            float2 _NoisePeriod;
-            
-            float _FoamSize, _FoamFrequency, _FoamDistance, _FoamExponent, _FoamSpeed;
-            float _FoamNoiseScale, _FoamNoiseInfluence;
+            float2 _WaterBlending;
+            float _NormalScale, _NormalRelief;
 
-            TEXTURE2D(_NoiseTex);
-            SAMPLER(sampler_NoiseTex);
-            float4 _NoiseTex_TexelSize;
+            float2 _Speed;
+
+            TEXTURE2D(_Heightmap);
+            SAMPLER(sampler_Heightmap);
+            float4 _Heightmap_TexelSize;
+
+            float4 getHeight(float2 uv)
+            {
+                float s1 = SAMPLE_TEXTURE2D(_Heightmap, sampler_Heightmap, uv + _Time[1] * _Speed);
+                float s2 = SAMPLE_TEXTURE2D(_Heightmap, sampler_Heightmap, uv + _Time[1] * _Speed / 2.0);
+
+                return (s1 + s2) / 2.0;
+            }
+            
+            float3 normalFromBump(float2 uv, float scale)
+            {
+                float2 f = _Heightmap_TexelSize.xy * _NormalRelief;
+
+                float4 samples =
+                {
+                    getHeight(uv - float2(f.x, 0.0)).r,
+                    getHeight(uv + float2(f.x, 0.0)).r,
+                    getHeight(uv - float2(0.0, f.y)).r,
+                    getHeight(uv + float2(0.0, f.y)).r,
+                };
+
+                float3 val;
+                val.xy = (samples.yw - samples.xz) / f.xy * scale;
+                val.z = 1.0;
+                return normalize(val) * 0.5 + 0.5;
+            }
 
             half4 frag(Varyings input) : SV_Target
             {
@@ -154,29 +165,20 @@ Shader "Unlit/Water"
                 float3 cameraDirection = normalize(input.positionWS - _WorldSpaceCameraPos);
                 float depth = (sceneDepth - waterDepth) * -cameraDirection.y;
 
-                float noise = Noise(input.positionWS.xz / _NoiseSize);
-                float offset = noise * _NoiseIntensity;
-
-                depth += (sin(_Time[1] * TAU / _OffsetCycle + offset) - 1.0) * _OffsetMagnitude;
+                float height = getHeight(input.uv);
+                depth -= height * 0.1;
                 clip(depth);
 
-                float foamNoise = Noise(input.uv * _FoamNoiseScale) * _FoamNoiseInfluence;
-
-                float bands[] =
+                float2 bands =
                 {
-                    (sin(TAU * (depth + _Time[1] * _FoamSpeed) * _FoamFrequency) * max(
-                        (_FoamDistance - depth) / _FoamDistance, 0.0) - foamNoise) < _FoamSize,
-                    pow(saturate((depth - _FoamSize) / _WaterBlending), 0.25),
+                    pow(saturate((depth - 0.1) / _WaterBlending.x), 0.5),
+                    pow(saturate((depth - 0.1) / _WaterBlending.y), 0.5),
                 };
 
-                surfaceData.albedo = lerp(_ColorA.rgb, lerp(_ColorB.rgb, _ColorC.rgb, bands[1]), bands[0]);
-
-                float2 t = _NoisePeriod * _Time[1];
-                float3 n1 = SampleNormal(input.uv + t.xy, TEXTURE2D_ARGS(_BumpMap, sampler_BumpMap), _BumpScale);
-                float3 n2 = SampleNormal(input.uv + t.xy * 0.5, TEXTURE2D_ARGS(_BumpMap, sampler_BumpMap), _BumpScale);
-                
-                surfaceData.normalTS = normalize(n1 + n2);
-                surfaceData.normalTS = lerp(float3(0.0, 0.0, 1.0), surfaceData.normalTS, bands[0]);
+                float4 finalColor = lerp(_ColorA, lerp(_ColorB, _ColorC, bands.y), bands.x);
+                surfaceData.albedo = finalColor.rgb;
+                surfaceData.normalTS = normalFromBump(input.uv, _NormalScale);
+                surfaceData.normalTS = normalize(lerp(float3(0.0, 0.0, 1.0), surfaceData.normalTS, bands.y / 15.0));
 
                 // --- [END WATER EFFECT] ---
 
@@ -193,7 +195,7 @@ Shader "Unlit/Water"
                 half4 color = UniversalFragmentPBR(inputData, surfaceData);
 
                 color.rgb = MixFog(color.rgb, inputData.fogCoord);
-                color.a = OutputAlpha(color.a, _Surface) * max(pow(bands[1], 4.0), 1.0 - bands[0]);
+                color.a = OutputAlpha(color.a, _Surface) * finalColor.a;
 
                 return color;
             }
