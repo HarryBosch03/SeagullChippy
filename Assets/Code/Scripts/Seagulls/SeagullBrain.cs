@@ -1,12 +1,12 @@
 ﻿using ShootingRangeGame.AI.BehaviourTrees.Core;
 using ShootingRangeGame.AI.BehaviourTrees.Leaves;
+using ShootingRangeGame.Seagulls.Leaves;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace ShootingRangeGame.Seagulls
 {
     [System.Serializable]
-    public partial class SeagullBrain : IHasBehaviourTree
+    public class SeagullBrain : IHasBehaviourTree
     {
         [SerializeField] private string defaultAnimation;
         [SerializeField] private float maxWanderDistance;
@@ -17,6 +17,10 @@ namespace ShootingRangeGame.Seagulls
 
         public BehaviourTree Tree { get; private set; } = new(
             new SelectorLeaf()
+                // .AddChild(new SequenceLeaf()
+                //     .AddChild(new Startled())
+                //     .AddChild(new Fly()))
+                .AddChild(new CheckForWater())
                 .AddChild(new EatFood())
                 .AddChild(new RandomLeaf()
                     .AddChild(new Wait(), 1.5f)

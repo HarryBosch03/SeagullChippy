@@ -96,6 +96,7 @@ namespace ShootingRangeGame.Pickups
                     StartCoroutine(IgnoreCollisionWith(ammo));
                 }
             }
+
             FireEvent?.Invoke(null);
 
             DrawingHand = null;
@@ -103,9 +104,13 @@ namespace ShootingRangeGame.Pickups
 
         private IEnumerator IgnoreCollisionWith(IVRBindable ammo)
         {
-            HandyVR.Utility.Physics.IgnoreCollision(ammo.gameObject, gameObject, true);
+            if (ammo.gameObject && gameObject)
+                HandyVR.Utility.Physics.IgnoreCollision(ammo.gameObject, gameObject, true);
+            
             yield return new WaitForSeconds(0.08f);
-            HandyVR.Utility.Physics.IgnoreCollision(ammo.gameObject, gameObject, false);
+            
+            if (ammo.gameObject && gameObject)
+                HandyVR.Utility.Physics.IgnoreCollision(ammo.gameObject, gameObject, false);
         }
 
         private void UpdateControllerRumble()

@@ -37,8 +37,6 @@ namespace ShootingRangeGame.Seagulls
         public BehaviourTree Tree => brain.Tree;
         public bool Grounded { get; private set; }
 
-        public static event Action OnSeagullHit;
-
         private static readonly string[] Names = 
         {
             "Goose", "Duck", "Swan", "Pigeon", "Chicken", "Frog", "Rat", "Horse"
@@ -136,8 +134,6 @@ namespace ShootingRangeGame.Seagulls
             if (invulnerable) return;
 
             FXGroup.Try(hitFX, fx => fx.Instance().At(this).Play().AndDestroy());
-            
-            OnSeagullHit?.Invoke();
 
             Destroy(gameObject);
         }

@@ -32,5 +32,12 @@
             Failure,
             Pending,
         }
+
+        public enum AbandonResponse
+        {
+            WithSuccess,
+            WithFailure,
+            CannotAbandon,
+        }
     }
 }

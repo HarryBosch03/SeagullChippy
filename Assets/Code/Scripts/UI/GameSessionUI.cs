@@ -1,4 +1,5 @@
 using System;
+using ShootingRangeGame.Session;
 using TMPro;
 using UnityEngine;
 
@@ -32,7 +33,7 @@ namespace ShootingRangeGame.UI
             return driver switch
             {
                 Driver.Score => session.Score,
-                Driver.HighScore => session.HighScore,
+                Driver.HighScore => GameSession.HighScore,
                 Driver.Timer => TimeSpan.FromSeconds(session.RoundTimer),
                 _ => null
             };

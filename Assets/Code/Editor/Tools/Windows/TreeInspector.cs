@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using ShootingRangeGame.AI.BehaviourTrees.Core;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 using Object = UnityEngine.Object;
 
-namespace Code.Editor
+namespace ShootingRangeGameEditor.Tools.Windows
 {
     public class TreeInspector : EditorWindow
     {
@@ -23,7 +25,7 @@ namespace Code.Editor
                 using (new EditorGUILayout.VerticalScope(EditorStyles.helpBox, GUILayout.MaxWidth(250), GUILayout.ExpandHeight(true)))
                 {
                     GUILayout.Label("Selection", EditorStyles.boldLabel);
-                    var queries = FindObjectsOfType<MonoBehaviour>();
+                    var queries = Selection.gameObjects;
                     var hasTrees = new List<IHasBehaviourTree>();
                     foreach (var query in queries)
                     {
@@ -98,13 +100,24 @@ namespace Code.Editor
         private void DrawLeaf(LeafContext context)
         {
             EditorGUI.indentLevel = context.depth;
+
+            GUI.backgroundColor = context.leaf.LastEvaluationResult switch
+            {
+                BehaviourTree.Result.Success => Color.green,
+                BehaviourTree.Result.Failure => Color.red,
+                BehaviourTree.Result.Pending => Color.yellow,
+                _ => throw new ArgumentOutOfRangeException()
+            };
+            var fresh = context.leaf.LastEvaluatedFrame == Time.frameCount;
+            if (!fresh) GUI.backgroundColor = Color.grey;
+
             using (new EditorGUILayout.VerticalScope(EditorStyles.helpBox, GUILayout.ExpandWidth(true)))
             {
                 EditorGUILayout.LabelField(isRoot ? $"[ROOT]{context.leaf.Name}" : context.leaf.Name, EditorStyles.boldLabel);
                 EditorGUI.indentLevel++;
-                
-                EditorGUILayout.LabelField($"Execution Results: {context.leaf.LastEvaluationResult}");
-                
+
+                EditorGUILayout.LabelField(fresh ? $"Execution Results: {context.leaf.LastEvaluationResult}" : "--- Did Not Execute ---");
+
                 EditorGUI.indentLevel--;
                 isRoot = false;
             }

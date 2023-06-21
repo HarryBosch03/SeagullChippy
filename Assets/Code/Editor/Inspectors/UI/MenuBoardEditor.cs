@@ -1,7 +1,7 @@
 ﻿using ShootingRangeGame.UI;
 using UnityEditor;
 
-namespace ShootingRangeGame.Editor.Inspectors.UI
+namespace ShootingRangeGameEditor.Inspectors.UI
 {
     [CustomEditor(typeof(MenuBoard))]
     public class MenuBoardEditor : Editor<MenuBoard>
