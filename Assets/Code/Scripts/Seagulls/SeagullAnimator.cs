@@ -1,3 +1,4 @@
+using ShootingRangeGame.VFX;
 using UnityEngine;
 
 namespace ShootingRangeGame.Seagulls
@@ -14,7 +15,7 @@ namespace ShootingRangeGame.Seagulls
         [SerializeField] private float idleDelay = 0.2f;
         [SerializeField] private float idleOffset = 0.1f;
 
-        private new Seagull seagull;
+        private Seagull seagull;
         private new Rigidbody rigidbody;
         private float distanceCounter;
         private float idleTimer;

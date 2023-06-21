@@ -23,6 +23,8 @@ namespace ShootingRangeGame.Seagulls.Leaves
             Tag.Cache(ref foodTag, "food");
         }
 
+        public override BehaviourTree.AbandonResponse RespondToAbandonRequest() => eaten ? BehaviourTree.AbandonResponse.CannotAbandon : BehaviourTree.AbandonResponse.WithFailure;
+
         public override bool OverridePending() => FindFood();
 
         protected override BehaviourTree.Result OnExecute(BehaviourTree tree)

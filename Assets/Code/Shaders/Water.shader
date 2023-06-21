@@ -169,15 +169,17 @@ Shader "Unlit/Water"
                 float rawDepth = (sceneDepth - waterDepth);
                 float depth = rawDepth * -cameraDirection.y;
 
+                float foamNoise = getHeight(input.uv * 10.0);
+                
                 float height = getHeight(input.uv);
                 depth -= height * 0.1;
+                depth += foamNoise * 0.02;
                 clip(depth);
 
-                float foamNoise = getHeight(input.uv * 10.0);
 
                 float2 bands =
                 {
-                    depth - pow(foamNoise, 2) * 0.4 + 0.02 > _WaterBlending.x,
+                    depth - pow(foamNoise, 2) * 0.4 + 0.01 > _WaterBlending.x,
                     pow(saturate((depth - foamNoise * 0.1) / _WaterBlending.y), 0.5),
                 };
 

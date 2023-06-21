@@ -27,6 +27,9 @@ namespace ShootingRangeGame.Seagulls
         [SerializeField] private bool invulnerable;
         [SerializeField] private FXGroup hitFX;
 
+        [Space] 
+        [SerializeField] private ParticleSystem wetFX;
+
         public new Rigidbody rigidbody;
 
         private static Transform container;
@@ -36,6 +39,7 @@ namespace ShootingRangeGame.Seagulls
         public MonoBehaviour Behaviour => this;
         public BehaviourTree Tree => brain.Tree;
         public bool Grounded { get; private set; }
+        public float Wet { get; set; }
 
         private static readonly string[] Names = 
         {
@@ -65,6 +69,14 @@ namespace ShootingRangeGame.Seagulls
         private void Update()
         {
             brain.Update();
+
+            Wet -= Time.deltaTime;
+            var isWet = Wet > 0.0f;
+            
+            if (isWet && !wetFX.isEmitting) wetFX.Play();
+            if (!isWet && wetFX.isEmitting) wetFX.Stop();
+
+            Wet = Mathf.Max(Wet, 0.0f);
         }
 
         private void FixedUpdate()
