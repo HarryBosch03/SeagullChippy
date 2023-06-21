@@ -21,12 +21,16 @@ namespace ShootingRangeGame
 
         [SerializeField] private AudioSource roundStart;
         [SerializeField] private AudioSource roundEnd;
-        
+        [SerializeField] private AudioSource gainPoint;
+                                // [SerializeField] private AudioSource losePoint;           //awaiting for deduct points mechanic 
+
 
         public void OnAwake()
         {
             roundStart = GetComponent<AudioSource>();
             roundEnd = GetComponent<AudioSource>();
+            gainPoint = GetComponent<AudioSource>();
+                                      // losePoint = GetComponent<AudioSource>();
         }
 
         public int Score { get; private set; }
@@ -133,6 +137,7 @@ namespace ShootingRangeGame
         public void AddScore(int addedScore)
         {
             Score += addedScore;
+            gainPoint.Play();
         }
     }
 
