@@ -13786,7 +13786,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   filename: Screenshot - <timestamp>
-  supersize: 2
+  supersize: 1
 --- !u!1 &894340878
 GameObject:
   m_ObjectHideFlags: 0
