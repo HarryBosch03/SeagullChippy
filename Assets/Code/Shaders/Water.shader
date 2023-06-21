@@ -14,6 +14,8 @@ Shader "Unlit/Water"
         _NormalRelief("Normal Relief", float) = 8.0
 
         _Speed("UV Scroll Speed", Vector) = (0.0, 0.0, 0.0, 0.0)
+        
+        _Density("Density", float) = 1.0
 
         _UVSize("UV Size", float) = 10.0
     }
@@ -106,6 +108,7 @@ Shader "Unlit/Water"
             float _NormalScale, _NormalRelief;
 
             float2 _Speed;
+            float _Density;
 
             TEXTURE2D(_Heightmap);
             SAMPLER(sampler_Heightmap);
@@ -163,16 +166,19 @@ Shader "Unlit/Water"
                 float sceneDepth = LinearEyeDepth(SampleSceneDepth(depthUV), _ZBufferParams);
                 float waterDepth = LinearEyeDepth(input.depthPosition.z / input.depthPosition.w, _ZBufferParams);
                 float3 cameraDirection = normalize(input.positionWS - _WorldSpaceCameraPos);
-                float depth = (sceneDepth - waterDepth) * -cameraDirection.y;
+                float rawDepth = (sceneDepth - waterDepth);
+                float depth = rawDepth * -cameraDirection.y;
 
                 float height = getHeight(input.uv);
                 depth -= height * 0.1;
                 clip(depth);
 
+                float foamNoise = getHeight(input.uv * 10.0);
+
                 float2 bands =
                 {
-                    pow(saturate((depth - 0.1) / _WaterBlending.x), 0.5),
-                    pow(saturate((depth - 0.1) / _WaterBlending.y), 0.5),
+                    depth - pow(foamNoise, 2) * 0.4 + 0.02 > _WaterBlending.x,
+                    pow(saturate((depth - foamNoise * 0.1) / _WaterBlending.y), 0.5),
                 };
 
                 float4 finalColor = lerp(_ColorA, lerp(_ColorB, _ColorC, bands.y), bands.x);
@@ -195,8 +201,8 @@ Shader "Unlit/Water"
                 half4 color = UniversalFragmentPBR(inputData, surfaceData);
 
                 color.rgb = MixFog(color.rgb, inputData.fogCoord);
-                color.a = OutputAlpha(color.a, _Surface) * finalColor.a;
-
+                color.a = lerp(1.0, saturate(1.0 - saturate(exp(-pow(depth * _Density, 2.0))) + 0.2), bands.x);
+                
                 return color;
             }
             ENDHLSL

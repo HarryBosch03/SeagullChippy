@@ -119,6 +119,7 @@ Material:
     - _ClearCoatSmoothness: 0
     - _Cull: 2
     - _Cutoff: 0.5
+    - _Density: 1.5
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
@@ -165,13 +166,13 @@ Material:
     - _BumpScrolling: {r: 0, g: 1, b: 0, a: 0}
     - _BumpSpeed: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _ColorA: {r: 1, g: 1, b: 1, a: 0.69411767}
-    - _ColorB: {r: 0, g: 0.89049053, b: 1, a: 0.38431373}
+    - _ColorA: {r: 1, g: 1, b: 1, a: 1}
+    - _ColorB: {r: 0, g: 0.89049053, b: 1, a: 1}
     - _ColorC: {r: 0.18022427, g: 0.58152354, b: 0.8490566, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _NoisePeriod: {r: 0, g: 0.1, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _Speed: {r: 0, g: 0.05, b: 0, a: 0}
     - _UVScrolling: {r: 0, g: 2, b: 0, a: 0}
-    - _WaterBlending: {r: 0.01, g: 1, b: 0, a: 0}
+    - _WaterBlending: {r: 0.02, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
