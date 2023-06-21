@@ -109,7 +109,7 @@ Material:
     - _BandOffset: 0.1
     - _BandSize: 0.01
     - _Blend: 0
-    - _BumpScale: 0.6
+    - _BumpScale: 1
     - _BumpScrolling: 0.1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
@@ -130,7 +130,9 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Metallic: 0
+    - _NoiseCycle: 1
     - _NoiseIntensity: 10
+    - _NoisePeriod: 0.5
     - _NoiseSize: 10
     - _OcclusionStrength: 1
     - _OffsetCycle: 5
@@ -149,7 +151,7 @@ Material:
     - _UVNoiseSpeed: 0.1
     - _UVScrollPeriod: 0
     - _UVSize: 20
-    - _WaterBlending: 2
+    - _WaterBlending: 0.51
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
@@ -160,6 +162,7 @@ Material:
     - _ColorB: {r: 0, g: 0.89049053, b: 1, a: 1}
     - _ColorC: {r: 0.1802243, g: 0.5815236, b: 0.8490566, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _NoisePeriod: {r: 0, g: 0.1, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _UVScrolling: {r: 0, g: 2, b: 0, a: 0}
   m_BuildTextureStacks: []

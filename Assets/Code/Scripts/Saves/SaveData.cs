@@ -2,11 +2,11 @@
 
 namespace ShootingRangeGame.Saves
 {
-    [System.Serializable]
+    [Serializable]
     public class SaveData : ICloneable
     {
         public int highScore;
         
-        public object Clone() => this.MemberwiseClone();
+        public object Clone() => MemberwiseClone();
     }
 }

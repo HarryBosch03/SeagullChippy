@@ -20,6 +20,7 @@ Shader "Unlit/Water"
         _OffsetCycle("Offset Cycle Duration", float) = 5.0
         _NoiseSize("Noise Size", float) = 0.0
         _NoiseIntensity("Noise Intensity", float) = 0.0
+        _NoisePeriod("Noise Period", Vector) = (0.0, 0.0, 0.0, 0.0)
 
         _Smoothness("Smoothness", Range(0.0, 1.0)) = 0.8
 
@@ -27,9 +28,6 @@ Shader "Unlit/Water"
         _BumpMap("Normal Map", 2D) = "bump" {}
 
         _UVSize("UV Size", float) = 10.0
-        _UVScrolling("UV Scrolling", Vector) = (0.0, 0.0, 0.0, 0.0)
-        _UVNoiseScale("UV Scrolling Noise Scale", float) = 0.0
-        _UVNoiseSpeed("UV Scrolling Noise Speed", float) = 0.0
     }
     SubShader
     {
@@ -104,7 +102,7 @@ Shader "Unlit/Water"
             #include "Random.hlsl"
 
             float2 _UVScrolling;
-            float _UVSize, _UVNoiseScale, _UVNoiseSpeed, _UVScrollPeriod;
+            float _UVSize;
 
             Varyings vert(Attributes input)
             {
@@ -119,7 +117,8 @@ Shader "Unlit/Water"
             float _WaterBlending;
             float _OffsetMagnitude, _OffsetCycle;
             float _NoiseSize, _NoiseIntensity;
-
+            float2 _NoisePeriod;
+            
             float _FoamSize, _FoamFrequency, _FoamDistance, _FoamExponent, _FoamSpeed;
             float _FoamNoiseScale, _FoamNoiseInfluence;
 
@@ -129,9 +128,6 @@ Shader "Unlit/Water"
 
             half4 frag(Varyings input) : SV_Target
             {
-                float pos = dot(float2(_UVScrolling.y, -_UVScrolling.x), input.uv) * _UVNoiseScale;
-                input.uv = input.uv + _UVScrolling * Noise(float2(pos, _Time[1] * _UVNoiseSpeed));
-
                 // Unity LitForwardPass.hlsl Fragment Setup -----
                 UNITY_SETUP_INSTANCE_ID(input);
                 UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(input);
@@ -174,6 +170,12 @@ Shader "Unlit/Water"
                 };
 
                 surfaceData.albedo = lerp(_ColorA.rgb, lerp(_ColorB.rgb, _ColorC.rgb, bands[1]), bands[0]);
+
+                float2 t = _NoisePeriod * _Time[1];
+                float3 n1 = SampleNormal(input.uv + t.xy, TEXTURE2D_ARGS(_BumpMap, sampler_BumpMap), _BumpScale);
+                float3 n2 = SampleNormal(input.uv + t.xy * 0.5, TEXTURE2D_ARGS(_BumpMap, sampler_BumpMap), _BumpScale);
+                
+                surfaceData.normalTS = normalize(n1 + n2);
                 surfaceData.normalTS = lerp(float3(0.0, 0.0, 1.0), surfaceData.normalTS, bands[0]);
 
                 // --- [END WATER EFFECT] ---

@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 namespace ShootingRangeGame.AI.BehaviourTrees.Core
 {
@@ -8,8 +9,7 @@ namespace ShootingRangeGame.AI.BehaviourTrees.Core
 
         public BehaviourTree Tree { get; private set; }
         public BehaviourTree.Result LastEvaluationResult { get; private set; }
-
-        public virtual bool CanReturnPending => false;
+        public int LastEvaluatedFrame { get; private set; }
         
         public virtual void Init(BehaviourTree tree)
         {
@@ -18,7 +18,7 @@ namespace ShootingRangeGame.AI.BehaviourTrees.Core
 
         public BehaviourTree.Result Execute()
         {
-            if (CanReturnPending && LastEvaluationResult != BehaviourTree.Result.Pending)
+            if (LastEvaluationResult != BehaviourTree.Result.Pending)
             {
                 OnStart(Tree);
             }
@@ -30,6 +30,7 @@ namespace ShootingRangeGame.AI.BehaviourTrees.Core
             }
 
             LastEvaluationResult = res;
+            LastEvaluatedFrame = Time.frameCount;
             return res;
         }
 
@@ -40,7 +41,10 @@ namespace ShootingRangeGame.AI.BehaviourTrees.Core
             callback(context);
             return context;
         }
-        
+
+        public virtual BehaviourTree.AbandonResponse RespondToAbandonRequest() => BehaviourTree.AbandonResponse.WithSuccess;
+        public virtual bool OverridePending() => false;
+
         protected abstract BehaviourTree.Result OnExecute(BehaviourTree tree);
         protected virtual void OnStart(BehaviourTree tree) { }
         protected virtual void OnCleanup(BehaviourTree tree) { }
