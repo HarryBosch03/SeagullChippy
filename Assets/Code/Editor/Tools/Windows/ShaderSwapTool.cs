@@ -9,14 +9,14 @@ namespace ShootingRangeGameEditor.Editor.Tools.Windows
 {
     public sealed class ShaderSwapTool : EditorWindow
     {
-        private string from, to;
+        private Shader from, to;
 
         private Vector2 scrollPos;
 
         private void OnGUI()
         {
-            from = EditorGUILayout.TextField("Change Shader From", from);
-            to = EditorGUILayout.TextField("Change Shader To", to);
+            from = EditorGUILayout.ObjectField("Change Shader From", from, typeof(Shader), false) as Shader;
+            to = EditorGUILayout.ObjectField("Change Shader To", to, typeof(Shader), false) as Shader;
 
             var materials = GetMaterials();
             
@@ -53,12 +53,12 @@ namespace ShootingRangeGameEditor.Editor.Tools.Windows
 
                                     if (GUILayout.Button("Set From", GUILayout.Width(70), GUILayout.ExpandHeight(true)))
                                     {
-                                        from = m.shader.name;
+                                        from = m.shader;
                                     }
 
                                     if (GUILayout.Button("Set To", GUILayout.Width(70), GUILayout.ExpandHeight(true)))
                                     {
-                                        to = m.shader.name;
+                                        to = m.shader;
                                     }
 
                                     if (GUILayout.Button("Show In Project", GUILayout.Width(130), GUILayout.ExpandHeight(true)))
@@ -78,8 +78,7 @@ namespace ShootingRangeGameEditor.Editor.Tools.Windows
 
         private void SwapShaders(List<Material> materials)
         {
-            var shader = Shader.Find(to);
-            if (!shader)
+            if (!to)
             {
                 Debug.LogWarning($"Shader \"{to}\" does not exist");
                 return;
@@ -88,9 +87,9 @@ namespace ShootingRangeGameEditor.Editor.Tools.Windows
             var c = 0;
             foreach (var m in materials)
             {
-                if (Simplify(m.shader.name) != Simplify(from)) continue;
+                if (m.shader != from) continue;
                 
-                m.shader = Shader.Find("to");
+                m.shader = to;
                 c++;
             }
 
