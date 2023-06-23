@@ -19,10 +19,28 @@ namespace ShootingRangeGameEditor.Editor.Tools.Windows
             to = EditorGUILayout.ObjectField("Change Shader To", to, typeof(Shader), false) as Shader;
 
             var materials = GetMaterials();
+
+            using (new EditorGUILayout.HorizontalScope())
+            {
+                if (GUILayout.Button("Clear"))
+                {
+                    from = null;
+                    to = null;
+                }
+
+                if (GUILayout.Button("Swap To and From"))
+                {
+                    var a = to;
+                    var b = from;
+
+                    to = b;
+                    from = a;
+                }
+            }
             
             EditorGUILayout.HelpBox("Swapping materials is not supported by Unity's undo system.\nIF YOU USE THIS, IT CANNOT BE UNDONE, MAKE SURE YOUR PROJECT IS BACKED UP THROUGH GIT\nIF YOU ARE AN ARTIST AND THIS MESSAGE CONFUSES YOU, DO NOT USE THIS TOOL", MessageType.Error);
             
-            if (GUILayout.Button("Swap"))
+            if (GUILayout.Button("--- Swap ---"))
             {
                 SwapShaders(materials);
             }
