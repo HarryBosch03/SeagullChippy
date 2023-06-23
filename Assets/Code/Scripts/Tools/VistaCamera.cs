@@ -25,8 +25,6 @@ namespace ShootingRangeGame.Tools
 
         public void Capture()
         {
-            SetGuides(false);
-
             var filename = $"{this.filename}.png";
 
             filename = filename.Replace("<timestamp>", DateTime.Now.ToString("yyyy-mm-dd.hh.mm.ss tt"));
@@ -38,7 +36,6 @@ namespace ShootingRangeGame.Tools
             ScreenCapture.CaptureScreenshot(filename, supersize);
 
             Debug.Log($"Saved Screenshot \"{Path.GetFileName(filename)}\" at \"{Path.GetDirectoryName(filename)}\"");
-            SetGuides(true);
 
             Process.Start("explorer.exe", $"\"{directory}\"");
 ;        }
@@ -48,13 +45,6 @@ namespace ShootingRangeGame.Tools
             var camera = GetComponent<Camera>();
             camera.enabled = state;
             camera.depth = state ? 999 : -999;
-        }
-
-        public void SetGuides(bool state)
-        {
-            var guides = transform.Find("Guides");
-            if (!guides) return;
-            guides.gameObject.SetActive(state);
         }
     }
 }

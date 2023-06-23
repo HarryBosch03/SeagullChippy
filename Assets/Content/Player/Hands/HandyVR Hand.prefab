@@ -642,6 +642,7 @@ GameObject:
   - component: {fileID: 4243138517736255648}
   - component: {fileID: 4243138517736255647}
   - component: {fileID: 6025886946552811115}
+  - component: {fileID: 5491190563690824895}
   m_Layer: 0
   m_Name: HandyVR Hand
   m_TagString: Untagged
@@ -753,6 +754,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   smoothing: 0.04
+--- !u!114 &5491190563690824895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4243138517736255645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf548e05df28449ca0e05f92b77b7477, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4756776726124903361
 GameObject:
   m_ObjectHideFlags: 0
