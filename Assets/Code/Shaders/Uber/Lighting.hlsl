@@ -44,7 +44,8 @@ half3 LightingPhysicallyBased(BRDFData brdfData, BRDFData brdfDataClearCoat,
     const float lift = 0.25;
     
     half NdotL = saturate(dot(normalWS, lightDirectionWS));
-    float mul = lerp(lightAttenuation * NdotL, (lightAttenuation > 0.5) * (NdotL > 0.0) * (1 - lift) + lift, 0.5);
+    float mul = saturate((lightAttenuation - 0.5) * NdotL);
+    mul = mul > 0.0 ? mul * (1.0 - lift) + lift : 0.0;
     half3 radiance = lightColor * mul;
 
     half3 brdf = brdfData.diffuse;
