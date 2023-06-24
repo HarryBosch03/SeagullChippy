@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using ShootingRangeGame.AI.BehaviourTrees.Core;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.UI;
 using Object = UnityEngine.Object;
 
 namespace ShootingRangeGameEditor.Tools.Windows

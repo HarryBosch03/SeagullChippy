@@ -1,4 +1,3 @@
-using System;
 using ShootingRangeGame.AI.BehaviourTrees.Core;
 using ShootingRangeGame.VFX;
 using UnityEngine;

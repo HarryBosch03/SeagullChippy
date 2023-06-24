@@ -41,8 +41,11 @@ half3 LightingPhysicallyBased(BRDFData brdfData, BRDFData brdfDataClearCoat,
     half3 normalWS, half3 viewDirectionWS,
     half clearCoatMask, bool specularHighlightsOff)
 {
+    const float lift = 0.25;
+    
     half NdotL = saturate(dot(normalWS, lightDirectionWS));
-    half3 radiance = lightColor * (lightAttenuation * NdotL > 0.25) * 0.5;
+    float mul = lerp(lightAttenuation * NdotL, (lightAttenuation > 0.5) * (NdotL > 0.0) * (1 - lift) + lift, 0.5);
+    half3 radiance = lightColor * mul;
 
     half3 brdf = brdfData.diffuse;
 #ifndef _SPECULARHIGHLIGHTS_OFF

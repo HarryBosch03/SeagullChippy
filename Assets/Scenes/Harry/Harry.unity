@@ -134,6 +134,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: obj_Eski_Blockout
       objectReference: {fileID: 0}
+    - target: {fileID: 349735556333167563, guid: 401c5bd363ced4a4589d3bb9c4218a8c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1121768002983803249, guid: 401c5bd363ced4a4589d3bb9c4218a8c, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -721,6 +725,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: obj_Chair_Blockout
       objectReference: {fileID: 0}
+    - target: {fileID: 2893435629305025208, guid: 1f6278f136a23cc4abe77829d49a9a86, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f6278f136a23cc4abe77829d49a9a86, type: 3}
 --- !u!4 &17674657 stripped
@@ -742,7 +750,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &39712921
 Transform:
@@ -776,7 +784,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &83667872
 Transform:
@@ -1180,6 +1188,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: obj_Eski_Blockout (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 349735556333167563, guid: 401c5bd363ced4a4589d3bb9c4218a8c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1121768002983803249, guid: 401c5bd363ced4a4589d3bb9c4218a8c, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -1285,6 +1297,10 @@ PrefabInstance:
     - target: {fileID: 2893435629305025208, guid: 1f6278f136a23cc4abe77829d49a9a86, type: 3}
       propertyPath: m_Name
       value: obj_Chair_Blockout
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893435629305025208, guid: 1f6278f136a23cc4abe77829d49a9a86, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f6278f136a23cc4abe77829d49a9a86, type: 3}
@@ -2241,7 +2257,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &224011907
 Transform:
@@ -2759,6 +2775,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: obj_Chair_Blockout
       objectReference: {fileID: 0}
+    - target: {fileID: 2893435629305025208, guid: 1f6278f136a23cc4abe77829d49a9a86, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f6278f136a23cc4abe77829d49a9a86, type: 3}
 --- !u!4 &336661260 stripped
@@ -2820,6 +2840,10 @@ PrefabInstance:
     - target: {fileID: 2893435629305025208, guid: 1f6278f136a23cc4abe77829d49a9a86, type: 3}
       propertyPath: m_Name
       value: obj_Chair_Blockout
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893435629305025208, guid: 1f6278f136a23cc4abe77829d49a9a86, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f6278f136a23cc4abe77829d49a9a86, type: 3}
@@ -8606,7 +8630,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &402974501
 Transform:
@@ -8685,6 +8709,10 @@ PrefabInstance:
     - target: {fileID: 2893435629305025208, guid: 1f6278f136a23cc4abe77829d49a9a86, type: 3}
       propertyPath: m_Name
       value: obj_Chair_Blockout
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893435629305025208, guid: 1f6278f136a23cc4abe77829d49a9a86, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f6278f136a23cc4abe77829d49a9a86, type: 3}
@@ -8848,6 +8876,10 @@ PrefabInstance:
     - target: {fileID: 121138062638131321, guid: 26cac3a12a6657341a79102869ac44bd, type: 3}
       propertyPath: m_Name
       value: obj_Surfboard_Blockout (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 121138062638131321, guid: 26cac3a12a6657341a79102869ac44bd, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 785190671821796035, guid: 26cac3a12a6657341a79102869ac44bd, type: 3}
       propertyPath: m_RootOrder
@@ -9426,6 +9458,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: obj_Surfboard_Blockout
       objectReference: {fileID: 0}
+    - target: {fileID: 121138062638131321, guid: 26cac3a12a6657341a79102869ac44bd, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 785190671821796035, guid: 26cac3a12a6657341a79102869ac44bd, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -9488,6 +9524,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: obj_Surfboard_Blockout
       objectReference: {fileID: 0}
+    - target: {fileID: 121138062638131321, guid: 26cac3a12a6657341a79102869ac44bd, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 785190671821796035, guid: 26cac3a12a6657341a79102869ac44bd, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -9546,6 +9586,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1741427295}
     m_Modifications:
+    - target: {fileID: 4118842940958293439, guid: 8c0683eeb4cd1a04989b1933967d3f85, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8626870811048974851, guid: 8c0683eeb4cd1a04989b1933967d3f85, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -9593,6 +9637,10 @@ PrefabInstance:
     - target: {fileID: 9003572959049334969, guid: 8c0683eeb4cd1a04989b1933967d3f85, type: 3}
       propertyPath: m_Name
       value: obj_Umbrella_Blockout
+      objectReference: {fileID: 0}
+    - target: {fileID: 9003572959049334969, guid: 8c0683eeb4cd1a04989b1933967d3f85, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c0683eeb4cd1a04989b1933967d3f85, type: 3}
@@ -9656,6 +9704,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: obj_Chair_Blockout
       objectReference: {fileID: 0}
+    - target: {fileID: 2893435629305025208, guid: 1f6278f136a23cc4abe77829d49a9a86, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f6278f136a23cc4abe77829d49a9a86, type: 3}
 --- !u!4 &632465923 stripped
@@ -9717,6 +9769,10 @@ PrefabInstance:
     - target: {fileID: 2893435629305025208, guid: 1f6278f136a23cc4abe77829d49a9a86, type: 3}
       propertyPath: m_Name
       value: obj_Chair_Blockout
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893435629305025208, guid: 1f6278f136a23cc4abe77829d49a9a86, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f6278f136a23cc4abe77829d49a9a86, type: 3}
@@ -11652,7 +11708,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &688769585
 Transform:
@@ -11892,6 +11948,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: obj_Chair_Blockout
       objectReference: {fileID: 0}
+    - target: {fileID: 2893435629305025208, guid: 1f6278f136a23cc4abe77829d49a9a86, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f6278f136a23cc4abe77829d49a9a86, type: 3}
 --- !u!4 &694271628 stripped
@@ -12021,6 +12081,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1162276522}
     m_Modifications:
+    - target: {fileID: 4118842940958293439, guid: 8c0683eeb4cd1a04989b1933967d3f85, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8626870811048974851, guid: 8c0683eeb4cd1a04989b1933967d3f85, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -12069,6 +12133,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: obj_Umbrella_Blockout
       objectReference: {fileID: 0}
+    - target: {fileID: 9003572959049334969, guid: 8c0683eeb4cd1a04989b1933967d3f85, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c0683eeb4cd1a04989b1933967d3f85, type: 3}
 --- !u!4 &727243947 stripped
@@ -12083,6 +12151,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1733551787}
     m_Modifications:
+    - target: {fileID: 4118842940958293439, guid: 8c0683eeb4cd1a04989b1933967d3f85, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8626870811048974851, guid: 8c0683eeb4cd1a04989b1933967d3f85, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -12130,6 +12202,10 @@ PrefabInstance:
     - target: {fileID: 9003572959049334969, guid: 8c0683eeb4cd1a04989b1933967d3f85, type: 3}
       propertyPath: m_Name
       value: obj_Umbrella_Blockout
+      objectReference: {fileID: 0}
+    - target: {fileID: 9003572959049334969, guid: 8c0683eeb4cd1a04989b1933967d3f85, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c0683eeb4cd1a04989b1933967d3f85, type: 3}
@@ -12539,6 +12615,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 224011907}
     m_Modifications:
+    - target: {fileID: 4118842940958293439, guid: 8c0683eeb4cd1a04989b1933967d3f85, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8626870811048974851, guid: 8c0683eeb4cd1a04989b1933967d3f85, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -12586,6 +12666,10 @@ PrefabInstance:
     - target: {fileID: 9003572959049334969, guid: 8c0683eeb4cd1a04989b1933967d3f85, type: 3}
       propertyPath: m_Name
       value: obj_Umbrella_Blockout
+      objectReference: {fileID: 0}
+    - target: {fileID: 9003572959049334969, guid: 8c0683eeb4cd1a04989b1933967d3f85, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c0683eeb4cd1a04989b1933967d3f85, type: 3}
@@ -12769,6 +12853,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: obj_Eski_Blockout
       objectReference: {fileID: 0}
+    - target: {fileID: 349735556333167563, guid: 401c5bd363ced4a4589d3bb9c4218a8c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1121768002983803249, guid: 401c5bd363ced4a4589d3bb9c4218a8c, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -12875,6 +12963,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: obj_Chair_Blockout
       objectReference: {fileID: 0}
+    - target: {fileID: 2893435629305025208, guid: 1f6278f136a23cc4abe77829d49a9a86, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f6278f136a23cc4abe77829d49a9a86, type: 3}
 --- !u!4 &783024541 stripped
@@ -12937,6 +13029,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: obj_Chair_Blockout
       objectReference: {fileID: 0}
+    - target: {fileID: 2893435629305025208, guid: 1f6278f136a23cc4abe77829d49a9a86, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f6278f136a23cc4abe77829d49a9a86, type: 3}
 --- !u!4 &790423425 stripped
@@ -12958,7 +13054,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &819131849
 Transform:
@@ -13037,6 +13133,10 @@ PrefabInstance:
     - target: {fileID: 2893435629305025208, guid: 1f6278f136a23cc4abe77829d49a9a86, type: 3}
       propertyPath: m_Name
       value: obj_Chair_Blockout
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893435629305025208, guid: 1f6278f136a23cc4abe77829d49a9a86, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f6278f136a23cc4abe77829d49a9a86, type: 3}
@@ -13216,6 +13316,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1611290365}
     m_Modifications:
+    - target: {fileID: 4118842940958293439, guid: 8c0683eeb4cd1a04989b1933967d3f85, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8626870811048974851, guid: 8c0683eeb4cd1a04989b1933967d3f85, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -13263,6 +13367,10 @@ PrefabInstance:
     - target: {fileID: 9003572959049334969, guid: 8c0683eeb4cd1a04989b1933967d3f85, type: 3}
       propertyPath: m_Name
       value: obj_Umbrella_Blockout
+      objectReference: {fileID: 0}
+    - target: {fileID: 9003572959049334969, guid: 8c0683eeb4cd1a04989b1933967d3f85, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c0683eeb4cd1a04989b1933967d3f85, type: 3}
@@ -14741,6 +14849,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: obj_Chair_Blockout
       objectReference: {fileID: 0}
+    - target: {fileID: 2893435629305025208, guid: 1f6278f136a23cc4abe77829d49a9a86, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f6278f136a23cc4abe77829d49a9a86, type: 3}
 --- !u!4 &932036612 stripped
@@ -14803,6 +14915,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: obj_Chair_Blockout
       objectReference: {fileID: 0}
+    - target: {fileID: 2893435629305025208, guid: 1f6278f136a23cc4abe77829d49a9a86, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f6278f136a23cc4abe77829d49a9a86, type: 3}
 --- !u!4 &953987647 stripped
@@ -14820,6 +14936,10 @@ PrefabInstance:
     - target: {fileID: 349735556333167563, guid: 401c5bd363ced4a4589d3bb9c4218a8c, type: 3}
       propertyPath: m_Name
       value: obj_Eski_Blockout
+      objectReference: {fileID: 0}
+    - target: {fileID: 349735556333167563, guid: 401c5bd363ced4a4589d3bb9c4218a8c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1121768002983803249, guid: 401c5bd363ced4a4589d3bb9c4218a8c, type: 3}
       propertyPath: m_RootOrder
@@ -14882,6 +15002,10 @@ PrefabInstance:
     - target: {fileID: 349735556333167563, guid: 401c5bd363ced4a4589d3bb9c4218a8c, type: 3}
       propertyPath: m_Name
       value: obj_Eski_Blockout
+      objectReference: {fileID: 0}
+    - target: {fileID: 349735556333167563, guid: 401c5bd363ced4a4589d3bb9c4218a8c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1121768002983803249, guid: 401c5bd363ced4a4589d3bb9c4218a8c, type: 3}
       propertyPath: m_RootOrder
@@ -15503,7 +15627,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &998131220
 Transform:
@@ -15674,6 +15798,10 @@ PrefabInstance:
     - target: {fileID: 2893435629305025208, guid: 1f6278f136a23cc4abe77829d49a9a86, type: 3}
       propertyPath: m_Name
       value: obj_Chair_Blockout
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893435629305025208, guid: 1f6278f136a23cc4abe77829d49a9a86, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f6278f136a23cc4abe77829d49a9a86, type: 3}
@@ -16168,6 +16296,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1816500233}
     m_Modifications:
+    - target: {fileID: 4118842940958293439, guid: 8c0683eeb4cd1a04989b1933967d3f85, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8626870811048974851, guid: 8c0683eeb4cd1a04989b1933967d3f85, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -16215,6 +16347,10 @@ PrefabInstance:
     - target: {fileID: 9003572959049334969, guid: 8c0683eeb4cd1a04989b1933967d3f85, type: 3}
       propertyPath: m_Name
       value: obj_Umbrella_Blockout
+      objectReference: {fileID: 0}
+    - target: {fileID: 9003572959049334969, guid: 8c0683eeb4cd1a04989b1933967d3f85, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c0683eeb4cd1a04989b1933967d3f85, type: 3}
@@ -16880,6 +17016,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: obj_Chair_Blockout
       objectReference: {fileID: 0}
+    - target: {fileID: 2893435629305025208, guid: 1f6278f136a23cc4abe77829d49a9a86, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f6278f136a23cc4abe77829d49a9a86, type: 3}
 --- !u!4 &1121425929 stripped
@@ -16941,6 +17081,10 @@ PrefabInstance:
     - target: {fileID: 2893435629305025208, guid: 1f6278f136a23cc4abe77829d49a9a86, type: 3}
       propertyPath: m_Name
       value: obj_Chair_Blockout
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893435629305025208, guid: 1f6278f136a23cc4abe77829d49a9a86, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f6278f136a23cc4abe77829d49a9a86, type: 3}
@@ -17036,6 +17180,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: obj_Chair_Blockout
       objectReference: {fileID: 0}
+    - target: {fileID: 2893435629305025208, guid: 1f6278f136a23cc4abe77829d49a9a86, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f6278f136a23cc4abe77829d49a9a86, type: 3}
 --- !u!4 &1138992270 stripped
@@ -17053,6 +17201,10 @@ PrefabInstance:
     - target: {fileID: 349735556333167563, guid: 401c5bd363ced4a4589d3bb9c4218a8c, type: 3}
       propertyPath: m_Name
       value: obj_Eski_Blockout
+      objectReference: {fileID: 0}
+    - target: {fileID: 349735556333167563, guid: 401c5bd363ced4a4589d3bb9c4218a8c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1121768002983803249, guid: 401c5bd363ced4a4589d3bb9c4218a8c, type: 3}
       propertyPath: m_RootOrder
@@ -17116,6 +17268,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: obj_Surfboard_Blockout (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 121138062638131321, guid: 26cac3a12a6657341a79102869ac44bd, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 785190671821796035, guid: 26cac3a12a6657341a79102869ac44bd, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -17178,6 +17334,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: obj_Eski_Blockout
       objectReference: {fileID: 0}
+    - target: {fileID: 349735556333167563, guid: 401c5bd363ced4a4589d3bb9c4218a8c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1121768002983803249, guid: 401c5bd363ced4a4589d3bb9c4218a8c, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -17239,6 +17399,10 @@ PrefabInstance:
     - target: {fileID: 121138062638131321, guid: 26cac3a12a6657341a79102869ac44bd, type: 3}
       propertyPath: m_Name
       value: obj_Surfboard_Blockout
+      objectReference: {fileID: 0}
+    - target: {fileID: 121138062638131321, guid: 26cac3a12a6657341a79102869ac44bd, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 785190671821796035, guid: 26cac3a12a6657341a79102869ac44bd, type: 3}
       propertyPath: m_RootOrder
@@ -17305,7 +17469,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1162276522
 Transform:
@@ -17336,6 +17500,10 @@ PrefabInstance:
     - target: {fileID: 121138062638131321, guid: 26cac3a12a6657341a79102869ac44bd, type: 3}
       propertyPath: m_Name
       value: obj_Surfboard_Blockout (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 121138062638131321, guid: 26cac3a12a6657341a79102869ac44bd, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 785190671821796035, guid: 26cac3a12a6657341a79102869ac44bd, type: 3}
       propertyPath: m_RootOrder
@@ -17402,7 +17570,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1212955870
 Transform:
@@ -17431,6 +17599,10 @@ PrefabInstance:
     - target: {fileID: 349735556333167563, guid: 401c5bd363ced4a4589d3bb9c4218a8c, type: 3}
       propertyPath: m_Name
       value: obj_Eski_Blockout
+      objectReference: {fileID: 0}
+    - target: {fileID: 349735556333167563, guid: 401c5bd363ced4a4589d3bb9c4218a8c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1121768002983803249, guid: 401c5bd363ced4a4589d3bb9c4218a8c, type: 3}
       propertyPath: m_RootOrder
@@ -17490,6 +17662,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 998131220}
     m_Modifications:
+    - target: {fileID: 4118842940958293439, guid: 8c0683eeb4cd1a04989b1933967d3f85, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8626870811048974851, guid: 8c0683eeb4cd1a04989b1933967d3f85, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -17537,6 +17713,10 @@ PrefabInstance:
     - target: {fileID: 9003572959049334969, guid: 8c0683eeb4cd1a04989b1933967d3f85, type: 3}
       propertyPath: m_Name
       value: obj_Umbrella_Blockout
+      objectReference: {fileID: 0}
+    - target: {fileID: 9003572959049334969, guid: 8c0683eeb4cd1a04989b1933967d3f85, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c0683eeb4cd1a04989b1933967d3f85, type: 3}
@@ -17735,6 +17915,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: obj_Chair_Blockout
       objectReference: {fileID: 0}
+    - target: {fileID: 2893435629305025208, guid: 1f6278f136a23cc4abe77829d49a9a86, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f6278f136a23cc4abe77829d49a9a86, type: 3}
 --- !u!4 &1243353138 stripped
@@ -17797,6 +17981,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: obj_Chair_Blockout
       objectReference: {fileID: 0}
+    - target: {fileID: 2893435629305025208, guid: 1f6278f136a23cc4abe77829d49a9a86, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f6278f136a23cc4abe77829d49a9a86, type: 3}
 --- !u!4 &1243667388 stripped
@@ -17818,7 +18006,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1268665598
 Transform:
@@ -18011,6 +18199,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: obj_Surfboard_Blockout (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 121138062638131321, guid: 26cac3a12a6657341a79102869ac44bd, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 785190671821796035, guid: 26cac3a12a6657341a79102869ac44bd, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -18076,7 +18268,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1292228908
 Transform:
@@ -18354,6 +18546,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: obj_Chair_Blockout
       objectReference: {fileID: 0}
+    - target: {fileID: 2893435629305025208, guid: 1f6278f136a23cc4abe77829d49a9a86, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f6278f136a23cc4abe77829d49a9a86, type: 3}
 --- !u!4 &1336171948 stripped
@@ -18371,6 +18567,10 @@ PrefabInstance:
     - target: {fileID: 349735556333167563, guid: 401c5bd363ced4a4589d3bb9c4218a8c, type: 3}
       propertyPath: m_Name
       value: obj_Eski_Blockout
+      objectReference: {fileID: 0}
+    - target: {fileID: 349735556333167563, guid: 401c5bd363ced4a4589d3bb9c4218a8c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1121768002983803249, guid: 401c5bd363ced4a4589d3bb9c4218a8c, type: 3}
       propertyPath: m_RootOrder
@@ -19155,6 +19355,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: obj_Surfboard_Blockout
       objectReference: {fileID: 0}
+    - target: {fileID: 121138062638131321, guid: 26cac3a12a6657341a79102869ac44bd, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 785190671821796035, guid: 26cac3a12a6657341a79102869ac44bd, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -19415,6 +19619,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 39712921}
     m_Modifications:
+    - target: {fileID: 4118842940958293439, guid: 8c0683eeb4cd1a04989b1933967d3f85, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8626870811048974851, guid: 8c0683eeb4cd1a04989b1933967d3f85, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -19462,6 +19670,10 @@ PrefabInstance:
     - target: {fileID: 9003572959049334969, guid: 8c0683eeb4cd1a04989b1933967d3f85, type: 3}
       propertyPath: m_Name
       value: obj_Umbrella_Blockout
+      objectReference: {fileID: 0}
+    - target: {fileID: 9003572959049334969, guid: 8c0683eeb4cd1a04989b1933967d3f85, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c0683eeb4cd1a04989b1933967d3f85, type: 3}
@@ -22312,6 +22524,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 688769585}
     m_Modifications:
+    - target: {fileID: 4118842940958293439, guid: 8c0683eeb4cd1a04989b1933967d3f85, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8626870811048974851, guid: 8c0683eeb4cd1a04989b1933967d3f85, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -22360,6 +22576,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: obj_Umbrella_Blockout
       objectReference: {fileID: 0}
+    - target: {fileID: 9003572959049334969, guid: 8c0683eeb4cd1a04989b1933967d3f85, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c0683eeb4cd1a04989b1933967d3f85, type: 3}
 --- !u!4 &1575719588 stripped
@@ -22377,6 +22597,10 @@ PrefabInstance:
     - target: {fileID: 349735556333167563, guid: 401c5bd363ced4a4589d3bb9c4218a8c, type: 3}
       propertyPath: m_Name
       value: obj_Eski_Blockout
+      objectReference: {fileID: 0}
+    - target: {fileID: 349735556333167563, guid: 401c5bd363ced4a4589d3bb9c4218a8c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1121768002983803249, guid: 401c5bd363ced4a4589d3bb9c4218a8c, type: 3}
       propertyPath: m_RootOrder
@@ -22537,6 +22761,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: obj_Eski_Blockout
       objectReference: {fileID: 0}
+    - target: {fileID: 349735556333167563, guid: 401c5bd363ced4a4589d3bb9c4218a8c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1121768002983803249, guid: 401c5bd363ced4a4589d3bb9c4218a8c, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -22602,7 +22830,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1611290365
 Transform:
@@ -22682,6 +22910,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: obj_Chair_Blockout
       objectReference: {fileID: 0}
+    - target: {fileID: 2893435629305025208, guid: 1f6278f136a23cc4abe77829d49a9a86, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f6278f136a23cc4abe77829d49a9a86, type: 3}
 --- !u!4 &1646488269 stripped
@@ -22699,6 +22931,10 @@ PrefabInstance:
     - target: {fileID: 349735556333167563, guid: 401c5bd363ced4a4589d3bb9c4218a8c, type: 3}
       propertyPath: m_Name
       value: obj_Eski_Blockout
+      objectReference: {fileID: 0}
+    - target: {fileID: 349735556333167563, guid: 401c5bd363ced4a4589d3bb9c4218a8c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1121768002983803249, guid: 401c5bd363ced4a4589d3bb9c4218a8c, type: 3}
       propertyPath: m_RootOrder
@@ -22806,6 +23042,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: obj_Chair_Blockout
       objectReference: {fileID: 0}
+    - target: {fileID: 2893435629305025208, guid: 1f6278f136a23cc4abe77829d49a9a86, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f6278f136a23cc4abe77829d49a9a86, type: 3}
 --- !u!4 &1675277385 stripped
@@ -22868,6 +23108,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: obj_Chair_Blockout
       objectReference: {fileID: 0}
+    - target: {fileID: 2893435629305025208, guid: 1f6278f136a23cc4abe77829d49a9a86, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f6278f136a23cc4abe77829d49a9a86, type: 3}
 --- !u!4 &1678417048 stripped
@@ -22889,7 +23133,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1733551787
 Transform:
@@ -22924,7 +23168,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1741427295
 Transform:
@@ -22955,6 +23199,10 @@ PrefabInstance:
     - target: {fileID: 121138062638131321, guid: 26cac3a12a6657341a79102869ac44bd, type: 3}
       propertyPath: m_Name
       value: obj_Surfboard_Blockout
+      objectReference: {fileID: 0}
+    - target: {fileID: 121138062638131321, guid: 26cac3a12a6657341a79102869ac44bd, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 785190671821796035, guid: 26cac3a12a6657341a79102869ac44bd, type: 3}
       propertyPath: m_RootOrder
@@ -23801,7 +24049,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1816500233
 Transform:
@@ -24040,6 +24288,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: obj_Chair_Blockout
       objectReference: {fileID: 0}
+    - target: {fileID: 2893435629305025208, guid: 1f6278f136a23cc4abe77829d49a9a86, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f6278f136a23cc4abe77829d49a9a86, type: 3}
 --- !u!4 &1839032703 stripped
@@ -24107,6 +24359,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: obj_Chair_Blockout
       objectReference: {fileID: 0}
+    - target: {fileID: 2893435629305025208, guid: 1f6278f136a23cc4abe77829d49a9a86, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f6278f136a23cc4abe77829d49a9a86, type: 3}
 --- !u!4 &1873595599 stripped
@@ -24124,6 +24380,10 @@ PrefabInstance:
     - target: {fileID: 349735556333167563, guid: 401c5bd363ced4a4589d3bb9c4218a8c, type: 3}
       propertyPath: m_Name
       value: obj_Eski_Blockout
+      objectReference: {fileID: 0}
+    - target: {fileID: 349735556333167563, guid: 401c5bd363ced4a4589d3bb9c4218a8c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1121768002983803249, guid: 401c5bd363ced4a4589d3bb9c4218a8c, type: 3}
       propertyPath: m_RootOrder
@@ -24352,6 +24612,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1292228908}
     m_Modifications:
+    - target: {fileID: 4118842940958293439, guid: 8c0683eeb4cd1a04989b1933967d3f85, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8626870811048974851, guid: 8c0683eeb4cd1a04989b1933967d3f85, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -24399,6 +24663,10 @@ PrefabInstance:
     - target: {fileID: 9003572959049334969, guid: 8c0683eeb4cd1a04989b1933967d3f85, type: 3}
       propertyPath: m_Name
       value: obj_Umbrella_Blockout
+      objectReference: {fileID: 0}
+    - target: {fileID: 9003572959049334969, guid: 8c0683eeb4cd1a04989b1933967d3f85, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c0683eeb4cd1a04989b1933967d3f85, type: 3}
@@ -24462,6 +24730,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: obj_Chair_Blockout
       objectReference: {fileID: 0}
+    - target: {fileID: 2893435629305025208, guid: 1f6278f136a23cc4abe77829d49a9a86, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f6278f136a23cc4abe77829d49a9a86, type: 3}
 --- !u!4 &1999512818 stripped
@@ -24523,6 +24795,10 @@ PrefabInstance:
     - target: {fileID: 2893435629305025208, guid: 1f6278f136a23cc4abe77829d49a9a86, type: 3}
       propertyPath: m_Name
       value: obj_Chair_Blockout
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893435629305025208, guid: 1f6278f136a23cc4abe77829d49a9a86, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f6278f136a23cc4abe77829d49a9a86, type: 3}
@@ -32652,6 +32928,10 @@ PrefabInstance:
     - target: {fileID: 121138062638131321, guid: 26cac3a12a6657341a79102869ac44bd, type: 3}
       propertyPath: m_Name
       value: obj_Surfboard_Blockout (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 121138062638131321, guid: 26cac3a12a6657341a79102869ac44bd, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 785190671821796035, guid: 26cac3a12a6657341a79102869ac44bd, type: 3}
       propertyPath: m_RootOrder

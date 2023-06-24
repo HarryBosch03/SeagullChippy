@@ -1,4 +1,3 @@
-using System;
 using UnityEditor.XR.LegacyInputHelpers;
 using UnityEngine;
 

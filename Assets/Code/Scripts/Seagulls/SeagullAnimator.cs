@@ -1,4 +1,3 @@
-using ShootingRangeGame.VFX;
 using UnityEngine;
 
 namespace ShootingRangeGame.Seagulls

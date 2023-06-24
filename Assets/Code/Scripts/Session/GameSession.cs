@@ -1,5 +1,4 @@
 using ShootingRangeGame.Saves;
-using ShootingRangeGame.Seagulls;
 using TMPro;
 using UnityEngine;
 
