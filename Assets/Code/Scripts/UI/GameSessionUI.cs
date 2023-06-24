@@ -11,8 +11,8 @@ namespace ShootingRangeGame.UI
         [SerializeField] private Driver driver;
         [SerializeField] private string fallbackText = string.Empty;
 
+        private string template;
         private TMP_Text text;
-        [SerializeField] private string template;
 
         private void Awake()
         {
