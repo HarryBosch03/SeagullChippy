@@ -1,5 +1,4 @@
-﻿using System;
-using ShootingRangeGame.AI.BehaviourTrees.Core;
+﻿using ShootingRangeGame.AI.BehaviourTrees.Core;
 
 namespace ShootingRangeGame.AI.BehaviourTrees.Leaves
 {

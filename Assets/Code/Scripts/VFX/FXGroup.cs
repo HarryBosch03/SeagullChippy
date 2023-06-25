@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Xml.Schema;
-using ShootingRangeGame.Audio;
 using UnityEngine;
 
 namespace ShootingRangeGame.VFX
@@ -9,11 +7,11 @@ namespace ShootingRangeGame.VFX
     public class FXGroup : MonoBehaviour
     {
         private float lifetime;
-        
-        private void Start()
+
+        private void Awake()
         {
             lifetime = GetLifetime();
-            
+
             gameObject.SetActive(false);
         }
 
@@ -29,7 +27,7 @@ namespace ShootingRangeGame.VFX
                     lifetime = Mathf.Max(lifetime, callback(component));
                 }
             }
-            
+
             getLifetimeFromComponent<ParticleSystem>(c =>
             {
                 float maxFromCurve(AnimationCurve curve)
@@ -58,23 +56,30 @@ namespace ShootingRangeGame.VFX
         {
             if (group) callback(group);
         }
-        
+
         public FXGroup Instance()
         {
             var instance = Instantiate(this);
             return instance;
         }
-        
+
         public FXGroup At(GameObject gameObject) => At(gameObject.transform);
         public FXGroup At(Component behaviour) => At(behaviour.transform);
         public FXGroup At(Transform transform) => At(transform.position, transform.rotation);
+
         public FXGroup At(Vector3 position, Quaternion orientation)
         {
             transform.position = position;
             transform.rotation = orientation;
             return this;
         }
-        
+
+        public FXGroup WithSize(float scale)
+        {
+            transform.localScale = Vector3.one * scale;
+            return this;
+        }
+
         public FXGroup Play()
         {
             gameObject.SetActive(true);
