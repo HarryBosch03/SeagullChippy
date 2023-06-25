@@ -1,19 +1,22 @@
 using ShootingRangeGame.AI.BehaviourTrees.Core;
 using ShootingRangeGame.VFX;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace ShootingRangeGame.Seagulls
 {
     [SelectionBase]
     [DisallowMultipleComponent]
-    public class Seagull : MonoBehaviour, IHasBehaviourTree
+    public class Bird : MonoBehaviour, IHasBehaviourTree
     {
         [Header("AI")] 
-        [SerializeField] private SeagullBrain brain;
+        [SerializeField] private BirdBrain brain;
+        [SerializeField] private BirdType birdType;
 
         [Header("MOVEMENT")] 
-        [Space] [SerializeField] private float moveSpeed;
+        [Space] 
+        [SerializeField] private float moveSpeed;
 
         [SerializeField] private float floatiness = 4.0f;
 
@@ -39,6 +42,7 @@ namespace ShootingRangeGame.Seagulls
         public BehaviourTree Tree => brain.Tree;
         public bool Grounded { get; private set; }
         public float Wet { get; set; }
+        public BirdType Type => birdType;
 
         private static readonly string[] Names = 
         {
@@ -132,7 +136,7 @@ namespace ShootingRangeGame.Seagulls
         [ContextMenu("Kill All")]
         public void KillAll()
         {
-            var seagulls = FindObjectsOfType<Seagull>();
+            var seagulls = FindObjectsOfType<Bird>();
             foreach (var seagull in seagulls)
             {
                 seagull.Die();
@@ -147,6 +151,12 @@ namespace ShootingRangeGame.Seagulls
             FXGroup.Try(hitFX, fx => fx.Instance().At(this).Play().AndDestroy());
 
             Destroy(gameObject);
+        }
+
+        public enum BirdType
+        {
+            Seagull,
+            Pigeon,
         }
     }
 }

@@ -4,7 +4,7 @@ using Random = UnityEngine.Random;
 
 namespace ShootingRangeGame.Seagulls.Leaves
 {
-    public class Fly : Leaf<SeagullBrain>
+    public class Fly : Leaf<BirdBrain>
     {
         private float launchForce = 2.0f;
         private float minFlyForce = 5.0f;
@@ -19,8 +19,8 @@ namespace ShootingRangeGame.Seagulls.Leaves
         protected override void OnStart(BehaviourTree tree)
         {
             Target.ShiftLookDirection(10.0f);
-            targetHeight = Target.Seagull.transform.position.y + Random.value * 4.0f + 1.0f;
-            Target.Seagull.rigidbody.AddForce(Vector3.up * launchForce, ForceMode.VelocityChange);
+            targetHeight = Target.Bird.transform.position.y + Random.value * 4.0f + 1.0f;
+            Target.Bird.rigidbody.AddForce(Vector3.up * launchForce, ForceMode.VelocityChange);
             state = 0;
         }
 
@@ -28,9 +28,9 @@ namespace ShootingRangeGame.Seagulls.Leaves
 
         protected override BehaviourTree.Result OnExecute(BehaviourTree tree)
         {
-            var transform = Target.Seagull.transform;
+            var transform = Target.Bird.transform;
 
-            Target.Seagull.MoveVector = Target.Seagull.LookDirection * flySpeed;
+            Target.Bird.MoveVector = Target.Bird.LookDirection * flySpeed;
 
             switch (state)
             {
@@ -44,11 +44,11 @@ namespace ShootingRangeGame.Seagulls.Leaves
 
                     Target.Animation = "Flap";
                     var flyForce = Mathf.Lerp(maxFlyForce, minFlyForce, height / targetHeight);
-                    Target.Seagull.rigidbody.AddForce(Vector3.up * flyForce, ForceMode.Acceleration);
+                    Target.Bird.rigidbody.AddForce(Vector3.up * flyForce, ForceMode.Acceleration);
                     break;
                 case 1:
                     Target.Animation = "Glide";
-                    if (Target.Seagull.Grounded) state++;
+                    if (Target.Bird.Grounded) state++;
                     break;
                 default:
                     return BehaviourTree.Result.Success;

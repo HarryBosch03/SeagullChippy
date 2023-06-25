@@ -1,11 +1,13 @@
-﻿using ShootingRangeGame.AI.BehaviourTrees.Core;
+﻿using System;
+using ShootingRangeGame.AI.BehaviourTrees.Core;
 using ShootingRangeGame.Session;
 using ShootingRangeGame.Tags;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace ShootingRangeGame.Seagulls.Leaves
 {
-    public class EatFood : Leaf<SeagullBrain>
+    public class EatFood : Leaf<BirdBrain>
     {
         public const float animationLength = 87.0f / 60.0f;
 
@@ -14,6 +16,7 @@ namespace ShootingRangeGame.Seagulls.Leaves
 
         public bool eaten;
         public float eatTime;
+        public Action eatCallback;
 
         public override string Name => $"{base.Name} Eat Food";
 
@@ -23,10 +26,14 @@ namespace ShootingRangeGame.Seagulls.Leaves
             Tag.Cache(ref foodTag, "food");
         }
 
+        public EatFood SetCallback(Action eatCallback)
+        {
+            this.eatCallback = eatCallback;
+            return this;
+        }
+        
         public override BehaviourTree.AbandonResponse RespondToAbandonRequest() => eaten ? BehaviourTree.AbandonResponse.CannotAbandon : BehaviourTree.AbandonResponse.WithFailure;
-
         public override bool OverridePending() => FindFood();
-
         protected override BehaviourTree.Result OnExecute(BehaviourTree tree)
         {
             if (eaten)
@@ -37,12 +44,12 @@ namespace ShootingRangeGame.Seagulls.Leaves
                     return BehaviourTree.Result.Pending;
                 }
 
-                GameSession.AwardPoint();
+                eatCallback?.Invoke();
                 eaten = false;
                 return BehaviourTree.Result.Success;
             }
 
-            var seagull = Target.Seagull;
+            var seagull = Target.Bird;
             var food = FindFood();
             if (!food) return BehaviourTree.Result.Failure;
 
@@ -60,7 +67,7 @@ namespace ShootingRangeGame.Seagulls.Leaves
 
         private GameObject FindFood()
         {
-            var seagull = Target.Seagull;
+            var seagull = Target.Bird;
             var food = Tree.Blackboard.Get<GameObject>("food");
             if (food) return food;
 

@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace ShootingRangeGame.Seagulls
@@ -8,18 +10,21 @@ namespace ShootingRangeGame.Seagulls
     [DisallowMultipleComponent]
     public sealed class SeagullSpawner : MonoBehaviour
     {
-        [SerializeField] private Seagull prefab;
+        [FormerlySerializedAs("prefab")] 
+        [SerializeField] private Bird seagullPrefab;
+        [SerializeField] private Bird pigeonPrefab;
         [SerializeField] private int startCount = 20;
         [SerializeField] private int maintainCount = 20;
         [SerializeField] private float checkDelay = 10.0f;
         [SerializeField] private float spawnDelay = 3.0f;
         [SerializeField] private float minRange = 5.0f;
         [SerializeField] private float maxRange = 20.0f;
+        [SerializeField] [Range(0.0f, 1.0f)] private float pigeonSeagullRatio = 1.0f;
 
         private float nextCheckTime;
         private new Camera camera;
 
-        private readonly List<Seagull> seagulls = new();
+        private readonly List<Bird> birds = new();
 
         private void Awake()
         {
@@ -37,9 +42,9 @@ namespace ShootingRangeGame.Seagulls
         private void Update()
         {
             if (Time.time < nextCheckTime) return;
-            seagulls.RemoveAll(e => !e);
+            birds.RemoveAll(e => !e);
 
-            if (seagulls.Count >= maintainCount)
+            if (birds.Count >= maintainCount)
             {
                 nextCheckTime = Time.time + checkDelay;
                 return;
@@ -66,8 +71,34 @@ namespace ShootingRangeGame.Seagulls
                 if (viewPoint.y > -1.0f && viewPoint.y < 1.0f) return;
             }
 
+            var prefab = GetPrefab();
+
             var instance = Instantiate(prefab, position, Quaternion.Euler(0.0f, Random.value * 360.0f, 0.0f));
-            seagulls.Add(instance);
+            birds.Add(instance);
+        }
+
+        private Bird GetPrefab()
+        {
+            var seagullCount = 0;
+            var pigeonCount = 0;
+
+            foreach (var bird in birds)
+            {
+                switch (bird.Type)
+                {
+                    case Bird.BirdType.Seagull:
+                        seagullCount++;
+                        break;
+                    case Bird.BirdType.Pigeon:
+                        pigeonCount++;
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            }
+
+            var cRatio = pigeonCount / (float)seagullCount;
+            return cRatio > pigeonSeagullRatio ? seagullPrefab : pigeonPrefab;
         }
     }
 }
