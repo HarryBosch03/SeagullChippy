@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace ShootingRangeGame.Seagulls.Leaves
 {
-    public class Wander : Leaf<SeagullBrain>
+    public class Wander : Leaf<BirdBrain>
     {
         private float wanderTime;
         private float timer;
@@ -22,7 +22,7 @@ namespace ShootingRangeGame.Seagulls.Leaves
         {
             if (timer > wanderTime) return BehaviourTree.Result.Success;
 
-            Target.Seagull.MoveVector = Target.Seagull.LookDirection;
+            Target.Bird.MoveVector = Target.Bird.LookDirection;
 
             timer += Time.deltaTime;
             return BehaviourTree.Result.Pending;
