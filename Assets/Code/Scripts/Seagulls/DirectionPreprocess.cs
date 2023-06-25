@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace ShootingRangeGame.Seagulls
+namespace ShootingRangeGame.Seagulls.Leaves
 {
     public class DirectionPreprocess
     {

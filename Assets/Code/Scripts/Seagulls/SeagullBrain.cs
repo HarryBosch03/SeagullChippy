@@ -1,25 +1,32 @@
 ﻿using ShootingRangeGame.AI.BehaviourTrees.Core;
 using ShootingRangeGame.AI.BehaviourTrees.Leaves;
+using ShootingRangeGame.Seagulls.Leaves;
 using UnityEngine;
 
 namespace ShootingRangeGame.Seagulls
 {
     [System.Serializable]
-    public partial class SeagullBrain : IHasBehaviourTree
+    public class SeagullBrain : IHasBehaviourTree
     {
         [SerializeField] private string defaultAnimation;
         [SerializeField] private float maxWanderDistance;
 
         private DirectionPreprocess directionPreprocess = new();
-        
+
         public Seagull Seagull { get; private set; }
 
         public BehaviourTree Tree { get; private set; } = new(
-            new RandomLeaf()
-                .AddChild(new Wait(), 1.5f)
-                .AddChild(new Wander(), 1.0f)
-                .AddChild(new Fly(), 0.15f)
-        );
+            new SelectorLeaf()
+                // .AddChild(new SequenceLeaf()
+                //     .AddChild(new Startled())
+                //     .AddChild(new Fly()))
+                .AddChild(new CheckForWater())
+                .AddChild(new EatFood())
+                .AddChild(new RandomLeaf()
+                    .AddChild(new Wait(), 1.5f)
+                    .AddChild(new Wander(), 1.0f)
+                    .AddChild(new Fly(), 0.15f)
+                ));
 
         private Animator animator;
 
@@ -55,5 +62,13 @@ namespace ShootingRangeGame.Seagulls
         }
 
         public MonoBehaviour Behaviour => Seagull;
+
+        public void MoveTowards(Vector3 point, float speed = 1.0f)
+        {
+            var direction = point - Seagull.transform.position;
+            direction.y = 0.0f;
+            Seagull.MoveVector = direction.normalized * speed;
+            Seagull.LookDirection = direction.normalized;
+        }
     }
 }

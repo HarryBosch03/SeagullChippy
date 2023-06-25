@@ -1,16 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using ShootingRangeGame.AI.BehaviourTrees.Core;
-using Random = UnityEngine.Random;
+using UnityEngine;
 
 namespace ShootingRangeGame.AI.BehaviourTrees.Leaves
 {
     public class RandomLeaf : CompositeLeaf
     {
+        public const int Shuffles = 100;
+
         public readonly Dictionary<Leaf, float> weights = new();
         public float defaultWeight = 1.0f;
 
-        public Leaf pendingChild;
+        private List<Leaf> pool;
 
         public override string Name => $"{base.Name} Random Leaf";
         public float GetWeight(Leaf leaf) => weights.ContainsKey(leaf) ? weights[leaf] : defaultWeight;
@@ -34,54 +35,71 @@ namespace ShootingRangeGame.AI.BehaviourTrees.Leaves
             return this;
         }
 
-        public Leaf GetRandomChild(List<Leaf> pool)
-        {
-            var totalWeight = 0.0f;
-            foreach (var child in pool)
-            {
-                totalWeight += weights[child];
-            }
-
-            var weight = Random.value * totalWeight;
-            foreach (var child in pool)
-            {
-                var other = weights[child];
-                if (weight < other) return child;
-                weight -= other;
-            }
-
-            return pool[^1];
-        }
-
         protected override BehaviourTree.Result OnExecute(BehaviourTree tree)
         {
-            var child = pendingChild;
-            pendingChild = null;
-
-            var pool = new List<Leaf>(children);
-            while (pool.Count > 0)
+            if (LastEvaluationResult != BehaviourTree.Result.Pending)
             {
-                if (child != null)
-                {
-                    switch (child.Execute())
-                    {
-                        case BehaviourTree.Result.Success:
-                            return BehaviourTree.Result.Success;
-                        case BehaviourTree.Result.Failure:
-                            break;
-                        case BehaviourTree.Result.Pending:
-                            pendingChild = child;
-                            return BehaviourTree.Result.Pending;
-                        default:
-                            throw new ArgumentOutOfRangeException();
-                    }
-
-                    pool.Remove(child);
-                }
-                child = GetRandomChild(pool);
+                pool = GetPool();
+                pool = ShufflePool(pool);
             }
 
-            return BehaviourTree.Result.Failure;
+            return SimpleLoop(
+                res => res == BehaviourTree.AbandonResponse.WithSuccess,
+                BehaviourTree.Result.Success,
+                BehaviourTree.Result.Success,
+                BehaviourTree.Result.Failure,
+                pool);
+        }
+
+        private List<Leaf> GetPool()
+        {
+            var pool = new List<Leaf>();
+            if (pendingChildIndex != -1)
+            {
+                pool.Add(children[pendingChildIndex]);
+            }
+
+            for (var i = 0; i < children.Count; i++)
+            {
+                if (i == pendingChildIndex) continue;
+                var child = children[i];
+                pool.Add(child);
+            }
+
+            pendingChildIndex = -1;
+            return pool;
+        }
+
+        private List<Leaf> ShufflePool(List<Leaf> input)
+        {
+            var output = new List<Leaf>();
+
+            while (input.Count > 0)
+            {
+                var r = random();
+                input.Remove(r);
+                output.Add(r);
+            }
+
+            return output;
+
+            Leaf random()
+            {
+                var totalWeight = 0.0f;
+                foreach (var i in input)
+                {
+                    totalWeight += weights[i];
+                }
+
+                var weight = Random.value * totalWeight;
+                foreach (var i in input)
+                {
+                    if (weight < weights[i]) return i;
+                    weight -= weights[i];
+                }
+
+                return input[^1];
+            }
         }
     }
 }

@@ -236,7 +236,7 @@ LineRenderer:
   - {x: 0, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.02
+    widthMultiplier: 0.006
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -682,7 +682,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chirality: 0
-  defaultHandModelChirality: 0
+  defaultHandModelChirality: 1
   flipAxis: {x: 1, y: 0, z: 0}
   pointTransform: {fileID: 2201110860129996487}
   handModel: {fileID: 6659446272631695401}
@@ -752,7 +752,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b3125a9b1b498941a79a02a46e5870e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smoothing: 0.1
+  smoothing: 0.04
 --- !u!1 &4756776726124903361
 GameObject:
   m_ObjectHideFlags: 0
@@ -1009,8 +1009,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6278241865576919699}
-  m_LocalRotation: {x: 1, y: -0, z: -0, w: 0.00000058114523}
-  m_LocalPosition: {x: 0, y: 0.104103446, z: 0.004271421}
+  m_LocalRotation: {x: -0.00000035456833, y: 0.13052651, z: 0.9914449, w: 0.00000004667945}
+  m_LocalPosition: {x: 0.030473322, y: 0.10177708, z: -0.013399141}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -1018,7 +1018,7 @@ Transform:
   - {fileID: 7501516521269621580}
   m_Father: {fileID: 4243138517736255646}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 195, y: -180, z: 0}
 --- !u!95 &6084364601680146282
 Animator:
   serializedVersion: 4
