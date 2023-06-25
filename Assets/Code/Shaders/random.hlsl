@@ -27,6 +27,11 @@ uint Rand(int2 p, int seed = 0)
     return Rand(p.x + 198491317 * p.y, seed);
 }
 
+float RandF(int p, int seed = 0)
+{
+    return Rand(p, seed) / (float)~0u;
+}
+
 float interpolate(float a, float b, float t)
 {
     return (b - a) * ((t * (t * 6.0 - 15.0) + 10.0) * t * t * t) + a;

@@ -1,40 +1,37 @@
 using ShootingRangeGame.Saves;
 using ShootingRangeGame.Seagulls;
-using System;
 using TMPro;
 using UnityEngine;
 
-namespace ShootingRangeGame
+namespace ShootingRangeGame.Session
 {
     public class GameSession : MonoBehaviour
     {
         [Header("Round Settings")]
-        public float roundLength;
-
-        private int highScore;
-        private bool roundActive = false;
+        [SerializeField] private float roundLength;
+        [SerializeField] private bool autoStartRoundOnAwake;
+        [SerializeField] private bool endless;
 
         [Header("Components")]
-        public TextMeshProUGUI timerReadout;
-        public TextMeshProUGUI scoreReadout;
-        public TextMeshProUGUI highScoreReadout;
+        [SerializeField] private TextMeshProUGUI timerReadout;
+        [SerializeField] private TextMeshProUGUI scoreReadout;
+        [SerializeField] private TextMeshProUGUI highScoreReadout;
 
+        [Header("Audio")]
         [SerializeField] private AudioSource roundStart;
         [SerializeField] private AudioSource roundEnd;
-        [SerializeField] private AudioSource gainPoint;
-                                // [SerializeField] private AudioSource losePoint;           //awaiting for deduct points mechanic 
-
-
+        
+        private int highScore;
+        private bool roundActive;
+        
         public void OnAwake()
         {
             roundStart = GetComponent<AudioSource>();
             roundEnd = GetComponent<AudioSource>();
-            gainPoint = GetComponent<AudioSource>();
-                                      // losePoint = GetComponent<AudioSource>();
         }
 
         public int Score { get; private set; }
-        public int HighScore
+        public static int HighScore
         {
             get => SaveManager.GetOrLoad().highScore;
             set => SaveManager.GetOrLoad().highScore = value;
@@ -43,58 +40,25 @@ namespace ShootingRangeGame
         public float RoundTimer { get; private set; }
         public static GameSession Active { get; private set; }
 
-        private void OnEnable()
-        {
-            Seagull.OnSeagullHit += SeagullHitEvent;
-        }
-
-        private void OnDisable()
-        {
-            Seagull.OnSeagullHit -= SeagullHitEvent;
-        }
-
-        private void SeagullHitEvent()
-        {
-            AddScore(1);
-        }
-
         private void Start()
         {
             RefreshUI();
             highScore = HighScore;
-           
             
+            if (autoStartRoundOnAwake)
+            {
+                StartRound();
+            }
         }
 
         private void Update()
         {
             if (roundActive)
             {
-                RoundTimer -= Time.deltaTime;
-            }
-
-            if (Input.GetKeyDown(KeyCode.Return))
-            {
-                StartRound();
-            }
-
-            if (Input.GetKeyDown(KeyCode.O))
-            {
-                AddScore(1);
-            }
-
-            if (Input.GetKeyDown(KeyCode.P))
-            {
-                EndRound();
-            }
-
-            if (Input.GetKeyDown(KeyCode.Backspace))
-            {
-                EndRound();
+                if (!endless) RoundTimer -= Time.deltaTime;
             }
 
             RefreshUI();
-
         }
 
         [ContextMenu("Start Round")]
@@ -106,8 +70,7 @@ namespace ShootingRangeGame
             RoundTimer = roundLength;
             roundActive = true;
             Score = 0;
-            roundStart.Play();
-            
+            if (roundStart) roundStart.Play();
         }
 
         [ContextMenu("End Round")]
@@ -117,7 +80,7 @@ namespace ShootingRangeGame
             
             roundActive = false;
             RoundTimer = 0;
-            roundEnd.Play();
+            if (roundEnd) roundEnd.Play();
 
             if (Score > HighScore) HighScore = Score;
             SaveManager.Save();
@@ -134,14 +97,18 @@ namespace ShootingRangeGame
             if (highScoreReadout) highScoreReadout.text = highScore.ToString();
         }
 
-        public void AddScore(int addedScore)
+        public static void AwardPoint(int increment = 1)
         {
-            Score += addedScore;
-            gainPoint.Play();
+            if (!Active) return;
+            Active.Score += increment;
         }
-    }
 
-    internal class seralisefieldAttribute : Attribute
-    {
+        public static void SetScore(int score)
+        {
+            if (!Active) return;
+            Active.Score = score;
+        }
+
+        public static void ResetScore() => SetScore(0);
     }
 }

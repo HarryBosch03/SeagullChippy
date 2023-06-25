@@ -3,7 +3,7 @@ using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 
-namespace ShootingRangeGame.Code.Editor
+namespace ShootingRangeGameEditor.Tools.Windows
 {
     public class ScenesQuickAccess : EditorWindow
     {

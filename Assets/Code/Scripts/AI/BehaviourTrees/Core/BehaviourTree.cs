@@ -6,6 +6,8 @@
         
         public object Target { get; private set; }
         public BehaviourTree() { }
+
+        public Blackboard Blackboard { get; } = new();
         
         public BehaviourTree(Leaf root)
         {
@@ -29,6 +31,13 @@
             Success,
             Failure,
             Pending,
+        }
+
+        public enum AbandonResponse
+        {
+            WithSuccess,
+            WithFailure,
+            CannotAbandon,
         }
     }
 }

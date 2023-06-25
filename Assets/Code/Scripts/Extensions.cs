@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace ShootingRangeGame
 {
@@ -46,6 +47,13 @@ namespace ShootingRangeGame
                 x = vector.x * cos + vector.y * sin,
                 y = vector.y * cos - vector.x * sin,
             };
+        }
+
+        public static T Iwf<T>(this IList<T> list, int i, T fallback = default) => list.IndexWithFallback(i, fallback);
+        public static T IndexWithFallback<T>(this IList<T> list, int i, T fallback = default)
+        {
+            if (i < 0 || i >= list.Count) return fallback;
+            return list[i];
         }
     }
 }

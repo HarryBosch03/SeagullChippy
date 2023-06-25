@@ -89,7 +89,7 @@ MonoBehaviour:
     acceleration: {x: 0, y: 0, z: 0}
   slackDistance: 0.05
   slingStrength: 0.1
-  spring: 700
+  spring: 400
   damping: 25
   rumbleStrength: 0.1
   tension: 0
