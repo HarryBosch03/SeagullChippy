@@ -14,7 +14,7 @@ namespace ShootingRangeGame.Seagulls
         [SerializeField] private float idleDelay = 0.2f;
         [SerializeField] private float idleOffset = 0.1f;
 
-        private new Seagull seagull;
+        private Bird bird;
         private new Rigidbody rigidbody;
         private float distanceCounter;
         private float idleTimer;
@@ -25,7 +25,7 @@ namespace ShootingRangeGame.Seagulls
         private void Awake()
         {
             rigidbody = GetComponent<Rigidbody>();
-            seagull = GetComponent<Seagull>();
+            bird = GetComponent<Bird>();
             for (var i = 0; i < feet.Length; i++)
             {
                 feet[i] = new Foot(transform, feetVisualContainers[i]);
@@ -34,14 +34,14 @@ namespace ShootingRangeGame.Seagulls
 
         private void FixedUpdate()
         {
-            if (!seagull.Grounded) return;
+            if (!bird.Grounded) return;
             UpdateCounter();
             UpdateFootPositions();
         }
 
         private void LateUpdate()
         {
-            if (seagull.Grounded)
+            if (bird.Grounded)
             {
                 MoveFeet();
             }

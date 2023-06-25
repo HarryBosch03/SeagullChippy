@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace ShootingRangeGame.Seagulls.Leaves
 {
-    public class Wait : Leaf<SeagullBrain>
+    public class Wait : Leaf<BirdBrain>
     {
         private float wanderTime;
         private float timer;

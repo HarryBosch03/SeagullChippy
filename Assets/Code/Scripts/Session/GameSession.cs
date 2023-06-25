@@ -1,3 +1,5 @@
+using System;
+using ShootingRangeGame.AI.BehaviourTrees.Core;
 using ShootingRangeGame.Saves;
 using ShootingRangeGame.Seagulls;
 using TMPro;
@@ -11,38 +13,33 @@ namespace ShootingRangeGame.Session
         [SerializeField] private float roundLength;
         [SerializeField] private bool autoStartRoundOnAwake;
         [SerializeField] private bool endless;
-
-        [Header("Components")]
-        [SerializeField] private TextMeshProUGUI timerReadout;
-        [SerializeField] private TextMeshProUGUI scoreReadout;
-        [SerializeField] private TextMeshProUGUI highScoreReadout;
+        [SerializeField] private int feedSeagullPoints = 1;
+        [SerializeField] private int feedPigeonPoints = -2;
 
         [Header("Audio")]
         [SerializeField] private AudioSource roundStart;
         [SerializeField] private AudioSource roundEnd;
-        
+
         private int highScore;
         private bool roundActive;
         
-        public void OnAwake()
-        {
-            roundStart = GetComponent<AudioSource>();
-            roundEnd = GetComponent<AudioSource>();
-        }
-
         public int Score { get; private set; }
+        public float RoundTimer { get; private set; }
+        public static GameSession Active { get; private set; }
         public static int HighScore
         {
             get => SaveManager.GetOrLoad().highScore;
             set => SaveManager.GetOrLoad().highScore = value;
         }
         
-        public float RoundTimer { get; private set; }
-        public static GameSession Active { get; private set; }
-
+        public void OnAwake()
+        {
+            roundStart = GetComponent<AudioSource>();
+            roundEnd = GetComponent<AudioSource>();
+        }
+        
         private void Start()
         {
-            RefreshUI();
             highScore = HighScore;
             
             if (autoStartRoundOnAwake)
@@ -57,8 +54,6 @@ namespace ShootingRangeGame.Session
             {
                 if (!endless) RoundTimer -= Time.deltaTime;
             }
-
-            RefreshUI();
         }
 
         [ContextMenu("Start Round")]
@@ -67,10 +62,27 @@ namespace ShootingRangeGame.Session
             if (Active) Active.EndRound();
             
             Active = this;
-            RoundTimer = roundLength;
+            RoundTimer = roundLength + 2.0f;
             roundActive = true;
             Score = 0;
             if (roundStart) roundStart.Play();
+
+            BirdBrain.EatEvent += OnEat;
+        }
+
+        private void OnEat(BirdBrain bird)
+        {
+            switch (bird.Bird.Type)
+            {
+                case Bird.BirdType.Seagull:
+                    AwardPoint(feedSeagullPoints);
+                    break;
+                case Bird.BirdType.Pigeon:
+                    AwardPoint(feedPigeonPoints);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
 
         [ContextMenu("End Round")]
@@ -84,17 +96,8 @@ namespace ShootingRangeGame.Session
 
             if (Score > HighScore) HighScore = Score;
             SaveManager.Save();
-        }
-
-        public void RefreshUI()
-        {
-            if (roundActive)
-            {
-                if (timerReadout) timerReadout.text = (int)(RoundTimer / 60) + ":" + (int)(RoundTimer % 60);
-            }
-
-            if (scoreReadout) scoreReadout.text = Score.ToString();
-            if (highScoreReadout) highScoreReadout.text = highScore.ToString();
+            
+            BirdBrain.EatEvent -= OnEat;
         }
 
         public static void AwardPoint(int increment = 1)
