@@ -122,10 +122,10 @@ namespace ShootingRangeGame.Audio
         {
             public string name;
             public AudioClip clip;
-            public float weight;
+            public float weight = 1.0f;
+            public Vector2 volumeRange = Vector2.one;
+            public Vector2 pitchRange = Vector2.one;
             public int lastPlayedIndex;
-            public Vector2 volumeRange;
-            public Vector2 pitchRange;
         }
 
         public enum Mode
