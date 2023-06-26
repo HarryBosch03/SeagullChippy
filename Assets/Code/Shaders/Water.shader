@@ -162,6 +162,7 @@ Shader "Unlit/Water"
                 // modifications of input and surface data to build up water effect.
                 // --- [START WATER EFFECT] ---
 
+                // Depth Effect
                 float2 depthUV = input.screenPos.xy / input.screenPos.w;
                 float sceneDepth = LinearEyeDepth(SampleSceneDepth(depthUV), _ZBufferParams);
                 float waterDepth = LinearEyeDepth(input.depthPosition.z / input.depthPosition.w, _ZBufferParams);
@@ -169,22 +170,28 @@ Shader "Unlit/Water"
                 float rawDepth = (sceneDepth - waterDepth);
                 float depth = rawDepth * -cameraDirection.y;
 
+                // Bands
+                float foamNoise = getHeight(input.uv * 10.0);
+                
                 float height = getHeight(input.uv);
                 depth -= height * 0.1;
-                clip(depth);
+                depth += foamNoise * 0.02;
 
-                float foamNoise = getHeight(input.uv * 10.0);
+                clip(depth);
 
                 float2 bands =
                 {
-                    depth - pow(foamNoise, 2) * 0.4 + 0.02 > _WaterBlending.x,
+                    depth - pow(foamNoise, 2) * 0.4 + 0.01 > _WaterBlending.x,
                     pow(saturate((depth - foamNoise * 0.1) / _WaterBlending.y), 0.5),
                 };
 
-                float4 finalColor = lerp(_ColorA, lerp(_ColorB, _ColorC, bands.y), bands.x);
-                surfaceData.albedo = finalColor.rgb;
+                // Normals
                 surfaceData.normalTS = normalFromBump(input.uv, _NormalScale);
                 surfaceData.normalTS = normalize(lerp(float3(0.0, 0.0, 1.0), surfaceData.normalTS, bands.y / 15.0));
+                
+                // Mixing
+                float4 finalColor = lerp(_ColorA, lerp(_ColorB, _ColorC, bands.y), bands.x);
+                surfaceData.albedo = finalColor.rgb;
 
                 // --- [END WATER EFFECT] ---
 
@@ -201,7 +208,22 @@ Shader "Unlit/Water"
                 half4 color = UniversalFragmentPBR(inputData, surfaceData);
 
                 color.rgb = MixFog(color.rgb, inputData.fogCoord);
-                color.a = lerp(1.0, saturate(1.0 - saturate(exp(-pow(depth * _Density, 2.0))) + 0.2), bands.x);
+
+                // IOR
+
+                float3 normals = normalize(input.normalWS);
+                float3 tangent = normalize(input.tangentWS);
+                float3 bitangent = normalize(cross(normals, tangent));
+                
+                float3x3 tbn = float3x3(tangent.xyz, bitangent.xyz, normals.xyz);
+                normals = TransformTangentToWorld(surfaceData.normalTS, tbn);
+
+                float3 viewDir = normalize(_WorldSpaceCameraPos - input.positionWS);
+                
+                float d = dot(normals, viewDir);
+                float ior = d * d;
+                
+                color.a = lerp(1.0, saturate(1.0 - saturate(exp(-pow(depth * _Density, 2.0))) + 0.2), ior);
                 
                 return color;
             }

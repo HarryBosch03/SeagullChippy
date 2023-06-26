@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace ShootingRangeGame.Seagulls.Leaves
 {
-    public class CheckForWater : Leaf<SeagullBrain>
+    public class CheckForWater : Leaf<BirdBrain>
     {
         private const float WaterLevel = 0.0f;
 
@@ -13,7 +13,7 @@ namespace ShootingRangeGame.Seagulls.Leaves
 
         protected override BehaviourTree.Result OnExecute(BehaviourTree tree)
         {
-            var seagull = Target.Seagull;
+            var seagull = Target.Bird;
             if (timer > 0.0f)
             {
                 seagull.MoveVector = Vector3.back * 3.0f;
@@ -28,6 +28,7 @@ namespace ShootingRangeGame.Seagulls.Leaves
                 timer = 1.0f + Random.value;
                 seagull.MoveVector = Vector3.back * 3.0f;
                 seagull.LookDirection = Vector3.back;
+                seagull.Wet = 1.0f + Random.value * 2.0f;
                 return BehaviourTree.Result.Pending;
             }
 
