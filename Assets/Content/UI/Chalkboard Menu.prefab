@@ -761,7 +761,7 @@ GameObject:
   - component: {fileID: 6537046982182631176}
   - component: {fileID: 3447839623252288901}
   m_Layer: 0
-  m_Name: Canvas
+  m_Name: Chalkboard Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
