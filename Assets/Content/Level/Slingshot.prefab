@@ -108,13 +108,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dryFireClip:
-    list: []
-    mode: 0
+    list:
+    - {fileID: 8300000, guid: a74dc6f9fa95fe349be5f0ed0ec5f2c2, type: 3}
+    - {fileID: 8300000, guid: d263c195068e6be4599f271635dab955, type: 3}
+    - {fileID: 8300000, guid: dd8d7f7a16972be4e9275164ba15ac49, type: 3}
+    mode: 1
     volumeRange: {x: 1, y: 1}
     pitchRange: {x: 1, y: 1}
   fireClip:
-    list: []
-    mode: 0
+    list:
+    - {fileID: 8300000, guid: 96aba350d5ac5664b8b583b023555332, type: 3}
+    - {fileID: 8300000, guid: db609e3e5884ee14183c709d343328fb, type: 3}
+    - {fileID: 8300000, guid: 8e3fc210ac53a5e4e91eccb2a94ee18c, type: 3}
+    - {fileID: 8300000, guid: 824181213ffa2244db9bada3ddece49d, type: 3}
+    mode: 1
     volumeRange: {x: 1, y: 1}
     pitchRange: {x: 1, y: 1}
   pickupClip:
@@ -122,12 +129,15 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 304e7c59186364b49bb621b59400e7fe, type: 3}
     - {fileID: 8300000, guid: 55f22d3b8710ecc4591eda1e827c0ec1, type: 3}
     - {fileID: 8300000, guid: c3b3b263f55b59a41b604f052753f84b, type: 3}
-    mode: 0
+    mode: 1
     volumeRange: {x: 1, y: 1}
     pitchRange: {x: 1, y: 1}
   dropClip:
-    list: []
-    mode: 0
+    list:
+    - {fileID: 8300000, guid: fe51d3c989dddc145b31a1369577b6dd, type: 3}
+    - {fileID: 8300000, guid: e6b739e5d53500f4e9f7bc7999077a5a, type: 3}
+    - {fileID: 8300000, guid: 96d462878f8a314409d3731b6f8e9a35, type: 3}
+    mode: 1
     volumeRange: {x: 1, y: 1}
     pitchRange: {x: 1, y: 1}
 --- !u!1001 &7785395386795001272

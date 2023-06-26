@@ -1389,6 +1389,7 @@ GameObject:
   m_Component:
   - component: {fileID: 553981837}
   - component: {fileID: 553981838}
+  - component: {fileID: 553981839}
   m_Layer: 0
   m_Name: Goose Spawner
   m_TagString: Untagged
@@ -1432,6 +1433,34 @@ MonoBehaviour:
   minRange: 5
   maxRange: 20
   pigeonSeagullRatio: 0.5
+--- !u!114 &553981839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 553981836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebd56c69bfb14c64c8c1cfb99c945f37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tracks: 2
+  delayRange: {x: 1, y: 12}
+  clipGroup:
+    list:
+    - {fileID: 8300000, guid: c72c4e7f12f0b6040b0e225947789f8b, type: 3}
+    - {fileID: 8300000, guid: 63b6095fe3dae83478e8b9f581de7a70, type: 3}
+    - {fileID: 8300000, guid: 2fb15278c371a084ba6b3da1608f3953, type: 3}
+    - {fileID: 8300000, guid: 43ec850a2096a1c4aa0ffd57dede1be6, type: 3}
+    - {fileID: 8300000, guid: dd833b13692d93e4eb1e3307cc58f450, type: 3}
+    - {fileID: 8300000, guid: 7c69b122b1ad909458941574f0ec2e02, type: 3}
+    - {fileID: 8300000, guid: d0be9bab552848d4880ef30667d92ed2, type: 3}
+    - {fileID: 8300000, guid: f03741194efda8640a88f7f6b93db631, type: 3}
+    - {fileID: 8300000, guid: 75551b0db6e633847b3af8035731084e, type: 3}
+    mode: 1
+    volumeRange: {x: 1, y: 1}
+    pitchRange: {x: 1, y: 1}
 --- !u!1 &591951655
 GameObject:
   m_ObjectHideFlags: 0
@@ -1467,12 +1496,14 @@ MonoBehaviour:
   feedSeagullPoints: 1
   feedPigeonPoints: -2
   roundStartAudio:
-    list: []
+    list:
+    - {fileID: 8300000, guid: 79be6d7edd8c84c48b6e97f0c949ac99, type: 3}
     mode: 0
     volumeRange: {x: 1, y: 1}
     pitchRange: {x: 1, y: 1}
   roundEndAudio:
-    list: []
+    list:
+    - {fileID: 8300000, guid: 34fb9bf48d630f04e8eea897fab0fb20, type: 3}
     mode: 0
     volumeRange: {x: 1, y: 1}
     pitchRange: {x: 1, y: 1}
