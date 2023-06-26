@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20dc6c0c281842a88e09f836d04d03c0, type: 3}
   m_Name: Sway Profile
   m_EditorClassIdentifier: 
-  scale: {x: -6, y: 0, z: 0}
+  scale: {x: -3, y: 0, z: 0}
   skew: {x: 0, y: 0, z: 0}
-  frequency: 0.5
-  octaves: 3
+  frequency: 0.25
+  octaves: 2
   persistence: 0.5
   lacunarity: 2
   variance: 0.5
