@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
@@ -10,15 +9,16 @@ namespace ShootingRangeGame.Audio
     [Serializable]
     public class AudioClipGroup
     {
-        [SerializeField] private List<AudioClipEntry> list;
+        [SerializeField] private List<AudioClip> list;
         [SerializeField] private Mode mode;
-        [SerializeField] private int staleCount;
+        [SerializeField] private Vector2 volumeRange = Vector2.one;
+        [SerializeField] private Vector2 pitchRange = Vector2.one;
 
         private int index;
 
         private static AudioListener listener;
 
-        public void Play(Action<AudioClipEntry> callback)
+        public void Play(Action<AudioClip> callback)
         {
             switch (mode)
             {
@@ -27,10 +27,10 @@ namespace ShootingRangeGame.Audio
                     callback(list[0]);
                     break;
                 case Mode.Sequential:
-                    PlaySequential(GetPool(), callback);
+                    PlaySequential(callback);
                     break;
                 case Mode.Random:
-                    PlayRandom(GetPool(), callback);
+                    PlayRandom(callback);
                     break;
             }
 
@@ -41,23 +41,18 @@ namespace ShootingRangeGame.Audio
         {
             float random(Vector2 range) => Random.Range(range.x, range.y);
 
-            source.volume = random(clipEntry.volumeRange);
-            source.pitch = random(clipEntry.pitchRange);
-            source.PlayOneShot(clipEntry.clip);
+            source.volume = random(volumeRange);
+            source.pitch = random(pitchRange);
+            source.PlayOneShot(clipEntry);
         });
 
         public void Play(Vector3 position) => Play(clipEntry =>
         {
-            float random(Vector2 range) => Random.Range(range.x, range.y);
-
             var source = new GameObject("[TEMP] Audio Source").AddComponent<AudioSource>();
             source.transform.position = position;
+            Object.Destroy(source.gameObject, clipEntry.length + 0.5f);
 
-            source.volume = random(clipEntry.volumeRange);
-            source.pitch = random(clipEntry.pitchRange);
-            source.PlayOneShot(clipEntry.clip);
-
-            Object.Destroy(source.gameObject, clipEntry.clip.length + 0.5f);
+            Play(source);
         });
 
         public void Play(AudioSource source, Vector3 position)
@@ -77,55 +72,14 @@ namespace ShootingRangeGame.Audio
             Play(listener.transform.position);
         }
 
-        public List<AudioClipEntry> GetPool()
+        private void PlaySequential(Action<AudioClip> callback)
         {
-            var pool = new List<AudioClipEntry>();
-            foreach (var element in list)
-            {
-                if (index - element.lastPlayedIndex <= staleCount) continue;
-                pool.Add(element);
-            }
-
-            return pool;
+            callback(list[index++ % list.Count]);
         }
 
-        private void PlaySequential(List<AudioClipEntry> pool, Action<AudioClipEntry> callback)
+        private void PlayRandom(Action<AudioClip> callback)
         {
-            callback(pool[index % pool.Count]);
-        }
-
-        private void PlayRandom(List<AudioClipEntry> pool, Action<AudioClipEntry> callback)
-        {
-            var totalWeight = 0.0f;
-            foreach (var element in pool)
-            {
-                totalWeight += element.weight;
-            }
-
-            var weight = Random.value * totalWeight;
-            foreach (var element in pool)
-            {
-                if (element.weight < weight)
-                {
-                    weight -= element.weight;
-                    continue;
-                }
-
-                callback(element);
-                element.lastPlayedIndex = index;
-                return;
-            }
-        }
-
-        [Serializable]
-        public class AudioClipEntry
-        {
-            public string name;
-            public AudioClip clip;
-            public float weight = 1.0f;
-            public Vector2 volumeRange = Vector2.one;
-            public Vector2 pitchRange = Vector2.one;
-            public int lastPlayedIndex;
+            callback(list[Random.Range(0, list.Count)]);
         }
 
         public enum Mode
