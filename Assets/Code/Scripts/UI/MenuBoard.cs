@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using ShootingRangeGame.Session;
 using TMPro;
 using UnityEngine;
 
@@ -11,16 +12,16 @@ namespace ShootingRangeGame.UI
     {
         public const int MainMenu = 0;
         public const int Countdown = 1;
-        public const int GameSession = 2;
+        public const int Session = 2;
+        public const int PostGame = 3;
 
         [SerializeField] private AnimationCurve animationCurve;
         [SerializeField] private float transitionDuration;
         [SerializeField] private float transitionDistance;
 
-        [Space]
-        [SerializeField] private TMP_Text countdownText;
-
         private CanvasGroup[] groups;
+        private MenuActions menuActions;
+        private TMP_Text countdownText;
 
         private int targetIndex = 0;
         private int currentIndex = 0;
@@ -41,7 +42,56 @@ namespace ShootingRangeGame.UI
                 group.blocksRaycasts = false;
             }
 
+            countdownText = groups[Countdown].GetComponentInChildren<TMP_Text>(true); 
+
             TransitionTo(0);
+        }
+
+        private void OnEnable()
+        {
+            MenuActions.StartCountdownEvent += OnStartCountdown;
+            MenuActions.CountdownEvent += OnCountdown;
+            MenuActions.EndCountdownEvent += OnEndCountdown;
+
+            GameSession.EndSessionEvent += OnSessionEnd;
+        }
+
+        private void OnDisable()
+        {
+            MenuActions.StartCountdownEvent -= OnStartCountdown;
+            MenuActions.CountdownEvent -= OnCountdown;
+            MenuActions.EndCountdownEvent -= OnEndCountdown;
+            
+            GameSession.EndSessionEvent -= OnSessionEnd;
+        }
+
+        private void OnSessionEnd()
+        {
+            TransitionTo(PostGame);
+        }
+
+        private void OnStartCountdown(float timer)
+        {
+            TransitionTo(Countdown);
+            countdownText.text = ((int)timer).ToString();
+        }
+
+        private void OnCountdown(float timer)
+        {
+            var i = (int)timer;
+            countdownText.text = (i + 1).ToString();
+        }
+        
+        private void OnEndCountdown()
+        {
+            IEnumerator routine()
+            {
+                countdownText.text = "Go!";
+                yield return new WaitForSeconds(1.0f);
+                TransitionTo(Session);
+            }
+            
+            StartCoroutine(routine());
         }
 
         public void TransitionTo(int targetIndex)

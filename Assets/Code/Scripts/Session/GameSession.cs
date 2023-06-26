@@ -1,5 +1,6 @@
 using System;
 using ShootingRangeGame.AI.BehaviourTrees.Core;
+using ShootingRangeGame.Audio;
 using ShootingRangeGame.Saves;
 using ShootingRangeGame.Seagulls;
 using TMPro;
@@ -17,10 +18,9 @@ namespace ShootingRangeGame.Session
         [SerializeField] private int feedPigeonPoints = -2;
 
         [Header("Audio")]
-        [SerializeField] private AudioSource roundStart;
-        [SerializeField] private AudioSource roundEnd;
+        [SerializeField] private AudioClipGroup roundStartAudio;
+        [SerializeField] private AudioClipGroup roundEndAudio;
 
-        private int highScore;
         private bool roundActive;
         
         public int Score { get; private set; }
@@ -31,17 +31,12 @@ namespace ShootingRangeGame.Session
             get => SaveManager.GetOrLoad().highScore;
             set => SaveManager.GetOrLoad().highScore = value;
         }
-        
-        public void OnAwake()
-        {
-            roundStart = GetComponent<AudioSource>();
-            roundEnd = GetComponent<AudioSource>();
-        }
+
+        public static event Action StartSessionEvent;
+        public static event Action EndSessionEvent;
         
         private void Start()
         {
-            highScore = HighScore;
-            
             if (autoStartRoundOnAwake)
             {
                 StartRound();
@@ -53,6 +48,7 @@ namespace ShootingRangeGame.Session
             if (roundActive)
             {
                 if (!endless) RoundTimer -= Time.deltaTime;
+                if (RoundTimer <= 0.0f) EndRound();
             }
         }
 
@@ -65,7 +61,8 @@ namespace ShootingRangeGame.Session
             RoundTimer = roundLength + 2.0f;
             roundActive = true;
             Score = 0;
-            if (roundStart) roundStart.Play();
+            roundStartAudio.Play();
+            StartSessionEvent?.Invoke();
 
             BirdBrain.EatEvent += OnEat;
         }
@@ -88,15 +85,16 @@ namespace ShootingRangeGame.Session
         [ContextMenu("End Round")]
         public void EndRound()
         {
-            Active = null;
+            if (!roundActive) return;
             
             roundActive = false;
             RoundTimer = 0;
-            if (roundEnd) roundEnd.Play();
+            roundEndAudio.Play();
 
             if (Score > HighScore) HighScore = Score;
             SaveManager.Save();
-            
+            EndSessionEvent?.Invoke();
+
             BirdBrain.EatEvent -= OnEat;
         }
 

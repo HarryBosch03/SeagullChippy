@@ -11,7 +11,9 @@ namespace ShootingRangeGame.UI
     [DisallowMultipleComponent]
     public sealed class MenuActions : MonoBehaviour
     {
+        public static event Action<float> StartCountdownEvent;
         public static event Action<float> CountdownEvent;
+        public static event Action EndCountdownEvent;
         
         public void StartSession()
         {
@@ -21,15 +23,19 @@ namespace ShootingRangeGame.UI
 
         private IEnumerator StartRoutine(GameSession session)
         {
-            var timer = 3.5f;
+            var timer = 3.0f;
+            StartCountdownEvent?.Invoke(timer);
+            yield return new WaitForSeconds(0.5f);
+            
             while (timer > 0.0f)
             {
-                CountdownEvent(timer);
+                CountdownEvent?.Invoke(timer);
                 timer -= Time.deltaTime;
                 yield return null;
             }
 
             session.StartRound();
+            EndCountdownEvent?.Invoke();
         }
 
         public void Quit()
