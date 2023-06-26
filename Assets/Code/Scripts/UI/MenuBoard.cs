@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using ShootingRangeGame.Session;
 using TMPro;
 using UnityEngine;
 
@@ -11,7 +12,8 @@ namespace ShootingRangeGame.UI
     {
         public const int MainMenu = 0;
         public const int Countdown = 1;
-        public const int GameSession = 2;
+        public const int Session = 2;
+        public const int PostGame = 3;
 
         [SerializeField] private AnimationCurve animationCurve;
         [SerializeField] private float transitionDuration;
@@ -50,6 +52,8 @@ namespace ShootingRangeGame.UI
             MenuActions.StartCountdownEvent += OnStartCountdown;
             MenuActions.CountdownEvent += OnCountdown;
             MenuActions.EndCountdownEvent += OnEndCountdown;
+
+            GameSession.EndSessionEvent += OnSessionEnd;
         }
 
         private void OnDisable()
@@ -57,6 +61,13 @@ namespace ShootingRangeGame.UI
             MenuActions.StartCountdownEvent -= OnStartCountdown;
             MenuActions.CountdownEvent -= OnCountdown;
             MenuActions.EndCountdownEvent -= OnEndCountdown;
+            
+            GameSession.EndSessionEvent -= OnSessionEnd;
+        }
+
+        private void OnSessionEnd()
+        {
+            TransitionTo(PostGame);
         }
 
         private void OnStartCountdown(float timer)
@@ -77,7 +88,7 @@ namespace ShootingRangeGame.UI
             {
                 countdownText.text = "Go!";
                 yield return new WaitForSeconds(1.0f);
-                TransitionTo(GameSession);
+                TransitionTo(Session);
             }
             
             StartCoroutine(routine());

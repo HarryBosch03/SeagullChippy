@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEditorInternal;
 using UnityEngine;
 using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
@@ -13,6 +14,7 @@ namespace ShootingRangeGame.Audio
         [SerializeField] private Mode mode;
         [SerializeField] private Vector2 volumeRange = Vector2.one;
         [SerializeField] private Vector2 pitchRange = Vector2.one;
+        [SerializeField] private AudioSource sourcePrefab;
 
         private int index;
 
@@ -20,6 +22,8 @@ namespace ShootingRangeGame.Audio
 
         public void Play(Action<AudioClip> callback)
         {
+            if (list.Count == 0) return;
+
             switch (mode)
             {
                 default:
@@ -48,7 +52,19 @@ namespace ShootingRangeGame.Audio
 
         public void Play(Vector3 position) => Play(clipEntry =>
         {
-            var source = new GameObject("[TEMP] Audio Source").AddComponent<AudioSource>();
+            AudioSource source;
+            if (sourcePrefab)
+            {
+                source = Object.Instantiate(sourcePrefab);
+            }
+            else
+            {
+                source = new GameObject().AddComponent<AudioSource>();
+                source.spatialize = true;
+                source.spatialBlend = 1.0f;
+            }
+
+            source.gameObject.name = "[TEMP] Audio Source";
             source.transform.position = position;
             Object.Destroy(source.gameObject, clipEntry.length + 0.5f);
 

@@ -15,16 +15,20 @@ namespace ShootingRangeGame.Audio
         private void Awake()
         {
             timers = new float[tracks];
+            for (var i = 0; i < timers.Length; i++)
+            {
+                ref var timer = ref timers[i];
+                timer = Time.time + Random.Range(delayRange.x, delayRange.y);
+            }
         }
 
         private void Update()
         {
             for (var i = 0; i < timers.Length; i++)
             {
-                ref var timer = ref timers[i];
-                if (Time.time > timer) continue;
+                if (Time.time < timers[i]) continue;
 
-                timer = Time.time + Random.Range(delayRange.x, delayRange.y);
+                timers[i] = Time.time + Random.Range(delayRange.x, delayRange.y);
                 PlaySound();
             }
         }

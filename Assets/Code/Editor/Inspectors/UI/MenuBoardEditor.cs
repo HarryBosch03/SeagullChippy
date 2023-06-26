@@ -37,11 +37,13 @@ namespace ShootingRangeGameEditor.Inspectors.UI
 
         public void SwitchMenu(Func<int, bool> predicate)
         {
-            var groups = FindObjectsOfType<CanvasGroup>();
+            var groups = Target.GetComponentsInChildren<CanvasGroup>(true);
             for (var i = 0; i < groups.Length; i++)
             {
                 var group = groups[i];
                 var s = predicate(i);
+                
+                group.gameObject.SetActive(true);
                 
                 group.alpha = s ? 1.0f : 0.0f;
                 group.interactable = s;
