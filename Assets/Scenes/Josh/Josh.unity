@@ -1445,8 +1445,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebd56c69bfb14c64c8c1cfb99c945f37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tracks: 0
-  delayRange: {x: 5, y: 15}
+  tracks: 2
+  delayRange: {x: 7, y: 25}
   clipGroup:
     list:
     - {fileID: 8300000, guid: c72c4e7f12f0b6040b0e225947789f8b, type: 3}
@@ -2751,7 +2751,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-2464
+  m_Name: pb_Mesh-2486
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3340,7 +3340,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-2492
+  m_Name: pb_Mesh-2514
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3504,7 +3504,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-2516
+  m_Name: pb_Mesh-2538
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4325,7 +4325,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-2432
+  m_Name: pb_Mesh-2454
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4483,6 +4483,29 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1921645649 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5241496312241520098, guid: ba4230bf2b6dc364d91b56b999b81f86, type: 3}
+  m_PrefabInstance: {fileID: 4935066620301775965}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1921645651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1921645649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 388ddc2edf3844d1b3e2544d73a882ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audio:
+    list:
+    - {fileID: 8300000, guid: 35928866a11eea24ba79b0623465e712, type: 3}
+    mode: 1
+    volumeRange: {x: 1, y: 1}
+    pitchRange: {x: 1, y: 1}
 --- !u!43 &1980411909
 Mesh:
   m_ObjectHideFlags: 0
@@ -5898,6 +5921,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 209948229}
     m_Modifications:
+    - target: {fileID: 503770889, guid: ba4230bf2b6dc364d91b56b999b81f86, type: 3}
+      propertyPath: splashAudio.mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 503770889, guid: ba4230bf2b6dc364d91b56b999b81f86, type: 3}
+      propertyPath: splashAudio.list.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 503770889, guid: ba4230bf2b6dc364d91b56b999b81f86, type: 3}
+      propertyPath: splashAudio.list.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 490ef8da9730f95468069d9fbcf8a833, type: 3}
+    - target: {fileID: 503770889, guid: ba4230bf2b6dc364d91b56b999b81f86, type: 3}
+      propertyPath: splashAudio.list.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 5ba3c4594ef0bd147b74b168246e5b3f, type: 3}
+    - target: {fileID: 503770889, guid: ba4230bf2b6dc364d91b56b999b81f86, type: 3}
+      propertyPath: splashAudio.list.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: c8d90ca0af3f29f42bdcbdf534f67cb1, type: 3}
+    - target: {fileID: 503770889, guid: ba4230bf2b6dc364d91b56b999b81f86, type: 3}
+      propertyPath: splashAudio.list.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: dc63fb8b7c3a89d40b8c9afa72e3b747, type: 3}
     - target: {fileID: 4935066619716268141, guid: ba4230bf2b6dc364d91b56b999b81f86, type: 3}
       propertyPath: m_Mesh
       value: 
