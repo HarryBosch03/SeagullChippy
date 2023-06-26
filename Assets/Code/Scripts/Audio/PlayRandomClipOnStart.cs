@@ -8,7 +8,8 @@ namespace ShootingRangeGame.Audio
 
         private void Start()
         {
-            clipGroup.PlayThroughAudioSourceOrAtPointIfAudioSourceDoesNotExist(this);
+            var source = GetComponentInChildren<AudioSource>();
+            clipGroup.Play(source, transform.position);
         }
     }
 }

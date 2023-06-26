@@ -1,6 +1,7 @@
 ﻿using HandyVR.Bindables;
 using HandyVR.Bindables.Pickups;
 using HandyVR.Interfaces;
+using ShootingRangeGame.Audio;
 using UnityEngine;
 
 namespace ShootingRangeGame.Pickups
@@ -8,11 +9,12 @@ namespace ShootingRangeGame.Pickups
     [RequireComponent(typeof(Slingshot))]
     public class SlingshotFX : MonoBehaviour
     {
-        [SerializeField] private AudioClip dryFireClip;
-        [SerializeField] private AudioClip fireClip;
-        [SerializeField] private AudioClip pickupClip;
-        [SerializeField] private AudioClip dropClip;
+        [SerializeField] private AudioClipGroup dryFireClip;
+        [SerializeField] private AudioClipGroup fireClip;
+        [SerializeField] private AudioClipGroup pickupClip;
+        [SerializeField] private AudioClipGroup dropClip;
 
+        private AudioSource source;
         private Slingshot slingshot;
         private VRPickup pickup;
 
@@ -20,6 +22,7 @@ namespace ShootingRangeGame.Pickups
         {
             slingshot = GetComponent<Slingshot>();
             pickup = GetComponent<VRPickup>();
+            source = GetComponentInChildren<AudioSource>();
         }
 
         private void OnEnable()
@@ -40,17 +43,18 @@ namespace ShootingRangeGame.Pickups
 
         private void OnBind(VRBinding newBinding)
         {
-            AudioSource.PlayClipAtPoint(pickupClip, transform.position);
+            pickupClip.Play(source, transform.position);
         }
 
         private void OnUnbind(VRBinding oldBinding)
         {
-            AudioSource.PlayClipAtPoint(dropClip, transform.position);
+            dropClip.Play(source, transform.position);
         }
 
         private void OnFire(IVRBindable bindable)
         {
-            AudioSource.PlayClipAtPoint(IVRBindable.Valid(bindable) ? fireClip : dryFireClip, transform.position);
+            var clip = IVRBindable.Valid(bindable) ? fireClip : dryFireClip;
+            clip.Play(source, transform.position);
         }
     }
 }

@@ -594,6 +594,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   transitionDuration: 0.2
   transitionDistance: 300
+  countdownText: {fileID: 6535109328758867155}
 --- !u!114 &3447839623252288901
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -606,7 +607,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c1c62ed9b1381248931ddac79d2ef76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  countdownText: {fileID: 6535109328758867155}
 --- !u!1 &8082694261020212939
 GameObject:
   m_ObjectHideFlags: 0

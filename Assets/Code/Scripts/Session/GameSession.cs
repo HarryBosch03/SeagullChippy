@@ -1,5 +1,6 @@
 using System;
 using ShootingRangeGame.AI.BehaviourTrees.Core;
+using ShootingRangeGame.Audio;
 using ShootingRangeGame.Saves;
 using ShootingRangeGame.Seagulls;
 using TMPro;
@@ -17,8 +18,8 @@ namespace ShootingRangeGame.Session
         [SerializeField] private int feedPigeonPoints = -2;
 
         [Header("Audio")]
-        [SerializeField] private AudioSource roundStart;
-        [SerializeField] private AudioSource roundEnd;
+        [SerializeField] private AudioClipGroup roundStartAudio;
+        [SerializeField] private AudioClipGroup roundEndAudio;
 
         private int highScore;
         private bool roundActive;
@@ -30,12 +31,6 @@ namespace ShootingRangeGame.Session
         {
             get => SaveManager.GetOrLoad().highScore;
             set => SaveManager.GetOrLoad().highScore = value;
-        }
-        
-        public void OnAwake()
-        {
-            roundStart = GetComponent<AudioSource>();
-            roundEnd = GetComponent<AudioSource>();
         }
         
         private void Start()
@@ -65,7 +60,7 @@ namespace ShootingRangeGame.Session
             RoundTimer = roundLength + 2.0f;
             roundActive = true;
             Score = 0;
-            if (roundStart) roundStart.Play();
+            roundStartAudio.Play();
 
             BirdBrain.EatEvent += OnEat;
         }
@@ -92,7 +87,7 @@ namespace ShootingRangeGame.Session
             
             roundActive = false;
             RoundTimer = 0;
-            if (roundEnd) roundEnd.Play();
+            roundEndAudio.Play();
 
             if (Score > HighScore) HighScore = Score;
             SaveManager.Save();
