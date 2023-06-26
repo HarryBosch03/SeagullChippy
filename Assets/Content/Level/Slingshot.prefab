@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1267273804197861477}
   - component: {fileID: 6976202612968063578}
   - component: {fileID: 1267273804197861478}
+  - component: {fileID: 3530655015165395888}
   m_Layer: 0
   m_Name: Slingshot
   m_TagString: Untagged
