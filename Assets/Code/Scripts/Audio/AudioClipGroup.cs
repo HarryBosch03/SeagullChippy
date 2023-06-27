@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEditorInternal;
 using UnityEngine;
+using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
 namespace ShootingRangeGame.Audio
@@ -8,88 +10,97 @@ namespace ShootingRangeGame.Audio
     [Serializable]
     public class AudioClipGroup
     {
-        [SerializeField] private List<AudioClipEntry> list;
+        [SerializeField] private List<AudioClip> list;
         [SerializeField] private Mode mode;
-        [SerializeField] private int staleCount;
+        [SerializeField] private Vector2 volumeRange = Vector2.one;
+        [SerializeField] private Vector2 pitchRange = Vector2.one;
+        [SerializeField] private AudioSource sourcePrefab;
 
         private int index;
 
+        private static AudioListener listener;
+
         public void Play(Action<AudioClip> callback)
         {
+            if (list.Count == 0) return;
+
             switch (mode)
             {
-                case Mode.Sequential:
-                    PlaySequential(GetPool(), callback);
-                    break;
                 default:
+                case Mode.First:
+                    callback(list[0]);
+                    break;
+                case Mode.Sequential:
+                    PlaySequential(callback);
+                    break;
                 case Mode.Random:
-                    PlayRandom(GetPool(), callback);
+                    PlayRandom(callback);
                     break;
             }
+
             index++;
         }
 
-        public List<AudioClipEntry> GetPool()
+        public void Play(AudioSource source) => Play(clipEntry =>
         {
-            var pool = new List<AudioClipEntry>();
-            foreach (var element in list)
+            float random(Vector2 range) => Random.Range(range.x, range.y);
+
+            source.volume = random(volumeRange);
+            source.pitch = random(pitchRange);
+            source.PlayOneShot(clipEntry);
+        });
+
+        public void Play(Vector3 position) => Play(clipEntry =>
+        {
+            AudioSource source;
+            if (sourcePrefab)
             {
-                if (index - element.lastPlayedIndex <= staleCount) continue;
-                pool.Add(element);
+                source = Object.Instantiate(sourcePrefab);
             }
-            return pool;
-        }
-        
-        private void PlaySequential(List<AudioClipEntry> pool, Action<AudioClip> callback)
-        {
-            callback(pool[index % pool.Count].clip);
-        }
-        
-        private void PlayRandom(List<AudioClipEntry> pool, Action<AudioClip> callback)
-        {
-            var totalWeight = 0.0f;
-            foreach (var element in pool)
+            else
             {
-                totalWeight += element.weight;
+                source = new GameObject().AddComponent<AudioSource>();
+                source.spatialize = true;
+                source.spatialBlend = 1.0f;
             }
 
-            var weight = Random.value * totalWeight;
-            foreach (var element in pool)
+            source.gameObject.name = "[TEMP] Audio Source";
+            source.transform.position = position;
+            Object.Destroy(source.gameObject, clipEntry.length + 0.5f);
+
+            Play(source);
+        });
+
+        public void Play(AudioSource source, Vector3 position)
+        {
+            if (source) Play(source);
+            else Play(position);
+        }
+
+        public void Play()
+        {
+            if (!listener)
             {
-                if (element.weight < weight)
-                {
-                    weight -= element.weight;
-                    continue;
-                }
-
-                callback(element.clip);
-                element.lastPlayedIndex = index;
-                return;
+                listener = Object.FindObjectOfType<AudioListener>();
+                if (!listener) return;
             }
+
+            Play(listener.transform.position);
         }
 
-        public void PlayThroughAudioSourceOrAtPointIfAudioSourceDoesNotExist(MonoBehaviour caller)
+        private void PlaySequential(Action<AudioClip> callback)
         {
-            Action<AudioClip> callback;
-            var audioSource = caller.GetComponentInChildren<AudioSource>();
-            
-            if (audioSource) callback = audioSource.PlayOneShot;
-            else callback = clip => AudioSource.PlayClipAtPoint(clip, caller.transform.position);
-            
-            Play(callback);
+            callback(list[index++ % list.Count]);
         }
 
-        [Serializable]
-        public class AudioClipEntry
+        private void PlayRandom(Action<AudioClip> callback)
         {
-            public string name;
-            public AudioClip clip;
-            public float weight;
-            public int lastPlayedIndex;
+            callback(list[Random.Range(0, list.Count)]);
         }
 
         public enum Mode
         {
+            First,
             Random,
             Sequential,
         }
