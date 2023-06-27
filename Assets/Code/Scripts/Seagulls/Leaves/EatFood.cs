@@ -75,7 +75,8 @@ namespace ShootingRangeGame.Seagulls.Leaves
             foreach (var query in queryList)
             {
                 food = query.attachedRigidbody ? query.attachedRigidbody.gameObject : query.gameObject;
-
+                if (food.transform.position.y < CheckForWater.WaterLevel) continue;
+                
                 if (!Taggable.HasTag(query.GetComponentInParent<Taggable>(), foodTag)) continue;
 
                 Tree.Blackboard.Set("food", food);

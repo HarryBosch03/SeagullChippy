@@ -7,8 +7,8 @@ namespace ShootingRangeGame.Seagulls.Leaves
     public class Fly : Leaf<BirdBrain>
     {
         private float launchForce = 2.0f;
-        private float minFlyForce = 5.0f;
-        private float maxFlyForce = 12.0f;
+        private float minFlyForce = 10.0f;
+        private float maxFlyForce = 16.0f;
         private float flySpeed = 2.0f;
 
         private float targetHeight;
@@ -19,7 +19,7 @@ namespace ShootingRangeGame.Seagulls.Leaves
         protected override void OnStart(BehaviourTree tree)
         {
             Target.ShiftLookDirection(10.0f);
-            targetHeight = Target.Bird.transform.position.y + Random.value * 4.0f + 1.0f;
+            targetHeight = Target.Bird.transform.position.y + Random.value * 2.0f + 1.0f;
             Target.Bird.rigidbody.AddForce(Vector3.up * launchForce, ForceMode.VelocityChange);
             state = 0;
         }

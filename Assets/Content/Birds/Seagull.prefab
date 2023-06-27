@@ -5482,6 +5482,7 @@ GameObject:
   - component: {fileID: 5302272788397686604}
   - component: {fileID: 2637222119140301595}
   - component: {fileID: 1263704376721308192}
+  - component: {fileID: 5109349790003139924}
   m_Layer: 0
   m_Name: Seagull
   m_TagString: Untagged
@@ -5535,6 +5536,7 @@ MonoBehaviour:
   brain:
     defaultAnimation: Idle
     maxWanderDistance: 20
+  birdType: 0
   moveSpeed: 1
   floatiness: 8
   accelerationTime: 0.1
@@ -5600,6 +5602,25 @@ MonoBehaviour:
   overstep: 0.3
   idleDelay: 0.05
   idleOffset: 0.1
+--- !u!114 &5109349790003139924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302272788397686641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb5bec17caa6eb0479e16e78b83f66a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bindingType: {fileID: 0}
+  detachedBindingAcceleration: 400
+  pickupRange: 0.1
+  boundPoses: []
+  defaultPose: 0
+  socketPose: 0
+  handCanUseSocketPose: 0
 --- !u!1 &6113976808340411047
 GameObject:
   m_ObjectHideFlags: 0

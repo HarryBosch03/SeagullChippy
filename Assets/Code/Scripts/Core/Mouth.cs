@@ -1,11 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using HandyVR.Bindables;
 using HandyVR.Bindables.Pickups;
+using HandyVR.Player;
+using ShootingRangeGame.Pickups;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace ShootingRangeGame
+namespace ShootingRangeGame.Core
 {
     public class Mouth : MonoBehaviour
     {
@@ -14,6 +17,13 @@ namespace ShootingRangeGame
         [SerializeField] private GameObject eatFX;
         [SerializeField] private float eatFXLifetime;
         [SerializeField] private AudioClip[] clips;
+
+        private VRHand[] hands;
+
+        private void Awake()
+        {
+            hands = transform.parent.parent.GetComponentsInChildren<VRHand>();
+        }
 
         private void FixedUpdate()
         {
@@ -24,7 +34,8 @@ namespace ShootingRangeGame
                 if (!pickup) continue;
                 if (!pickup.BindingType) continue;
                 if (!food.Contains(pickup.BindingType)) continue;
-
+                if (IsInSlingshot(pickup)) continue;
+                
                 if (eatFX)
                 {
                     var instance = Instantiate(eatFX, transform.position, transform.rotation);
@@ -34,6 +45,22 @@ namespace ShootingRangeGame
                 StartCoroutine(PlaySounds());
                 Destroy(pickup.gameObject);
             }
+        }
+
+        private bool IsInSlingshot(VRPickup pickup)
+        {
+            foreach (var hand in hands)
+            {
+                if (!hand.ActiveBinding) continue;
+                if (!hand.ActiveBinding.bindable.gameObject.TryGetComponent(out Slingshot slingshot)) continue;
+
+                if (!slingshot.DrawingHand) continue;
+                if (!slingshot.DrawingHand.ActiveBinding) continue;
+                if (slingshot.DrawingHand.ActiveBinding.bindable == pickup) continue;
+
+                return true;
+            }
+            return false;
         }
 
         private IEnumerator PlaySounds()

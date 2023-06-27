@@ -5,10 +5,11 @@ namespace ShootingRangeGame.Seagulls.Leaves
 {
     public class CheckForWater : Leaf<BirdBrain>
     {
-        private const float WaterLevel = 0.0f;
+        public const float WaterLevel = -0.6f;
 
         private float timer;
 
+        public override string Name => $"{base.Name} Check For Water";
         public override BehaviourTree.AbandonResponse RespondToAbandonRequest() => BehaviourTree.AbandonResponse.CannotAbandon;
 
         protected override BehaviourTree.Result OnExecute(BehaviourTree tree)
