@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
-using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
 namespace ShootingRangeGame.Audio
 {
-    [Serializable]
-    public class AudioClipGroup
+    [CreateAssetMenu(menuName = "Scriptable Objects/Audio/Audio Clip Group")]
+    public class AudioClipGroup : ScriptableObject
     {
         [SerializeField] private List<AudioClip> list;
         [SerializeField] private Mode mode;
@@ -57,7 +56,7 @@ namespace ShootingRangeGame.Audio
             AudioSource source;
             if (sourcePrefab)
             {
-                source = Object.Instantiate(sourcePrefab);
+                source = Instantiate(sourcePrefab);
             }
             else
             {
@@ -68,7 +67,7 @@ namespace ShootingRangeGame.Audio
 
             source.gameObject.name = "[TEMP] Audio Source";
             source.transform.position = position;
-            Object.Destroy(source.gameObject, clipEntry.length + 0.5f);
+            Destroy(source.gameObject, clipEntry.length + 0.5f);
 
             Play(source);
         });
@@ -83,7 +82,7 @@ namespace ShootingRangeGame.Audio
         {
             if (!listener)
             {
-                listener = Object.FindObjectOfType<AudioListener>();
+                listener = FindObjectOfType<AudioListener>();
                 if (!listener) return;
             }
 
