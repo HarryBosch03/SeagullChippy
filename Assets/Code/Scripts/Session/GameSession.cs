@@ -59,7 +59,7 @@ namespace ShootingRangeGame.Session
             RoundTimer = roundLength + 2.0f;
             roundActive = true;
             Score = 0;
-            roundStartAudio.Play();
+            if (roundStartAudio) roundStartAudio.Play();
             StartSessionEvent?.Invoke();
 
             BirdBrain.EatEvent += OnEat;
@@ -87,7 +87,7 @@ namespace ShootingRangeGame.Session
             
             roundActive = false;
             RoundTimer = 0;
-            roundEndAudio.Play();
+            if (roundEndAudio) roundEndAudio.Play();
 
             if (Score > HighScore) HighScore = Score;
             SaveManager.Save();

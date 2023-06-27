@@ -39,7 +39,7 @@ namespace ShootingRangeGame.Audio
             if (birds.Length == 0) return;
 
             var bird = birds[Random.Range(0, birds.Length)];
-            clipGroup.Play(bird.transform.position);
+            if (clipGroup) clipGroup.Play(bird.transform.position);
         }
     }
 }
