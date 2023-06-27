@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 649cbb390e8e4675baf40dfaac2e17e1, type: 3}
+  m_Name: DryFireClip
+  m_EditorClassIdentifier: 
+  list:
+  - {fileID: 8300000, guid: a74dc6f9fa95fe349be5f0ed0ec5f2c2, type: 3}
+  - {fileID: 8300000, guid: d263c195068e6be4599f271635dab955, type: 3}
+  - {fileID: 8300000, guid: dd8d7f7a16972be4e9275164ba15ac49, type: 3}
+  mode: 1
+  volumeRange: {x: 1, y: 1}
+  pitchRange: {x: 1, y: 1}
+  sourcePrefab: {fileID: 0}
+  mixerGroup: {fileID: -6202452332324735290, guid: e0f1115997c7bb144850c9dbdaf3c307, type: 2}
