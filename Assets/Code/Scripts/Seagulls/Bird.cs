@@ -1,7 +1,6 @@
 using ShootingRangeGame.AI.BehaviourTrees.Core;
 using ShootingRangeGame.VFX;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace ShootingRangeGame.Seagulls
@@ -76,8 +75,8 @@ namespace ShootingRangeGame.Seagulls
             Wet -= Time.deltaTime;
             var isWet = Wet > 0.0f;
             
-            if (isWet && !wetFX.isEmitting) wetFX.Play();
-            if (!isWet && wetFX.isEmitting) wetFX.Stop();
+            //if (isWet && !wetFX.isEmitting) wetFX.Play();
+            //if (!isWet && wetFX.isEmitting) wetFX.Stop();
 
             Wet = Mathf.Max(Wet, 0.0f);
         }
