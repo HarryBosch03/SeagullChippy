@@ -1,3 +1,5 @@
+using System;
+using ShootingRangeGame.Saves;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -11,7 +13,6 @@ namespace ShootingRangeGame
         [SerializeField] private Transform container;
 
         [Space] [SerializeField] private AudioMixer mixer;
-        [SerializeField] private string[] volumeParameters;
 
         [Header("Prefabs")] [SerializeField] private GameObject sliderPrefab;
 
@@ -20,15 +21,26 @@ namespace ShootingRangeGame
             SetupMixer();
         }
 
+        private float LinearToDecibels(float v) => Mathf.Log(Mathf.Clamp(v, 0.0001f, 1.0f)) * 20.0f;
+
         private void SetupMixer()
         {
-            foreach (var parameter in volumeParameters)
+            void SetupVolumeSlider(string key, float saveValue, Action<float> setSaveValue)
             {
-                SetupSlider(parameter, v => mixer.SetFloat(parameter, v / 100.0f), 0.0f, 100.0f);
+                SetupSlider(key, v =>
+                {
+                    mixer.SetFloat(key, LinearToDecibels(v / 100.0f));
+                    setSaveValue(v);
+                    SaveManager.Save();
+                }, saveValue, 0.0f, 100.0f);
             }
+
+            SetupVolumeSlider("Master Volume", SaveManager.GetOrLoad().masterVolume, v => SaveManager.GetOrLoad().masterVolume = v);
+            SetupVolumeSlider("Effect Volume", SaveManager.GetOrLoad().effectVolume, v => SaveManager.GetOrLoad().effectVolume = v);
+            SetupVolumeSlider("Soundtrack Volume", SaveManager.GetOrLoad().soundtrackVolume, v => SaveManager.GetOrLoad().soundtrackVolume = v);
         }
 
-        private void SetupSlider(string name, UnityAction<float> callback, float lower = 0.0f, float upper = 1.0f)
+        private void SetupSlider(string name, UnityAction<float> callback, float initialValue = 0.0f, float lower = 0.0f, float upper = 1.0f)
         {
             var transform = Instantiate(sliderPrefab, container).transform;
 
@@ -36,29 +48,22 @@ namespace ShootingRangeGame
 
             var slider = transform.GetChild(1).GetComponentInChildren<Slider>();
             var inputField = transform.GetChild(1).GetComponentInChildren<TMP_InputField>();
-            
+
             if (title) title.text = name;
-            
+
             if (slider)
             {
                 slider.onValueChanged.AddListener(callback);
-                if (inputField) slider.onValueChanged.AddListener(v => inputField.text = v.ToString());
-                
+                if (inputField)
+                {
+                    slider.onValueChanged.AddListener(v => inputField.text = v.ToString());
+                }
+
                 slider.minValue = lower;
                 slider.maxValue = upper;
                 slider.wholeNumbers = true;
+                slider.value = initialValue;
             }
-
-            // if (inputField)
-            // {
-            //     inputField.onSubmit.AddListener(input =>
-            //     {
-            //         if (!int.TryParse(input, out var v)) return;
-            //         callback(v);
-            //
-            //         if (slider) slider.value = v;
-            //     });
-            // }
         }
     }
 }
