@@ -1,9 +1,7 @@
 using System;
-using ShootingRangeGame.AI.BehaviourTrees.Core;
 using ShootingRangeGame.Audio;
 using ShootingRangeGame.Saves;
 using ShootingRangeGame.Seagulls;
-using TMPro;
 using UnityEngine;
 
 namespace ShootingRangeGame.Session

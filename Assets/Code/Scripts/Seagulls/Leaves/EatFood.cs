@@ -1,6 +1,5 @@
 ﻿using System;
 using ShootingRangeGame.AI.BehaviourTrees.Core;
-using ShootingRangeGame.Session;
 using ShootingRangeGame.Tags;
 using UnityEngine;
 using Object = UnityEngine.Object;

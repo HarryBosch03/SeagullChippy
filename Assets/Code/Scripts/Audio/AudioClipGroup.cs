@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using UnityEditorInternal;
 using UnityEngine;
+using UnityEngine.Audio;
 using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
@@ -15,6 +15,7 @@ namespace ShootingRangeGame.Audio
         [SerializeField] private Vector2 volumeRange = Vector2.one;
         [SerializeField] private Vector2 pitchRange = Vector2.one;
         [SerializeField] private AudioSource sourcePrefab;
+        [SerializeField] private AudioMixerGroup mixerGroup;
 
         private int index;
 
@@ -47,6 +48,7 @@ namespace ShootingRangeGame.Audio
 
             source.volume = random(volumeRange);
             source.pitch = random(pitchRange);
+            source.outputAudioMixerGroup = mixerGroup;
             source.PlayOneShot(clipEntry);
         });
 

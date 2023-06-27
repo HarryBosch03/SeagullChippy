@@ -1,5 +1,7 @@
 using System;
 using System.Collections;
+using System.Linq;
+using System.Text.RegularExpressions;
 using ShootingRangeGame.Session;
 using TMPro;
 using UnityEngine;
@@ -14,6 +16,7 @@ namespace ShootingRangeGame.UI
         public const int Countdown = 1;
         public const int Session = 2;
         public const int PostGame = 3;
+        public const int Options = 4;
 
         [SerializeField] private AnimationCurve animationCurve;
         [SerializeField] private float transitionDuration;
@@ -42,7 +45,7 @@ namespace ShootingRangeGame.UI
                 group.blocksRaycasts = false;
             }
 
-            countdownText = groups[Countdown].GetComponentInChildren<TMP_Text>(true); 
+            countdownText = groups[Countdown].GetComponentInChildren<TMP_Text>(true);
 
             TransitionTo(0);
         }
@@ -61,7 +64,7 @@ namespace ShootingRangeGame.UI
             MenuActions.StartCountdownEvent -= OnStartCountdown;
             MenuActions.CountdownEvent -= OnCountdown;
             MenuActions.EndCountdownEvent -= OnEndCountdown;
-            
+
             GameSession.EndSessionEvent -= OnSessionEnd;
         }
 
@@ -81,7 +84,7 @@ namespace ShootingRangeGame.UI
             var i = (int)timer;
             countdownText.text = (i + 1).ToString();
         }
-        
+
         private void OnEndCountdown()
         {
             IEnumerator routine()
@@ -90,7 +93,7 @@ namespace ShootingRangeGame.UI
                 yield return new WaitForSeconds(1.0f);
                 TransitionTo(Session);
             }
-            
+
             StartCoroutine(routine());
         }
 
@@ -145,6 +148,24 @@ namespace ShootingRangeGame.UI
 
             EnableGroup(CurrentGroup, true);
             transitionActive = false;
+        }
+
+        private void OnValidate()
+        {
+            NameChildren();
+        }
+
+        public void NameChildren()
+        {
+            var rx = new Regex(@"[a-z].*", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+            
+            var children = GetComponentsInChildren<CanvasGroup>();
+            for (var i = 0; i < children.Length; i++)
+            {
+                var child = children[i];
+                var name = rx.Match(child.name).Value;
+                child.name = $"{i} - {name}";
+            }
         }
     }
 }
