@@ -1,6 +1,5 @@
 ﻿using System;
 using ShootingRangeGame.UI;
-using Unity.Android.Types;
 using UnityEditor;
 using UnityEngine;
 

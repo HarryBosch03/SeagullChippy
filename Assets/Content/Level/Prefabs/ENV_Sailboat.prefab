@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 465668392391010922}
   - component: {fileID: 2419160491886059168}
   - component: {fileID: 1853184826898166828}
+  - component: {fileID: 8303094144740221001}
   m_Layer: 0
   m_Name: ENV_Sailboat
   m_TagString: Untagged
@@ -98,3 +99,18 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 3369316746193770658, guid: edf76b6171d0d7740bef455e75bc1745, type: 3}
+--- !u!114 &8303094144740221001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4220552170172890997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9d60a578141ba847a4acb6ff915127c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translation: {x: 0, y: 0.2, z: 0}
+  rotation: {x: 3, y: 0, z: 0}
+  frequency: 0.6

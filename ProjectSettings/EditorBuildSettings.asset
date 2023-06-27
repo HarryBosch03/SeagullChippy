@@ -4,7 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Lucas/Lucas.unity
+    guid: d702afc8de25d8f48b3f68aca5dc14d4
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 0f74ade3750e2c64ca944b3febd78a53, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 93e838b67cffd364084b9cf273a181f6, type: 2}
