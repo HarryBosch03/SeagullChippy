@@ -21,7 +21,6 @@ namespace ShootingRangeGame.Session
         [SerializeField] private AudioClipGroup roundStartAudio;
         [SerializeField] private AudioClipGroup roundEndAudio;
 
-        private int highScore;
         private bool roundActive;
         
         public int Score { get; private set; }
@@ -32,11 +31,12 @@ namespace ShootingRangeGame.Session
             get => SaveManager.GetOrLoad().highScore;
             set => SaveManager.GetOrLoad().highScore = value;
         }
+
+        public static event Action StartSessionEvent;
+        public static event Action EndSessionEvent;
         
         private void Start()
         {
-            highScore = HighScore;
-            
             if (autoStartRoundOnAwake)
             {
                 StartRound();
@@ -48,6 +48,7 @@ namespace ShootingRangeGame.Session
             if (roundActive)
             {
                 if (!endless) RoundTimer -= Time.deltaTime;
+                if (RoundTimer <= 0.0f) EndRound();
             }
         }
 
@@ -61,6 +62,7 @@ namespace ShootingRangeGame.Session
             roundActive = true;
             Score = 0;
             roundStartAudio.Play();
+            StartSessionEvent?.Invoke();
 
             BirdBrain.EatEvent += OnEat;
         }
@@ -83,7 +85,7 @@ namespace ShootingRangeGame.Session
         [ContextMenu("End Round")]
         public void EndRound()
         {
-            Active = null;
+            if (!roundActive) return;
             
             roundActive = false;
             RoundTimer = 0;
@@ -91,7 +93,8 @@ namespace ShootingRangeGame.Session
 
             if (Score > HighScore) HighScore = Score;
             SaveManager.Save();
-            
+            EndSessionEvent?.Invoke();
+
             BirdBrain.EatEvent -= OnEat;
         }
 

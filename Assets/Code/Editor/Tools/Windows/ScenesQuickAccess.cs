@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Net.Http.Headers;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
@@ -7,19 +9,30 @@ namespace ShootingRangeGameEditor.Tools.Windows
 {
     public class ScenesQuickAccess : EditorWindow
     {
+        private Vector2 scrollPos;
+
+        private List<SceneAsset> cache;
+        
         [MenuItem("Tools/Custom/Scene Quick Access")]
         public static void Open()
         {
             CreateWindow<ScenesQuickAccess>("Scenes");
         }
 
+        private void Awake()
+        {
+            cache = new List<SceneAsset>();
+            GetScenes(ref cache);
+        }
+
         private void OnGUI()
         {
-            var scenes = GetScenes();
-            var icon = EditorGUIUtility.IconContent("d_SceneAsset Icon").image;
-            foreach (var scene in scenes)
+            scrollPos = EditorGUILayout.BeginScrollView(scrollPos, GUIStyle.none, GUI.skin.verticalScrollbar);
+        
+            var sceneIcon = EditorGUIUtility.IconContent("d_SceneAsset Icon").image;
+            foreach (var scene in cache)
             {
-                var content = new GUIContent($"Open {scene.name}", icon);
+                var content = new GUIContent($" Open {scene.name}", sceneIcon);
                 content.tooltip = $"Save current scene and Load \"{scene.name}.unity\"";
                 if (GUILayout.Button(content, GUILayout.Height(40)))
                 {
@@ -28,11 +41,21 @@ namespace ShootingRangeGameEditor.Tools.Windows
                     EditorSceneManager.OpenScene(path);
                 }
             }
+            
+            EditorGUILayout.EndScrollView();
+            
+            var refreshIcon = EditorGUIUtility.IconContent("d_Refresh").image;
+            EditorGUILayout.Space(EditorGUIUtility.singleLineHeight * 0.4f);
+            if (GUILayout.Button(new GUIContent(" Refresh", refreshIcon)))
+            {
+                GetScenes(ref cache);
+            }
         }
 
-        private IEnumerable<SceneAsset> GetScenes()
+        private void GetScenes(ref List<SceneAsset> scenes)
         {
-            var scenes = new List<SceneAsset>();
+            scenes.Clear();
+            
             var guids = AssetDatabase.FindAssets("t:scene");
             foreach (var guid in guids)
             {
@@ -43,7 +66,6 @@ namespace ShootingRangeGameEditor.Tools.Windows
                 var asset = AssetDatabase.LoadAssetAtPath<SceneAsset>(path);
                 scenes.Add(asset);
             }
-            return scenes;
         }
     }
 }
