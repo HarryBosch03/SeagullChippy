@@ -2,7 +2,6 @@
 using ShootingRangeGame.AI.BehaviourTrees.Core;
 using ShootingRangeGame.AI.BehaviourTrees.Leaves;
 using ShootingRangeGame.Seagulls.Leaves;
-using ShootingRangeGame.Session;
 using UnityEngine;
 using Random = UnityEngine.Random;
 

@@ -1,9 +1,7 @@
 using System;
 using System.Collections;
 using ShootingRangeGame.Session;
-using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace ShootingRangeGame.UI
 {

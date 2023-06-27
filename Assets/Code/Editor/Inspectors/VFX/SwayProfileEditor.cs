@@ -1,4 +1,3 @@
-using System;
 using ShootingRangeGame.VFX;
 using UnityEditor;
 using UnityEngine;

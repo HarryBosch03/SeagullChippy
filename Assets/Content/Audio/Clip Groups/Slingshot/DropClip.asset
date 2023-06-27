@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 649cbb390e8e4675baf40dfaac2e17e1, type: 3}
+  m_Name: DropClip
+  m_EditorClassIdentifier: 
+  list:
+  - {fileID: 8300000, guid: fe51d3c989dddc145b31a1369577b6dd, type: 3}
+  - {fileID: 8300000, guid: e6b739e5d53500f4e9f7bc7999077a5a, type: 3}
+  - {fileID: 8300000, guid: 96d462878f8a314409d3731b6f8e9a35, type: 3}
+  mode: 1
+  volumeRange: {x: 1, y: 1}
+  pitchRange: {x: 1, y: 1}
+  sourcePrefab: {fileID: 0}
+  mixerGroup: {fileID: -6202452332324735290, guid: e0f1115997c7bb144850c9dbdaf3c307, type: 2}
