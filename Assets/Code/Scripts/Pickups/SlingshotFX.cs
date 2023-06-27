@@ -43,18 +43,18 @@ namespace ShootingRangeGame.Pickups
 
         private void OnBind(VRBinding newBinding)
         {
-            pickupClip.Play(source, transform.position);
+            if (pickupClip) pickupClip.Play(source, transform.position);
         }
 
         private void OnUnbind(VRBinding oldBinding)
         {
-            dropClip.Play(source, transform.position);
+            if (dropClip) dropClip.Play(source, transform.position);
         }
 
         private void OnFire(IVRBindable bindable)
         {
             var clip = IVRBindable.Valid(bindable) ? fireClip : dryFireClip;
-            clip.Play(source, transform.position);
+            if (clip) clip.Play(source, transform.position);
         }
     }
 }

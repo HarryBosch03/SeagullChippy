@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using ShootingRangeGame.Audio;
 using ShootingRangeGame.VFX;
 using UnityEngine;
@@ -36,7 +34,7 @@ namespace ShootingRangeGame
                     var size = Mathf.Pow(energy, 1.0f / 3.0f) * splashScale;
                     
                     splashFX.Instance().At(spawnPos, Quaternion.identity).WithSize(size).Play().AndDestroy();
-                    splashAudio.Play(spawnPos);
+                    if (splashAudio) splashAudio.Play(spawnPos);
                 }
             }
         }

@@ -1,7 +1,6 @@
 using ShootingRangeGame.AI.BehaviourTrees.Core;
 using ShootingRangeGame.VFX;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace ShootingRangeGame.Seagulls
