@@ -316,9 +316,9 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3879337246828252531}
   m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!114 &3879337246828252303
 MonoBehaviour:
@@ -942,7 +942,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3879337248124799293}
   - component: {fileID: 3879337248124799266}
-  - component: {fileID: 3879337248124799292}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -980,19 +979,6 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
---- !u!114 &3879337248124799292
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3879337248124799264}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 243164b314654193ba7eadeef6367cce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
 --- !u!1 &3879337248344064883
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,5 +1,6 @@
 ﻿using System;
 using ShootingRangeGame.UI;
+using Unity.Android.Types;
 using UnityEditor;
 using UnityEngine;
 
@@ -32,6 +33,13 @@ namespace ShootingRangeGameEditor.Inspectors.UI
             if (GUILayout.Button("Hide All Menus"))
             {
                 SwitchMenu(_ => false);
+            }
+
+            Div();
+
+            if (GUILayout.Button("Rename Children"))
+            {
+                Target.NameChildren();
             }
         }
 

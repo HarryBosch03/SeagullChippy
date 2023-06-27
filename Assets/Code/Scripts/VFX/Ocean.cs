@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using ShootingRangeGame.Audio;
 using ShootingRangeGame.VFX;
 using UnityEngine;
