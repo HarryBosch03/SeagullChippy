@@ -10,11 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 649cbb390e8e4675baf40dfaac2e17e1, type: 3}
-  m_Name: New Audio Clip Group 1
+  m_Name: FireClip
   m_EditorClassIdentifier: 
-  list: []
-  mode: 0
+  list:
+  - {fileID: 8300000, guid: 96aba350d5ac5664b8b583b023555332, type: 3}
+  - {fileID: 8300000, guid: db609e3e5884ee14183c709d343328fb, type: 3}
+  - {fileID: 8300000, guid: 8e3fc210ac53a5e4e91eccb2a94ee18c, type: 3}
+  - {fileID: 8300000, guid: 824181213ffa2244db9bada3ddece49d, type: 3}
+  mode: 1
   volumeRange: {x: 1, y: 1}
   pitchRange: {x: 1, y: 1}
   sourcePrefab: {fileID: 0}
-  mixerGroup: {fileID: 0}
+  mixerGroup: {fileID: -6202452332324735290, guid: e0f1115997c7bb144850c9dbdaf3c307, type: 2}

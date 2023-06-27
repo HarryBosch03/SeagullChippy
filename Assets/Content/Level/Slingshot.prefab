@@ -108,10 +108,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e06f1421983f4709b9da0fbec63b3e82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dryFireClip: {fileID: 0}
-  fireClip: {fileID: 0}
-  pickupClip: {fileID: 0}
-  dropClip: {fileID: 0}
+  dryFireClip: {fileID: 11400000, guid: 72d63a845a16e5548a277cd26a8bbb83, type: 2}
+  fireClip: {fileID: 11400000, guid: b73470b869be0b849809fc6512261c34, type: 2}
+  pickupClip: {fileID: 11400000, guid: 532728044795a73479f7e48e9d1e2e90, type: 2}
+  dropClip: {fileID: 11400000, guid: 70af1e96cb795b2499b0c4cbf7de0762, type: 2}
 --- !u!1 &3385324152031384658
 GameObject:
   m_ObjectHideFlags: 0
