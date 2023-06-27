@@ -98,7 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   splashFX: {fileID: 6495421749911525682, guid: b3257a91d395a1d4e81b18081f810164, type: 3}
   splashScale: 0.33333334
-  splashAudio: {fileID: 11400000, guid: 62ef84588847670428422f2423608cb5, type: 2}
+  splashAudio: {fileID: 0}
 --- !u!1 &4935066619716268147
 GameObject:
   m_ObjectHideFlags: 0

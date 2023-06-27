@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 649cbb390e8e4675baf40dfaac2e17e1, type: 3}
-  m_Name: SeagullCallClip
+  m_Name: PigeonCallClip
   m_EditorClassIdentifier: 
   list:
   - {fileID: 8300000, guid: c72c4e7f12f0b6040b0e225947789f8b, type: 3}
