@@ -98,6 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   splashFX: {fileID: 6495421749911525682, guid: b3257a91d395a1d4e81b18081f810164, type: 3}
   splashScale: 0.33333334
+  splashAudio: {fileID: 11400000, guid: 62ef84588847670428422f2423608cb5, type: 2}
 --- !u!1 &4935066619716268147
 GameObject:
   m_ObjectHideFlags: 0
@@ -11513,3 +11514,21 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1e746ff4b88477840aab6a53296d6b7f, type: 3}
   m_PrefabInstance: {fileID: 4935066621453648051}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5241496312241520098 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1e746ff4b88477840aab6a53296d6b7f, type: 3}
+  m_PrefabInstance: {fileID: 4935066621453648051}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4868602617491859834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5241496312241520098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 388ddc2edf3844d1b3e2544d73a882ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audio: {fileID: 11400000, guid: 7d0a4f251ef9d594fb4cf03cfd36245f, type: 2}
