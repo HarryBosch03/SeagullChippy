@@ -13,11 +13,8 @@ MonoBehaviour:
   m_Name: ChipDropClip
   m_EditorClassIdentifier: 
   list:
-  - {fileID: 8300000, guid: 490ef8da9730f95468069d9fbcf8a833, type: 3}
-  - {fileID: 8300000, guid: 5ba3c4594ef0bd147b74b168246e5b3f, type: 3}
-  - {fileID: 8300000, guid: c8d90ca0af3f29f42bdcbdf534f67cb1, type: 3}
-  - {fileID: 8300000, guid: dc63fb8b7c3a89d40b8c9afa72e3b747, type: 3}
-  mode: 1
+  - {fileID: 8300000, guid: 35928866a11eea24ba79b0623465e712, type: 3}
+  mode: 0
   volumeRange: {x: 1, y: 1}
   pitchRange: {x: 1, y: 1}
   sourcePrefab: {fileID: 0}

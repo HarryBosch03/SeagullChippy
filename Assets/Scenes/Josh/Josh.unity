@@ -1611,7 +1611,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tracks: 2
   delayRange: {x: 7, y: 25}
-  clipGroup: {fileID: 0}
+  clipGroup: {fileID: 11400000, guid: 3b0cd34e2f44efc438a5a7e55c037ce5, type: 2}
 --- !u!1 &591951655
 GameObject:
   m_ObjectHideFlags: 0
@@ -1867,7 +1867,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 750573069}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.19, y: 4.3, z: 7.64}
+  m_LocalPosition: {x: -14.35, y: 4.3, z: 3.34}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1892,7 +1892,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 70
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 35
@@ -4477,7 +4477,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 388ddc2edf3844d1b3e2544d73a882ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audio: {fileID: 0}
+  audio: {fileID: 11400000, guid: 7d0a4f251ef9d594fb4cf03cfd36245f, type: 2}
 --- !u!43 &1980411909
 Mesh:
   m_ObjectHideFlags: 0
@@ -6206,6 +6206,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 209948229}
     m_Modifications:
+    - target: {fileID: 503770889, guid: ba4230bf2b6dc364d91b56b999b81f86, type: 3}
+      propertyPath: splashAudio
+      value: 
+      objectReference: {fileID: 11400000, guid: 62ef84588847670428422f2423608cb5, type: 2}
     - target: {fileID: 503770889, guid: ba4230bf2b6dc364d91b56b999b81f86, type: 3}
       propertyPath: splashAudio.mode
       value: 1
