@@ -1,7 +1,6 @@
 ﻿using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
-using UnityEngine.Rendering.UI;
 using Debug = UnityEngine.Debug;
 
 namespace ShootingRangeGame.Saves

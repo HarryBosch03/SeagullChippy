@@ -63,17 +63,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brain:
-    defaultAnimation: Idle
     maxWanderDistance: 20
   birdType: 0
   moveSpeed: 1
   floatiness: 8
   accelerationTime: 0.1
   rotationSmoothing: 0.2
+  defaultAnimation: Idle
   minDamageForce: 15
   invulnerable: 0
   hitFX: {fileID: 0}
-  wetFX: {fileID: 0}
   rigidbody: {fileID: 0}
 --- !u!54 &2637222119140301595
 Rigidbody:

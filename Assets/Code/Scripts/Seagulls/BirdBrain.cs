@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using ShootingRangeGame.AI.BehaviourTrees.Core;
 using ShootingRangeGame.AI.BehaviourTrees.Leaves;
 using ShootingRangeGame.Seagulls.Leaves;
-using Unity.Burst;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -50,13 +48,13 @@ namespace ShootingRangeGame.Seagulls
 
         public void FixedUpdate()
         {
-            if (Time.frameCount % updateIndex != updateIndex) return;
+            //if (Time.frameCount % updateIndex != updateIndex) return;
 
             Bird.MoveVector = Vector3.zero;
+            Bird.Animation = Bird.DefaultAnimation;
+            
             Bird.LookDirection = directionPreprocess.Apply(Bird.transform, Bird.LookDirection);
             Tree.Execute(this);
-
-            Bird.Animation = Bird.DefaultAnimation;
         }
 
         public void ShiftLookDirection(float variance)
