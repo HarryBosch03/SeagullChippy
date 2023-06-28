@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 649cbb390e8e4675baf40dfaac2e17e1, type: 3}
+  m_Name: PigeonCallClip
+  m_EditorClassIdentifier: 
+  list:
+  - {fileID: 8300000, guid: c72c4e7f12f0b6040b0e225947789f8b, type: 3}
+  - {fileID: 8300000, guid: 63b6095fe3dae83478e8b9f581de7a70, type: 3}
+  - {fileID: 8300000, guid: 2fb15278c371a084ba6b3da1608f3953, type: 3}
+  - {fileID: 8300000, guid: 43ec850a2096a1c4aa0ffd57dede1be6, type: 3}
+  - {fileID: 8300000, guid: dd833b13692d93e4eb1e3307cc58f450, type: 3}
+  - {fileID: 8300000, guid: 7c69b122b1ad909458941574f0ec2e02, type: 3}
+  - {fileID: 8300000, guid: d0be9bab552848d4880ef30667d92ed2, type: 3}
+  - {fileID: 8300000, guid: f03741194efda8640a88f7f6b93db631, type: 3}
+  - {fileID: 8300000, guid: 75551b0db6e633847b3af8035731084e, type: 3}
+  mode: 1
+  volumeRange: {x: 1, y: 1}
+  pitchRange: {x: 1, y: 1}
+  sourcePrefab: {fileID: 7303298072832068674, guid: aeaf08c304f910e49a66f2ab6fad2caf, type: 3}
+  mixerGroup: {fileID: -6202452332324735290, guid: e0f1115997c7bb144850c9dbdaf3c307, type: 2}
