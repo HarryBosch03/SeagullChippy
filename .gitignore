@@ -19,4 +19,6 @@
 ### Unity Auto Generated Files ###
 *.sln
 *.csproj
-*.csproj.DotSettings
+*.DotSettings*
+
+.vsconfig
