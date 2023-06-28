@@ -3,7 +3,7 @@ using UnityEngine;
 namespace ShootingRangeGame.Seagulls
 {
     [DisallowMultipleComponent]
-    public sealed class SeagullAnimator : MonoBehaviour
+    public sealed class BirdAnimator : MonoBehaviour
     {
         [SerializeField] private float stepDistance;
         [SerializeField] private Transform[] feetVisualContainers;
@@ -52,11 +52,11 @@ namespace ShootingRangeGame.Seagulls
                     var foot = feet[i];
                     var visuals = feetVisualContainers[i];
 
-                    foot.cPosition = visuals.position - visuals.rotation * foot.offset;
-                    foot.cRotation = visuals.rotation;
+                    foot.currentPosition = visuals.position - visuals.rotation * foot.translationOffset;
+                    foot.currentRotation = visuals.rotation;
 
-                    foot.tPosition = foot.cPosition;
-                    foot.tRotation = foot.cRotation;
+                    foot.targetPosition = foot.currentPosition;
+                    foot.targetRotation = foot.currentRotation;
                 }
             }
         }
@@ -80,15 +80,15 @@ namespace ShootingRangeGame.Seagulls
                 {
                     if (idleTimer > idleDelay + idleOffset * i)
                     {
-                        feet[(freeFoot + i) % feet.Length].tPosition = transform.position;
+                        feet[(freeFoot + i) % feet.Length].targetPosition = transform.position;
                     }   
                 }
             }
             else if (distanceCounter > stepDistance)
             {
                 var direction = rigidbody.velocity.normalized;
-                feet[freeFoot].tPosition = transform.position + direction * (stepDistance * (1.0f + overstep));
-                feet[freeFoot].tRotation = transform.rotation;
+                feet[freeFoot].targetPosition = transform.position + direction * (stepDistance * (1.0f + overstep));
+                feet[freeFoot].targetRotation = transform.rotation;
 
                 freeFoot = (freeFoot + 1) % feet.Length;
                 distanceCounter -= stepDistance;
@@ -97,8 +97,8 @@ namespace ShootingRangeGame.Seagulls
             foreach (var foot in feet)
             {
                 var t = smoothing >= Time.deltaTime ? Time.deltaTime / smoothing : 1.0f;
-                foot.cPosition = Vector3.Lerp(foot.cPosition, foot.tPosition, t);
-                foot.cRotation = Quaternion.Slerp(foot.cRotation, foot.tRotation, t);
+                foot.currentPosition = Vector3.Lerp(foot.currentPosition, foot.targetPosition, t);
+                foot.currentRotation = Quaternion.Slerp(foot.currentRotation, foot.targetRotation, t);
             }
         }
 
@@ -107,24 +107,26 @@ namespace ShootingRangeGame.Seagulls
             for (var i = 0; i < feet.Length && i < feetVisualContainers.Length; i++)
             {
                 var foot = feet[i];
-                var visuals = feetVisualContainers[i];
+                var footBone = feetVisualContainers[i];
 
-                visuals.position = foot.cPosition + foot.cRotation * foot.offset;
-                visuals.rotation = foot.cRotation;
+                footBone.position = foot.currentPosition + foot.currentRotation * foot.translationOffset;
+                //footBone.rotation = foot.currentRotation * foot.rotationOffset;
             }
         }
 
         class Foot
         {
-            public Vector3 tPosition, cPosition;
-            public Quaternion tRotation, cRotation;
-            public Vector3 offset;
+            public Vector3 targetPosition, currentPosition;
+            public Quaternion targetRotation, currentRotation;
+            public Vector3 translationOffset;
+            public Quaternion rotationOffset;
 
-            public Foot(Transform transform, Transform visualContainer)
+            public Foot(Transform transform, Transform animationRoot)
             {
-                tPosition = cPosition = transform.position;
-                tRotation = cRotation = transform.rotation;
-                offset = transform.InverseTransformPoint(visualContainer.position);
+                targetPosition = currentPosition = transform.position;
+                targetRotation = currentRotation = transform.rotation;
+                translationOffset = transform.InverseTransformPoint(animationRoot.position);
+                rotationOffset = Quaternion.Inverse(animationRoot.rotation) * transform.rotation;
             }
         }
     }

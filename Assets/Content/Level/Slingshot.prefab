@@ -91,8 +91,8 @@ MonoBehaviour:
     acceleration: {x: 0, y: 0, z: 0}
   slackDistance: 0.05
   slingStrength: 0.1
-  spring: 400
-  damping: 25
+  spring: 250
+  damping: 15
   rumbleStrength: 0.1
   tension: 0
   drawingHandBindingRange: 0.2

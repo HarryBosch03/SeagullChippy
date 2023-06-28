@@ -41,26 +41,37 @@ namespace ShootingRangeGameEditor.Tools.Windows
             var sceneIcon = EditorGUIUtility.IconContent("d_SceneAsset Icon").image;
             foreach (var scene in cache)
             {
-                var content = new GUIContent($" Open {scene.name}", sceneIcon);
-                content.tooltip = $"Save current scene and Load \"{scene.name}.unity\"";
-                if (GUILayout.Button(content, GUILayout.Height(40)))
+                if (!scene) continue;
+                
+                using (new EditorGUILayout.HorizontalScope())
                 {
-                    EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo();
-                    var path = AssetDatabase.GetAssetPath(scene);
-                    EditorSceneManager.OpenScene(path);
+                    var content = new GUIContent($" Open {scene.name}", sceneIcon);
+                    content.tooltip = $"Save current scene and Load \"{scene.name}.unity\"";
+                    if (GUILayout.Button(content, GUILayout.Height(40)))
+                    {
+                        EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo();
+                        var path = AssetDatabase.GetAssetPath(scene);
+                        EditorSceneManager.OpenScene(path);
+                    }
+
+                    var folderIcon = EditorGUIUtility.IconContent("d_FolderOpened Icon").image;
+                    if (GUILayout.Button(new GUIContent(folderIcon), GUILayout.Height(40), GUILayout.Width(60)))
+                    {
+                        EditorGUIUtility.PingObject(scene);
+                    }
                 }
             }
             
             EditorGUILayout.EndScrollView();
 
             var tmp = EditorGUILayout.TextField("Filter [regex]", filter);
-            if (filter != tmp) SetDirty();
+            if (filter != tmp) SetSceneDirty();
             filter = tmp;
             
             var refreshIcon = EditorGUIUtility.IconContent("d_Refresh").image;
             if (GUILayout.Button(new GUIContent(" Refresh", refreshIcon)))
             {
-                SetDirty();
+                SetSceneDirty();
             }
         }
 
@@ -83,7 +94,7 @@ namespace ShootingRangeGameEditor.Tools.Windows
             }
         }
 
-        public void SetDirty()
+        public void SetSceneDirty()
         {
             dirty = true;
             Repaint();

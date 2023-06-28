@@ -27,7 +27,7 @@ namespace ShootingRangeGame.Seagulls
         {
             Bird = bird;
 
-            animator = bird.GetComponent<Animator>();
+            animator = bird.GetComponentInChildren<Animator>();
             Animation = defaultAnimation;
 
             Tree = new BehaviourTree(
