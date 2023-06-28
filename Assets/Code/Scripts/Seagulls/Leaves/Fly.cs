@@ -42,12 +42,12 @@ namespace ShootingRangeGame.Seagulls.Leaves
                         break;
                     }
 
-                    Target.Animation = "Flap";
+                    Target.Bird.Animation = "Flap";
                     var flyForce = Mathf.Lerp(maxFlyForce, minFlyForce, height / targetHeight);
                     Target.Bird.rigidbody.AddForce(Vector3.up * flyForce, ForceMode.Acceleration);
                     break;
                 case 1:
-                    Target.Animation = "Glide";
+                    Target.Bird.Animation = "Glide";
                     if (Target.Bird.Grounded) state++;
                     break;
                 default:

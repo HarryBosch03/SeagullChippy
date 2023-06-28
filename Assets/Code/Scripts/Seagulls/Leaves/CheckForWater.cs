@@ -29,7 +29,6 @@ namespace ShootingRangeGame.Seagulls.Leaves
                 timer = 1.0f + Random.value;
                 seagull.MoveVector = Vector3.back * 3.0f;
                 seagull.LookDirection = Vector3.back;
-                seagull.Wet = 1.0f + Random.value * 2.0f;
                 return BehaviourTree.Result.Pending;
             }
 

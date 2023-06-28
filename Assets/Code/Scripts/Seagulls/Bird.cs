@@ -1,3 +1,4 @@
+using System;
 using ShootingRangeGame.AI.BehaviourTrees.Core;
 using ShootingRangeGame.VFX;
 using UnityEngine;
@@ -21,6 +22,10 @@ namespace ShootingRangeGame.Seagulls
 
         [SerializeField] private float accelerationTime;
         [SerializeField] private float rotationSmoothing;
+        
+        [Header("ANIMATION")]
+        [Space]
+        [SerializeField] private string defaultAnimation;
 
         [Header("DEATH")] [Space] 
         [SerializeField] private float minDamageForce = 15.0f;
@@ -28,19 +33,18 @@ namespace ShootingRangeGame.Seagulls
         [SerializeField] private bool invulnerable;
         [SerializeField] private FXGroup hitFX;
 
-        [Space] 
-        [SerializeField] private ParticleSystem wetFX;
-
         public new Rigidbody rigidbody;
+        private Animator animator;
 
         private static Transform container;
 
         public Vector3 MoveVector { get; set; }
         public Vector3 LookDirection { get; set; }
+        public string DefaultAnimation => defaultAnimation;
+        public string Animation { get; set; }
         public MonoBehaviour Behaviour => this;
         public BehaviourTree Tree => brain.Tree;
         public bool Grounded { get; private set; }
-        public float Wet { get; set; }
         public BirdType Type => birdType;
 
         private static readonly string[] Names = 
@@ -51,6 +55,8 @@ namespace ShootingRangeGame.Seagulls
         private void Start()
         {
             rigidbody = GetComponent<Rigidbody>();
+            animator = GetComponentInChildren<Animator>();
+            Animation = defaultAnimation;
 
             brain.Init(this);
             LookDirection = Quaternion.Euler(0.0f, Random.value * 360.0f, 0.0f) * Vector3.forward;
@@ -68,23 +74,17 @@ namespace ShootingRangeGame.Seagulls
             transform.localScale = Vector3.one * Random.Range(0.8f, 1.2f);
         }
 
-        private void Update()
-        {
-            brain.Update();
-
-            Wet -= Time.deltaTime;
-            var isWet = Wet > 0.0f;
-            
-            //if (isWet && !wetFX.isEmitting) wetFX.Play();
-            //if (!isWet && wetFX.isEmitting) wetFX.Stop();
-
-            Wet = Mathf.Max(Wet, 0.0f);
-        }
-
         private void FixedUpdate()
         {
+            brain.FixedUpdate();
+
             Move();
             SetGroundedState();
+        }
+
+        private void Update()
+        {
+            animator.Play(Animation);
         }
 
         private void Move()

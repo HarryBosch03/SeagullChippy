@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
@@ -79,7 +78,7 @@ namespace ShootingRangeGameEditor.Tools.Windows
         {
             scenes.Clear();
 
-            var filterRegex = new Regex(filter, RegexOptions.IgnoreCase);
+            var filterRegex = new Regex(string.IsNullOrWhiteSpace(filter) ? "." : filter, RegexOptions.IgnoreCase);
             
             var guids = AssetDatabase.FindAssets("t:scene");
             foreach (var guid in guids)

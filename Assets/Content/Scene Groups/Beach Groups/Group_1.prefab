@@ -43,6 +43,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 90863138137158231}
     m_Modifications:
+    - target: {fileID: 329704216192547857, guid: 1f6278f136a23cc4abe77829d49a9a86, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 2552517289364621314, guid: 1f6278f136a23cc4abe77829d49a9a86, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -91,10 +95,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: obj_Chair_Blockout
       objectReference: {fileID: 0}
-    - target: {fileID: 2893435629305025208, guid: 1f6278f136a23cc4abe77829d49a9a86, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f6278f136a23cc4abe77829d49a9a86, type: 3}
 --- !u!4 &2463068196837601901 stripped
@@ -112,10 +112,6 @@ PrefabInstance:
     - target: {fileID: 349735556333167563, guid: 401c5bd363ced4a4589d3bb9c4218a8c, type: 3}
       propertyPath: m_Name
       value: obj_Eski_Blockout
-      objectReference: {fileID: 0}
-    - target: {fileID: 349735556333167563, guid: 401c5bd363ced4a4589d3bb9c4218a8c, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1121768002983803249, guid: 401c5bd363ced4a4589d3bb9c4218a8c, type: 3}
       propertyPath: m_RootOrder
@@ -160,6 +156,10 @@ PrefabInstance:
     - target: {fileID: 1121768002983803249, guid: 401c5bd363ced4a4589d3bb9c4218a8c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7480881152535037466, guid: 401c5bd363ced4a4589d3bb9c4218a8c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 401c5bd363ced4a4589d3bb9c4218a8c, type: 3}
@@ -358,6 +358,10 @@ PrefabInstance:
     - target: {fileID: 2087385284005362746, guid: 9951b1db14a2e8144a59129a5a39acb4, type: 3}
       propertyPath: m_Name
       value: ENV_Flamingo_Float
+      objectReference: {fileID: 0}
+    - target: {fileID: 4924795330609525075, guid: 9951b1db14a2e8144a59129a5a39acb4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9951b1db14a2e8144a59129a5a39acb4, type: 3}

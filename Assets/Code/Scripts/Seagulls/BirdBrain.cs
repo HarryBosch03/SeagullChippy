@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using ShootingRangeGame.AI.BehaviourTrees.Core;
 using ShootingRangeGame.AI.BehaviourTrees.Leaves;
 using ShootingRangeGame.Seagulls.Leaves;
+using Unity.Burst;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -10,26 +12,26 @@ namespace ShootingRangeGame.Seagulls
     [System.Serializable]
     public class BirdBrain : IHasBehaviourTree
     {
-        [SerializeField] private string defaultAnimation;
+        public const int AIUpdateFrequency = 5;
+        
         [SerializeField] private float maxWanderDistance;
 
         private DirectionPreprocess directionPreprocess = new();
 
         public Bird Bird { get; private set; }
         public BehaviourTree Tree { get; private set; }
-
-        private Animator animator;
-
-        public string Animation { get; set; }
+        
+        private int updateIndex;
+        private static int nextUpdateIndex;
+        
         public static event Action<BirdBrain> EatEvent;
 
         public void Init(Bird bird)
         {
             Bird = bird;
-
-            animator = bird.GetComponentInChildren<Animator>();
-            Animation = defaultAnimation;
-
+            updateIndex = nextUpdateIndex;
+            updateIndex = (updateIndex + 1) % AIUpdateFrequency;
+            
             Tree = new BehaviourTree(
                 new SelectorLeaf()
                     // .AddChild(new SequenceLeaf()
@@ -46,14 +48,15 @@ namespace ShootingRangeGame.Seagulls
             Tree.Init(this);
         }
 
-        public void Update()
+        public void FixedUpdate()
         {
+            if (Time.frameCount % updateIndex != updateIndex) return;
+
             Bird.MoveVector = Vector3.zero;
             Bird.LookDirection = directionPreprocess.Apply(Bird.transform, Bird.LookDirection);
             Tree.Execute(this);
 
-            animator.Play(Animation);
-            Animation = defaultAnimation;
+            Bird.Animation = Bird.DefaultAnimation;
         }
 
         public void ShiftLookDirection(float variance)

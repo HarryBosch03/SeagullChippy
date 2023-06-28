@@ -39,7 +39,7 @@ namespace ShootingRangeGame.Seagulls.Leaves
             {
                 if (Time.time - eatTime <= animationLength)
                 {
-                    Target.Animation = "Eat";
+                    Target.Bird.Animation = "Eat";
                     return BehaviourTree.Result.Pending;
                 }
 

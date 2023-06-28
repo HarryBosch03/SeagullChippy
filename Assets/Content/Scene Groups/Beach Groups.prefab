@@ -64,6 +64,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ENV_Beach_Towel_2 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7057741886155623328, guid: 09664e9fd9fa7484e8dd6ec074b94671, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 7690444429513183514, guid: 09664e9fd9fa7484e8dd6ec074b94671, type: 3}
       propertyPath: m_RootOrder
       value: 17
@@ -125,6 +129,10 @@ PrefabInstance:
     - target: {fileID: 7313986962716423514, guid: 6e445be179c787748901a09a6e4a0fc4, type: 3}
       propertyPath: m_Name
       value: ENV_Beach_Towel
+      objectReference: {fileID: 0}
+    - target: {fileID: 7313986962716423514, guid: 6e445be179c787748901a09a6e4a0fc4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 7983563587291230176, guid: 6e445be179c787748901a09a6e4a0fc4, type: 3}
       propertyPath: m_RootOrder
@@ -250,6 +258,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ENV_Beach_Towel_2 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 7057741886155623328, guid: 09664e9fd9fa7484e8dd6ec074b94671, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 7690444429513183514, guid: 09664e9fd9fa7484e8dd6ec074b94671, type: 3}
       propertyPath: m_RootOrder
       value: 21
@@ -355,6 +367,10 @@ PrefabInstance:
     - target: {fileID: 4489293864565204963, guid: d85a80b74b7625743a05fd825defc3b7, type: 3}
       propertyPath: m_Name
       value: ENV_Beach_Towel_1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4489293864565204963, guid: d85a80b74b7625743a05fd825defc3b7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d85a80b74b7625743a05fd825defc3b7, type: 3}
@@ -1194,6 +1210,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ENV_Beach_Towel_2
       objectReference: {fileID: 0}
+    - target: {fileID: 7057741886155623328, guid: 09664e9fd9fa7484e8dd6ec074b94671, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 7690444429513183514, guid: 09664e9fd9fa7484e8dd6ec074b94671, type: 3}
       propertyPath: m_RootOrder
       value: 14
@@ -1255,6 +1275,10 @@ PrefabInstance:
     - target: {fileID: 7057741886155623328, guid: 09664e9fd9fa7484e8dd6ec074b94671, type: 3}
       propertyPath: m_Name
       value: ENV_Beach_Towel_2 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7057741886155623328, guid: 09664e9fd9fa7484e8dd6ec074b94671, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 7690444429513183514, guid: 09664e9fd9fa7484e8dd6ec074b94671, type: 3}
       propertyPath: m_RootOrder
@@ -1600,6 +1624,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ENV_Beach_Towel (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7313986962716423514, guid: 6e445be179c787748901a09a6e4a0fc4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 7983563587291230176, guid: 6e445be179c787748901a09a6e4a0fc4, type: 3}
       propertyPath: m_RootOrder
       value: 20
@@ -1705,6 +1733,10 @@ PrefabInstance:
     - target: {fileID: 4489293864565204963, guid: d85a80b74b7625743a05fd825defc3b7, type: 3}
       propertyPath: m_Name
       value: ENV_Beach_Towel_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4489293864565204963, guid: d85a80b74b7625743a05fd825defc3b7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d85a80b74b7625743a05fd825defc3b7, type: 3}

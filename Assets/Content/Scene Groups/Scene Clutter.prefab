@@ -204,7 +204,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2370239445847702777
 Transform:
@@ -866,6 +866,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: ENV_StreetLamp (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 6869746259115937321, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 7187224277343154457, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254437628529412910, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 9096672375530997962, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
 --- !u!4 &8428809169334672472 stripped
@@ -1200,6 +1216,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: ENV_StreetLamp (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 6869746259115937321, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 7187224277343154457, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254437628529412910, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 9096672375530997962, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
 --- !u!4 &8428809169543248320 stripped
@@ -1343,6 +1375,22 @@ PrefabInstance:
     - target: {fileID: 6869746259115937321, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
       propertyPath: m_Name
       value: ENV_StreetLamp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869746259115937321, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 7187224277343154457, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254437628529412910, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 9096672375530997962, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
@@ -2743,6 +2791,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: ENV_StreetLamp (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 6869746259115937321, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 7187224277343154457, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254437628529412910, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 9096672375530997962, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
 --- !u!4 &8428809170643935881 stripped
@@ -2929,6 +2993,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: ENV_StreetLamp (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 6869746259115937321, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 7187224277343154457, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254437628529412910, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 9096672375530997962, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
 --- !u!4 &8428809170549365839 stripped
@@ -3053,6 +3133,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: ENV_StreetLamp (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 6869746259115937321, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 7187224277343154457, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254437628529412910, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 9096672375530997962, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
 --- !u!4 &8428809170778040430 stripped
@@ -3114,6 +3210,22 @@ PrefabInstance:
     - target: {fileID: 6869746259115937321, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
       propertyPath: m_Name
       value: ENV_StreetLamp (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869746259115937321, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 7187224277343154457, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254437628529412910, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 9096672375530997962, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
@@ -3363,6 +3475,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: ENV_StreetLamp (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 6869746259115937321, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 7187224277343154457, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254437628529412910, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 9096672375530997962, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
 --- !u!4 &8428809170708139236 stripped
@@ -3424,6 +3552,22 @@ PrefabInstance:
     - target: {fileID: 6869746259115937321, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
       propertyPath: m_Name
       value: ENV_StreetLamp (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869746259115937321, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 7187224277343154457, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254437628529412910, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 9096672375530997962, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
@@ -3611,6 +3755,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: ENV_StreetLamp (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6869746259115937321, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 7187224277343154457, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254437628529412910, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 9096672375530997962, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
 --- !u!4 &8428809170828101081 stripped
@@ -3734,6 +3894,22 @@ PrefabInstance:
     - target: {fileID: 6869746259115937321, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
       propertyPath: m_Name
       value: ENV_StreetLamp (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869746259115937321, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 7187224277343154457, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254437628529412910, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 9096672375530997962, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
@@ -4059,6 +4235,22 @@ PrefabInstance:
     - target: {fileID: 6869746259115937321, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
       propertyPath: m_Name
       value: ENV_StreetLamp (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869746259115937321, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 7187224277343154457, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254437628529412910, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 9096672375530997962, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
@@ -4647,6 +4839,22 @@ PrefabInstance:
     - target: {fileID: 6869746259115937321, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
       propertyPath: m_Name
       value: ENV_StreetLamp (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869746259115937321, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 7187224277343154457, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254437628529412910, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 9096672375530997962, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87455cbbd90117e4e95da9f91c8e9cab, type: 3}
